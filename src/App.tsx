@@ -201,6 +201,21 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <section className="py-20 bg-[#2F1E40] text-center relative">
+        <div className="max-w-4xl mx-auto px-8">
+          <Button className="mb-8 bg-[#8B1A3F] text-white px-6 py-3">
+            {texts.final_cta.tag}
+          </Button>
+          <h2 className="text-5xl font-bold text-white leading-tight mb-12">
+            {texts.final_cta.title.line1}<br />
+            {texts.final_cta.title.line2}
+          </h2>
+          <Button className="bg-white text-[#8B1A3F] px-12 py-4 rounded-full text-lg font-medium">
+            {texts.final_cta.button}
+          </Button>
+        </div>
+      </section>
     </div>
   );
 };
