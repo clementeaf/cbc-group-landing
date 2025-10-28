@@ -37,5 +37,38 @@
       "line5": "a nuestro favor."
     },
     "cta_button": "Agendar reunión"
+  },
+  "services": {
+    "button": "Nuestros servicios",
+    "title": {
+      "line1": "Soluciones expertas para atraer, evaluar",
+      "line2": "e integrar talento"
+    },
+    "cards": [
+      {
+        "title": "Headhunting Ejecutivo",
+        "description": "Búsquedas de alta dirección y mandos clave, bajo confidencialidad y ajuste cultural."
+      },
+      {
+        "title": "Reclutamiento Continuo",
+        "description": "Equipo dedicado por tarifa mensual para cubrir vacantes de forma sostenida con SLAs."
+      },
+      {
+        "title": "Mapeo de Talento y Benchmark Salarial",
+        "description": "Radiografía de mercado: candidatos, competencia y rangos de renta para decidir con datos."
+      },
+      {
+        "title": "Evaluaciones por Competencias y Psicométricas",
+        "description": "Medición objetiva del ajuste al rol: entrevistas estructuradas, pruebas y casos de estudio."
+      },
+      {
+        "title": "Consultoría en Personas y Cultura",
+        "description": "Diseño de roles, procesos y prácticas de liderazgo para equipos sanos y efectivos."
+      },
+      {
+        "title": "Onboarding",
+        "description": "Acompañamiento post-contratación para acelerar productividad y asegurar permanencia."
+      }
+    ]
   }
 }

@@ -91,9 +91,42 @@ const App: React.FC = () => {
           </div>
           <div className="flex-1 flex justify-end">
             <div className="flex items-center space-x-8">
-              <div className="w-64 h-64 bg-[#8B1A3F] rounded-l-full"></div>
+              <div className="w-32 h-64 bg-[#8B1A3F] rounded-r-full"></div>
               <div className="w-64 h-64 bg-[#2F204A] rounded-full"></div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gray-100 relative">
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-black"></div>
+        <div className="ml-8">
+          <Button className="mb-8 bg-[#8B264A] text-white px-6 py-3">
+            {texts.services.button}
+          </Button>
+          <div className="text-start">
+            <h2 className="text-4xl font-light text-[#3A2D4F] leading-tight">
+              {texts.services.title.line1}<br />
+              {texts.services.title.line2}
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {texts.services.cards.map((card, index) => (
+              <div key={index} className="bg-white border border-gray-200 w-[380px] h-[500px] p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between items-center">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-semibold text-[#3A2D4F] flex-1">{card.title}</h3>
+                  <button className="ml-4 w-8 h-8 bg-gray-100/70 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-300 font-bold">
+                    +
+                  </button>
+                </div>
+                <p className="text-gray-600 leading-relaxed">{card.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
