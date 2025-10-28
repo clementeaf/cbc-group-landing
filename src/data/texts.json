@@ -23,5 +23,19 @@
       "soy_empresa": "Soy empresa",
       "soy_profesional": "Soy profesional"
     }
+  },
+  "description": {
+    "text": "Combinamos datos y criterio de un equipo experimentado para alinear cada búsqueda a tu estrategia y cultura empresarial"
+  },
+  "what_we_do": {
+    "button": "Qué hacemos",
+    "text": {
+      "line1": "En CBCGroup conectamos empresas",
+      "line2": "con el talento correcto. Humanizamos el",
+      "line3": "reclutamiento con procesos claros,",
+      "line4": "simples, y fundamentados, utilizando la IA",
+      "line5": "a nuestro favor."
+    },
+    "cta_button": "Agendar reunión"
   }
 }
