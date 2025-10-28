@@ -1,0 +1,270 @@
+---
+description: Reglas de Estructura de Proyecto
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Reglas de Estructura de Proyecto - APLICACIÓN AUTOMÁTICA
+
+**IMPORTANTE**: Estas reglas deben aplicarse AUTOMÁTICAMENTE en la organización del proyecto.
+
+## Estructura de Carpetas
+
+### 1. Organización Principal
+```
+src/
+├── components/          # Componentes reutilizables
+│   ├── ui/             # Componentes de UI básicos
+│   ├── forms/          # Componentes de formularios
+│   └── layout/         # Componentes de layout
+├── pages/              # Páginas de la aplicación
+├── hooks/              # Custom hooks
+├── services/           # Servicios y API calls
+├── utils/              # Utilidades y helpers
+├── types/              # Definiciones de tipos
+├── constants/          # Constantes de la aplicación
+├── assets/             # Recursos estáticos
+│   ├── images/         # Imágenes
+│   ├── icons/          # Iconos
+│   └── fonts/          # Fuentes
+├── styles/             # Estilos globales
+└── __tests__/          # Tests
+```
+
+### 2. Convenciones de Naming
+- **Carpetas**: `kebab-case` (ej: `user-profile`)
+- **Archivos**: `PascalCase` para componentes, `camelCase` para utilidades
+- **Componentes**: `PascalCase` (ej: `UserProfile.tsx`)
+- **Hooks**: `use` + `PascalCase` (ej: `useUserData.ts`)
+- **Servicios**: `camelCase` + `Service` (ej: `userService.ts`)
+
+## Componentes
+
+### 1. Estructura de Componente
+```
+components/
+└── Button/
+    ├── Button.tsx          # Componente principal
+    ├── Button.test.tsx     # Tests
+    ├── Button.stories.tsx  # Storybook
+    ├── Button.module.css   # Estilos del componente
+    └── index.ts           # Export del componente
+```
+
+### 2. Exports Limpios
+```typescript
+// components/Button/index.ts
+export { Button } from './Button';
+export type { ButtonProps } from './Button';
+
+// components/index.ts
+export { Button } from './Button';
+export { Input } from './Input';
+export { Modal } from './Modal';
+```
+
+## Hooks
+
+### 1. Estructura de Hook
+```typescript
+// hooks/useUserData.ts
+interface UseUserDataReturn {
+  user: User | null;
+  loading: boolean;
+  error: string | null;
+  refetch: () => Promise<void>;
+}
+
+export const useUserData = (userId: string): UseUserDataReturn => {
+  // Implementación del hook
+};
+```
+
+### 2. Hooks Personalizados
+- **Prefijo `use`** obligatorio
+- **Tipado completo** de parámetros y retorno
+- **Documentación JSDoc** clara
+- **Manejo de errores** apropiado
+
+## Servicios
+
+### 1. Estructura de Servicio
+```typescript
+// services/userService.ts
+interface UserService {
+  getUser: (id: string) => Promise<User>;
+  createUser: (userData: CreateUserData) => Promise<User>;
+  updateUser: (id: string, userData: UpdateUserData) => Promise<User>;
+  deleteUser: (id: string) => Promise<void>;
+}
+
+export const userService: UserService = {
+  getUser: async (id: string): Promise<User> => {
+    // Implementación
+  },
+  // ... otros métodos
+};
+```
+
+### 2. Patrón RPC
+- **Usar snake_case** para nombres de servicios
+- **Implementar interfaces** para cada servicio
+- **Manejar errores** de forma consistente
+- **Tipar respuestas** de API
+
+## Tipos
+
+### 1. Organización de Tipos
+```typescript
+// types/index.ts
+export * from './user';
+export * from './api';
+export * from './common';
+
+// types/user.ts
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+}
+
+export interface CreateUserData {
+  name: string;
+  email: string;
+  password: string;
+}
+```
+
+### 2. Convenciones de Tipos
+- **Interfaces** para objetos complejos
+- **Types** para uniones y primitivos
+- **Enums** para valores constantes
+- **Namespaces** para agrupar tipos relacionados
+
+## Assets
+
+### 1. Organización de Assets
+```
+assets/
+├── images/
+│   ├── hero/           # Imágenes hero
+│   ├── icons/          # Iconos de la app
+│   └── backgrounds/    # Fondos
+├── icons/
+│   ├── social/         # Iconos sociales
+│   └── ui/            # Iconos de UI
+└── fonts/
+    ├── main.woff2      # Fuente principal
+    └── heading.woff2   # Fuente de títulos
+```
+
+### 2. Optimización de Assets
+- **Usar formatos modernos** (WebP, AVIF)
+- **Optimizar tamaños** según uso
+- **Implementar lazy loading** para imágenes pesadas
+- **Usar sprites** para iconos pequeños
+
+## Configuración
+
+### 1. Archivos de Configuración
+```
+├── vite.config.ts      # Configuración de Vite
+├── tsconfig.json       # Configuración de TypeScript
+├── tailwind.config.js  # Configuración de Tailwind
+├── .eslintrc.js        # Configuración de ESLint
+├── .prettierrc         # Configuración de Prettier
+└── .env.example        # Variables de entorno ejemplo
+```
+
+### 2. Variables de Entorno
+```typescript
+// types/env.ts
+interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  readonly VITE_APP_TITLE: string;
+  readonly VITE_ANALYTICS_ID: string;
+}
+
+// .env.example
+VITE_API_URL=https://api.example.com
+VITE_APP_TITLE=Landing Page
+VITE_ANALYTICS_ID=GA-XXXXXXXXX
+```
+
+## Testing
+
+### 1. Estructura de Tests
+```
+__tests__/
+├── components/         # Tests de componentes
+├── hooks/             # Tests de hooks
+├── services/          # Tests de servicios
+├── utils/             # Tests de utilidades
+└── __mocks__/         # Mocks globales
+```
+
+### 2. Convenciones de Testing
+- **Archivos de test** junto al código fuente
+- **Naming**: `*.test.ts` o `*.test.tsx`
+- **Cobertura** mínima del 80%
+- **Tests unitarios** para lógica de negocio
+- **Tests de integración** para flujos completos
+
+## Documentación
+
+### 1. README Principal
+```markdown
+# Landing Page
+
+## Descripción
+Breve descripción del proyecto
+
+## Tecnologías
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+
+## Instalación
+```bash
+npm install
+npm run dev
+```
+
+## Estructura del Proyecto
+Explicación de la organización de carpetas
+```
+
+### 2. Documentación de Componentes
+- **Storybook** para componentes UI
+- **JSDoc** para funciones y hooks
+- **Comentarios** solo cuando sea necesario
+- **Ejemplos de uso** en documentación
+
+## Checklist de Revisión AUTOMÁTICA
+
+**OBLIGATORIO**: Verificar automáticamente en cada cambio:
+
+- [ ] ¿Sigue la estructura de carpetas definida?
+- [ ] ¿Usa convenciones de naming apropiadas?
+- [ ] ¿Tiene exports limpios?
+- [ ] ¿Está tipado correctamente?
+- [ ] ¿Tiene documentación apropiada?
+- [ ] ¿Sigue patrones establecidos?
+- [ ] ¿Está organizado lógicamente?
+- [ ] ¿Tiene tests apropiados?
+
+## INSTRUCCIONES AUTOMÁTICAS PARA EL ASISTENTE
+
+**EN CADA IMPLEMENTACIÓN**:
+
+1. **SIEMPRE** seguir la estructura de carpetas definida
+2. **SIEMPRE** usar convenciones de naming apropiadas
+3. **SIEMPRE** crear exports limpios
+4. **SIEMPRE** tipar correctamente
+5. **SIEMPRE** documentar apropiadamente
+6. **SIEMPRE** seguir patrones establecidos
+7. **SIEMPRE** organizar lógicamente
+8. **SIEMPRE** incluir tests apropiados

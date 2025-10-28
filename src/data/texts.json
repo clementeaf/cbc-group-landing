@@ -1,0 +1,27 @@
+{
+  "header": {
+    "logo": {
+      "main": "CBC",
+      "sub": "Group"
+    },
+    "navigation": {
+      "inicio": "Inicio",
+      "servicios": "Servicios",
+      "sobre_nosotros": "Sobre nosotros",
+      "clientes": "Clientes"
+    },
+    "button": {
+      "hablemos": "Hablemos"
+    }
+  },
+  "main": {
+    "title": {
+      "line1": "Conectamos personas y empresas",
+      "line2": "para crear equipos que funcionan"
+    },
+    "buttons": {
+      "soy_empresa": "Soy empresa",
+      "soy_profesional": "Soy profesional"
+    }
+  }
+}

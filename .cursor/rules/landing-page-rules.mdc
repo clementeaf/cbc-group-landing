@@ -1,0 +1,350 @@
+---
+description: Reglas para Landing Pages
+globs:
+  - "**/*.tsx"
+  - "**/*.jsx"
+  - "**/index.html"
+alwaysApply: true
+---
+
+# Reglas para Landing Pages - APLICACIÓN AUTOMÁTICA
+
+**IMPORTANTE**: Estas reglas deben aplicarse AUTOMÁTICAMENTE en cada landing page.
+
+## SEO y Meta Tags
+
+### 1. Meta Tags Esenciales
+- **Siempre incluir** meta tags básicos
+- **Usar Open Graph** para redes sociales
+- **Configurar Twitter Cards** apropiadamente
+- **Incluir meta description** única y descriptiva
+
+```typescript
+interface MetaTagsProps {
+  title: string;
+  description: string;
+  image?: string;
+  url?: string;
+  keywords?: string[];
+}
+
+const MetaTags: React.FC<MetaTagsProps> = ({ 
+  title, 
+  description, 
+  image, 
+  url, 
+  keywords 
+}) => {
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords?.join(', ')} />
+      
+      {/* Open Graph */}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content="website" />
+      
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
+    </Helmet>
+  );
+};
+```
+
+### 2. Estructura Semántica
+- **Usar HTML semántico** apropiadamente
+- **Incluir headings** en orden jerárquico
+- **Usar landmarks** para navegación
+
+```typescript
+const LandingPage: React.FC = () => {
+  return (
+    <div className="landing-page">
+      <header role="banner">
+        <nav role="navigation">
+          {/* Navegación */}
+        </nav>
+      </header>
+      
+      <main role="main">
+        <section aria-labelledby="hero-heading">
+          <h1 id="hero-heading">Título Principal</h1>
+          {/* Contenido hero */}
+        </section>
+        
+        <section aria-labelledby="features-heading">
+          <h2 id="features-heading">Características</h2>
+          {/* Características */}
+        </section>
+      </main>
+      
+      <footer role="contentinfo">
+        {/* Footer */}
+      </footer>
+    </div>
+  );
+};
+```
+
+## Performance y Core Web Vitals
+
+### 1. Lazy Loading
+- **Implementar lazy loading** para imágenes
+- **Usar Intersection Observer** para contenido pesado
+- **Cargar componentes** bajo demanda
+
+```typescript
+import { lazy, Suspense } from 'react';
+
+const HeavyComponent = lazy(() => import('./HeavyComponent'));
+
+const LandingPage: React.FC = () => {
+  return (
+    <div>
+      <Suspense fallback={<div>Cargando...</div>}>
+        <HeavyComponent />
+      </Suspense>
+    </div>
+  );
+};
+```
+
+### 2. Optimización de Imágenes
+- **Usar formatos modernos** (WebP, AVIF)
+- **Implementar responsive images**
+- **Optimizar tamaños** según viewport
+
+```typescript
+interface OptimizedImageProps {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+}
+
+const OptimizedImage: React.FC<OptimizedImageProps> = ({ 
+  src, 
+  alt, 
+  width, 
+  height, 
+  className 
+}) => {
+  return (
+    <picture>
+      <source 
+        srcSet={`${src}.avif`} 
+        type="image/avif" 
+      />
+      <source 
+        srcSet={`${src}.webp`} 
+        type="image/webp" 
+      />
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={className}
+        loading="lazy"
+      />
+    </picture>
+  );
+};
+```
+
+## Responsive Design
+
+### 1. Mobile First
+- **Diseñar mobile first**
+- **Usar breakpoints** consistentes
+- **Probar en múltiples dispositivos**
+
+```typescript
+const useBreakpoint = (): string => {
+  const [breakpoint, setBreakpoint] = useState<string>('mobile');
+  
+  useEffect(() => {
+    const handleResize = (): void => {
+      if (window.innerWidth >= 1024) {
+        setBreakpoint('desktop');
+      } else if (window.innerWidth >= 768) {
+        setBreakpoint('tablet');
+      } else {
+        setBreakpoint('mobile');
+      }
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  return breakpoint;
+};
+```
+
+### 2. Grid y Flexbox
+- **Usar CSS Grid** para layouts complejos
+- **Usar Flexbox** para alineación
+- **Implementar fallbacks** para navegadores antiguos
+
+```typescript
+const GridLayout: React.FC = () => {
+  return (
+    <div className="grid-container">
+      <div className="grid-item">Item 1</div>
+      <div className="grid-item">Item 2</div>
+      <div className="grid-item">Item 3</div>
+    </div>
+  );
+};
+```
+
+## Accesibilidad
+
+### 1. ARIA Labels
+- **Usar aria-labels** apropiadamente
+- **Implementar roles** semánticos
+- **Manejar focus** correctamente
+
+```typescript
+const AccessibleButton: React.FC<ButtonProps> = ({ 
+  children, 
+  onClick, 
+  ariaLabel 
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      aria-label={ariaLabel}
+      role="button"
+      tabIndex={0}
+    >
+      {children}
+    </button>
+  );
+};
+```
+
+### 2. Navegación por Teclado
+- **Implementar navegación** por teclado
+- **Manejar focus** visible
+- **Usar tabindex** apropiadamente
+
+```typescript
+const KeyboardNavigation: React.FC = () => {
+  const handleKeyDown = (event: React.KeyboardEvent): void => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      // Lógica del click
+    }
+  };
+  
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onClick={handleClick}
+    >
+      Contenido clickeable
+    </div>
+  );
+};
+```
+
+## Analytics y Tracking
+
+### 1. Google Analytics
+- **Implementar GA4** correctamente
+- **Configurar eventos** personalizados
+- **Manejar consentimiento** de cookies
+
+```typescript
+interface AnalyticsEvent {
+  action: string;
+  category: string;
+  label?: string;
+  value?: number;
+}
+
+const useAnalytics = () => {
+  const trackEvent = useCallback((event: AnalyticsEvent): void => {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', event.action, {
+        event_category: event.category,
+        event_label: event.label,
+        value: event.value,
+      });
+    }
+  }, []);
+  
+  return { trackEvent };
+};
+```
+
+### 2. Eventos de Conversión
+- **Trackear formularios** de contacto
+- **Medir interacciones** importantes
+- **Configurar goals** en GA
+
+```typescript
+const ContactForm: React.FC = () => {
+  const { trackEvent } = useAnalytics();
+  
+  const handleSubmit = (formData: FormData): void => {
+    // Lógica del formulario
+    
+    trackEvent({
+      action: 'form_submit',
+      category: 'contact',
+      label: 'landing_page',
+    });
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Campos del formulario */}
+    </form>
+  );
+};
+```
+
+## Checklist de Revisión AUTOMÁTICA
+
+**OBLIGATORIO**: Verificar automáticamente en cada landing page:
+
+- [ ] ¿Tiene meta tags SEO completos?
+- [ ] ¿Usa HTML semántico apropiadamente?
+- [ ] ¿Está optimizado para performance?
+- [ ] ¿Implementa lazy loading?
+- [ ] ¿Es responsive y mobile-first?
+- [ ] ¿Cumple estándares de accesibilidad?
+- [ ] ¿Tiene analytics configurado?
+- [ ] ¿Maneja eventos de conversión?
+- [ ] ¿Está optimizado para Core Web Vitals?
+- [ ] ¿Usa imágenes optimizadas?
+
+## INSTRUCCIONES AUTOMÁTICAS PARA EL ASISTENTE
+
+**EN CADA LANDING PAGE**:
+
+1. **SIEMPRE** incluir meta tags SEO completos
+2. **SIEMPRE** usar HTML semántico apropiadamente
+3. **SIEMPRE** optimizar para performance
+4. **SIEMPRE** implementar lazy loading
+5. **SIEMPRE** diseñar mobile-first
+6. **SIEMPRE** cumplir estándares de accesibilidad
+7. **SIEMPRE** configurar analytics
+8. **SIEMPRE** trackear eventos de conversión
+9. **SIEMPRE** optimizar para Core Web Vitals
+10. **SIEMPRE** usar imágenes optimizadas

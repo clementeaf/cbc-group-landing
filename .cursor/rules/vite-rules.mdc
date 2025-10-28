@@ -1,0 +1,256 @@
+---
+description: Reglas de Vite
+globs:
+  - "vite.config.ts"
+  - "vite.config.js"
+  - "**/*.config.ts"
+alwaysApply: true
+---
+
+# Reglas de Vite - APLICACIÓN AUTOMÁTICA
+
+**IMPORTANTE**: Estas reglas deben aplicarse AUTOMÁTICAMENTE en la configuración de Vite.
+
+## Configuración Base
+
+### 1. TypeScript Estricto
+- **Siempre usar TypeScript** para configuración
+- **Tipar correctamente** todas las opciones
+- **Usar interfaces** para configuraciones complejas
+
+```typescript
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+      '@components': resolve(__dirname, './src/components'),
+      '@utils': resolve(__dirname, './src/utils'),
+      '@services': resolve(__dirname, './src/services'),
+      '@assets': resolve(__dirname, './src/assets'),
+    },
+  },
+});
+```
+
+### 2. Variables de Entorno
+- **Definir tipos** para variables de entorno
+- **Usar prefijo VITE_** para variables públicas
+- **Validar variables** requeridas
+
+```typescript
+interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  readonly VITE_APP_TITLE: string;
+  readonly VITE_ANALYTICS_ID: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+```
+
+## Optimización de Build
+
+### 1. Configuración de Build
+- **Habilitar minificación** en producción
+- **Configurar chunk splitting** apropiadamente
+- **Optimizar assets** estáticos
+
+```typescript
+export default defineConfig({
+  build: {
+    minify: 'terser',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          utils: ['lodash', 'date-fns'],
+        },
+      },
+    },
+    assetsInlineLimit: 4096,
+    cssCodeSplit: true,
+  },
+});
+```
+
+### 2. Optimización de Assets
+- **Configurar compresión** de imágenes
+- **Usar formatos modernos** (WebP, AVIF)
+- **Lazy loading** de assets pesados
+
+```typescript
+export default defineConfig({
+  plugins: [
+    react(),
+    // Plugin para optimización de imágenes
+    {
+      name: 'image-optimization',
+      generateBundle(options, bundle) {
+        // Lógica de optimización de imágenes
+      },
+    },
+  ],
+});
+```
+
+## Desarrollo
+
+### 1. Configuración de Dev Server
+- **Habilitar HMR** (Hot Module Replacement)
+- **Configurar proxy** para API
+- **Usar HTTPS** en desarrollo cuando sea necesario
+
+```typescript
+export default defineConfig({
+  server: {
+    port: 3000,
+    open: true,
+    cors: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
+});
+```
+
+### 2. Variables de Entorno
+- **Definir archivos** de entorno por ambiente
+- **Validar variables** requeridas
+- **Usar tipos** para variables de entorno
+
+```typescript
+// .env.development
+VITE_API_URL=http://localhost:8080/api
+VITE_APP_TITLE=Landing Page Dev
+
+// .env.production
+VITE_API_URL=https://api.example.com
+VITE_APP_TITLE=Landing Page
+```
+
+## Plugins Recomendados
+
+### 1. Plugins Esenciales
+- **@vitejs/plugin-react** - Soporte para React
+- **vite-plugin-pwa** - Progressive Web App
+- **vite-plugin-eslint** - Linting en desarrollo
+
+```typescript
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+import eslint from 'vite-plugin-eslint';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    eslint(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+      },
+    }),
+  ],
+});
+```
+
+### 2. Plugins de Optimización
+- **vite-plugin-compression** - Compresión gzip/brotli
+- **vite-plugin-bundle-analyzer** - Análisis de bundle
+- **vite-plugin-checker** - Verificación de tipos
+
+```typescript
+import { defineConfig } from 'vite';
+import { compression } from 'vite-plugin-compression';
+import { analyzer } from 'vite-plugin-bundle-analyzer';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    compression({
+      algorithm: 'gzip',
+    }),
+    analyzer({
+      analyzerMode: 'static',
+      openAnalyzer: false,
+    }),
+  ],
+});
+```
+
+## Configuración de CSS
+
+### 1. CSS Modules
+- **Habilitar CSS Modules** para componentes
+- **Usar PostCSS** para procesamiento
+- **Configurar autoprefixer**
+
+```typescript
+export default defineConfig({
+  css: {
+    modules: {
+      localsConvention: 'camelCase',
+    },
+    postcss: {
+      plugins: [
+        require('autoprefixer'),
+        require('postcss-nested'),
+      ],
+    },
+  },
+});
+```
+
+### 2. Preprocesadores
+- **Sass/SCSS** para estilos avanzados
+- **Less** si es necesario
+- **Configurar variables** globales
+
+```typescript
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/variables.scss";`,
+      },
+    },
+  },
+});
+```
+
+## Checklist de Revisión AUTOMÁTICA
+
+**OBLIGATORIO**: Verificar automáticamente en la configuración de Vite:
+
+- [ ] ¿Está tipado correctamente?
+- [ ] ¿Tiene alias configurados?
+- [ ] ¿Está optimizado para producción?
+- [ ] ¿Tiene variables de entorno tipadas?
+- [ ] ¿Usa plugins apropiados?
+- [ ] ¿Está configurado para desarrollo?
+- [ ] ¿Tiene optimización de assets?
+- [ ] ¿Está configurado para PWA?
+
+## INSTRUCCIONES AUTOMÁTICAS PARA EL ASISTENTE
+
+**EN CADA CONFIGURACIÓN DE VITE**:
+
+1. **SIEMPRE** usar TypeScript para configuración
+2. **SIEMPRE** tipar variables de entorno
+3. **SIEMPRE** configurar alias de paths
+4. **SIEMPRE** optimizar para producción
+5. **SIEMPRE** usar plugins apropiados
+6. **SIEMPRE** configurar proxy para API
+7. **SIEMPRE** habilitar HMR en desarrollo
+8. **SIEMPRE** configurar compresión de assets

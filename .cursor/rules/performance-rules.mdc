@@ -1,0 +1,334 @@
+---
+description: Reglas de Performance y SEO
+globs:
+  - "**/*.tsx"
+  - "**/*.jsx"
+  - "**/*.ts"
+  - "**/*.js"
+alwaysApply: true
+---
+
+# Reglas de Performance y SEO - APLICACIÓN AUTOMÁTICA
+
+**IMPORTANTE**: Estas reglas deben aplicarse AUTOMÁTICAMENTE para optimizar performance y SEO.
+
+## Core Web Vitals
+
+### 1. Largest Contentful Paint (LCP)
+- **Optimizar imágenes** críticas
+- **Preload recursos** importantes
+- **Minimizar render blocking** CSS/JS
+
+```typescript
+const PreloadResources: React.FC = () => {
+  return (
+    <Helmet>
+      <link rel="preload" href="/hero-image.webp" as="image" />
+      <link rel="preload" href="/fonts/main.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      <link rel="preload" href="/critical.css" as="style" />
+    </Helmet>
+  );
+};
+```
+
+### 2. First Input Delay (FID)
+- **Minimizar JavaScript** de larga duración
+- **Usar Web Workers** para tareas pesadas
+- **Implementar code splitting** efectivo
+
+```typescript
+const useWebWorker = (): Worker | null => {
+  const [worker, setWorker] = useState<Worker | null>(null);
+  
+  useEffect(() => {
+    const workerInstance = new Worker('/workers/heavy-computation.js');
+    setWorker(workerInstance);
+    
+    return () => workerInstance.terminate();
+  }, []);
+  
+  return worker;
+};
+```
+
+### 3. Cumulative Layout Shift (CLS)
+- **Reservar espacio** para imágenes
+- **Evitar contenido** que se mueve
+- **Usar aspect-ratio** CSS
+
+```typescript
+const StableImage: React.FC<ImageProps> = ({ src, alt, width, height }) => {
+  return (
+    <div 
+      style={{ 
+        aspectRatio: `${width}/${height}`,
+        width: '100%',
+        height: 'auto'
+      }}
+    >
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+    </div>
+  );
+};
+```
+
+## Optimización de Bundle
+
+### 1. Code Splitting
+- **Dividir por rutas** usando React.lazy
+- **Dividir por funcionalidad** cuando sea apropiado
+- **Usar dynamic imports** para componentes pesados
+
+```typescript
+const LazyComponent = lazy(() => 
+  import('./HeavyComponent').then(module => ({
+    default: module.HeavyComponent
+  }))
+);
+
+const App: React.FC = () => {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<LazyComponent />} />
+      </Routes>
+    </Suspense>
+  );
+};
+```
+
+### 2. Tree Shaking
+- **Importar solo** lo que se necesita
+- **Usar named imports** en lugar de default
+- **Evitar importar** librerías completas
+
+```typescript
+// ✅ Correcto
+import { debounce } from 'lodash-es';
+import { format } from 'date-fns';
+
+// ❌ Incorrecto
+import _ from 'lodash';
+import * as dateFns from 'date-fns';
+```
+
+### 3. Bundle Analysis
+- **Analizar bundle size** regularmente
+- **Identificar dependencias** pesadas
+- **Optimizar imports** según análisis
+
+```typescript
+// Configuración para análisis de bundle
+const bundleAnalyzer = {
+  analyzerMode: 'static',
+  openAnalyzer: false,
+  generateStatsFile: true,
+  statsFilename: 'bundle-stats.json',
+};
+```
+
+## Optimización de Imágenes
+
+### 1. Formatos Modernos
+- **Usar WebP** como formato principal
+- **Implementar AVIF** para navegadores compatibles
+- **Proporcionar fallbacks** JPEG/PNG
+
+```typescript
+const OptimizedImage: React.FC<ImageProps> = ({ src, alt, ...props }) => {
+  return (
+    <picture>
+      <source srcSet={`${src}.avif`} type="image/avif" />
+      <source srcSet={`${src}.webp`} type="image/webp" />
+      <img src={`${src}.jpg`} alt={alt} {...props} />
+    </picture>
+  );
+};
+```
+
+### 2. Lazy Loading
+- **Implementar lazy loading** nativo
+- **Usar Intersection Observer** para control fino
+- **Preload imágenes** críticas
+
+```typescript
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt, ...props }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, []);
+  
+  return (
+    <div ref={imgRef} style={{ minHeight: '200px' }}>
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          onLoad={() => setIsLoaded(true)}
+          style={{ opacity: isLoaded ? 1 : 0 }}
+          {...props}
+        />
+      )}
+    </div>
+  );
+};
+```
+
+## Caching y Service Workers
+
+### 1. Service Worker
+- **Implementar PWA** con service worker
+- **Cachear recursos** estáticos
+- **Manejar actualizaciones** de la app
+
+```typescript
+const useServiceWorker = (): ServiceWorkerState => {
+  const [swState, setSwState] = useState<ServiceWorkerState>('checking');
+  
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          setSwState('registered');
+          
+          registration.addEventListener('updatefound', () => {
+            setSwState('updating');
+          });
+        })
+        .catch(() => {
+          setSwState('error');
+        });
+    }
+  }, []);
+  
+  return swState;
+};
+```
+
+### 2. HTTP Caching
+- **Configurar headers** de cache apropiados
+- **Usar ETags** para validación
+- **Implementar cache busting** para assets
+
+```typescript
+const getCachedResource = async (url: string): Promise<Response> => {
+  const cache = await caches.open('app-cache');
+  const cached = await cache.match(url);
+  
+  if (cached) {
+    return cached;
+  }
+  
+  const response = await fetch(url);
+  cache.put(url, response.clone());
+  return response;
+};
+```
+
+## SEO Técnico
+
+### 1. Structured Data
+- **Implementar JSON-LD** para datos estructurados
+- **Usar Schema.org** apropiadamente
+- **Validar markup** con herramientas de Google
+
+```typescript
+const StructuredData: React.FC<{ data: any }> = ({ data }) => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": data.name,
+    "url": data.url,
+    "logo": data.logo,
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": data.phone,
+      "contactType": "customer service"
+    }
+  };
+  
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+};
+```
+
+### 2. Sitemap y Robots
+- **Generar sitemap** dinámicamente
+- **Configurar robots.txt** apropiadamente
+- **Implementar canonical URLs**
+
+```typescript
+const generateSitemap = (pages: Page[]): string => {
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${pages.map(page => `
+    <url>
+      <loc>${page.url}</loc>
+      <lastmod>${page.lastModified}</lastmod>
+      <changefreq>${page.changeFrequency}</changefreq>
+      <priority>${page.priority}</priority>
+    </url>
+  `).join('')}
+</urlset>`;
+  
+  return sitemap;
+};
+```
+
+## Checklist de Revisión AUTOMÁTICA
+
+**OBLIGATORIO**: Verificar automáticamente en cada implementación:
+
+- [ ] ¿Está optimizado para Core Web Vitals?
+- [ ] ¿Implementa code splitting efectivo?
+- [ ] ¿Usa imágenes optimizadas?
+- [ ] ¿Tiene lazy loading implementado?
+- [ ] ¿Está configurado el caching apropiadamente?
+- [ ] ¿Tiene structured data implementado?
+- [ ] ¿Está optimizado el bundle size?
+- [ ] ¿Usa formatos de imagen modernos?
+- [ ] ¿Tiene service worker configurado?
+- [ ] ¿Está optimizado para SEO técnico?
+
+## INSTRUCCIONES AUTOMÁTICAS PARA EL ASISTENTE
+
+**EN CADA IMPLEMENTACIÓN**:
+
+1. **SIEMPRE** optimizar para Core Web Vitals
+2. **SIEMPRE** implementar code splitting
+3. **SIEMPRE** usar imágenes optimizadas
+4. **SIEMPRE** implementar lazy loading
+5. **SIEMPRE** configurar caching apropiadamente
+6. **SIEMPRE** implementar structured data
+7. **SIEMPRE** optimizar bundle size
+8. **SIEMPRE** usar formatos modernos
+9. **SIEMPRE** configurar service worker
+10. **SIEMPRE** optimizar para SEO técnico

@@ -1,0 +1,230 @@
+---
+description: Reglas de React
+globs:
+  - "**/*.tsx"
+  - "**/*.jsx"
+alwaysApply: true
+---
+
+# Reglas de React - APLICACIÓN AUTOMÁTICA
+
+**IMPORTANTE**: Estas reglas deben aplicarse AUTOMÁTICAMENTE en cada componente React.
+
+## Componentes Funcionales
+
+### 1. Estructura de Componentes
+- **Siempre usar componentes funcionales** con hooks
+- **Nunca usar class components** a menos que sea absolutamente necesario
+- **Exportar como default** cuando sea el componente principal del archivo
+- **Exportar como named** cuando sea un componente reutilizable
+
+### 2. Props y Tipado
+- **Siempre definir interface para props**
+- **Usar React.FC solo cuando sea necesario**
+- **Destructurar props** en la función del componente
+
+```typescript
+interface ButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
+  variant?: 'primary' | 'secondary';
+  disabled?: boolean;
+}
+
+const Button: React.FC<ButtonProps> = ({ 
+  children, 
+  onClick, 
+  variant = 'primary', 
+  disabled = false 
+}) => {
+  return (
+    <button 
+      onClick={onClick} 
+      disabled={disabled}
+      className={`btn btn-${variant}`}
+    >
+      {children}
+    </button>
+  );
+};
+```
+
+## Hooks y Estado
+
+### 1. useState
+- **Siempre tipar el estado inicial**
+- **Usar nombres descriptivos** para el estado y setter
+- **Agrupar estado relacionado** en un solo objeto cuando sea apropiado
+
+```typescript
+interface FormState {
+  email: string;
+  password: string;
+  isLoading: boolean;
+}
+
+const [formState, setFormState] = useState<FormState>({
+  email: '',
+  password: '',
+  isLoading: false
+});
+```
+
+### 2. useEffect
+- **Siempre incluir array de dependencias**
+- **Limpiar efectos** cuando sea necesario
+- **Usar useCallback y useMemo** para optimización
+
+```typescript
+useEffect(() => {
+  const fetchData = async (): Promise<void> => {
+    setLoading(true);
+    try {
+      const data = await api.getData();
+      setData(data);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, [dependency]);
+```
+
+## Eventos y Formularios
+
+### 1. Manejo de Eventos
+- **Siempre tipar eventos** correctamente
+- **Usar useCallback** para funciones que se pasan como props
+- **Prevenir comportamiento por defecto** cuando sea necesario
+
+```typescript
+const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>): void => {
+  event.preventDefault();
+  // Lógica del formulario
+}, [dependencies]);
+```
+
+### 2. Formularios Controlados
+- **Siempre usar estado** para valores de inputs
+- **Validar en tiempo real** cuando sea apropiado
+- **Manejar errores** de validación
+
+```typescript
+const [email, setEmail] = useState<string>('');
+const [emailError, setEmailError] = useState<string>('');
+
+const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const value = event.target.value;
+  setEmail(value);
+  
+  if (!isValidEmail(value)) {
+    setEmailError('Email inválido');
+  } else {
+    setEmailError('');
+  }
+};
+```
+
+## Optimización de Renders
+
+### 1. React.memo
+- **Usar React.memo** para componentes que reciben props estables
+- **Comparar props** cuando sea necesario
+
+```typescript
+interface ExpensiveComponentProps {
+  data: DataType[];
+  onItemClick: (id: string) => void;
+}
+
+const ExpensiveComponent = React.memo<ExpensiveComponentProps>(({ 
+  data, 
+  onItemClick 
+}) => {
+  return (
+    <div>
+      {data.map(item => (
+        <div key={item.id} onClick={() => onItemClick(item.id)}>
+          {item.name}
+        </div>
+      ))}
+    </div>
+  );
+});
+```
+
+### 2. useCallback y useMemo
+- **Usar useCallback** para funciones que se pasan como props
+- **Usar useMemo** para cálculos costosos
+- **No abusar** de estas optimizaciones
+
+```typescript
+const expensiveValue = useMemo(() => {
+  return data.reduce((acc, item) => acc + item.value, 0);
+}, [data]);
+
+const handleClick = useCallback((id: string): void => {
+  onItemClick(id);
+}, [onItemClick]);
+```
+
+## Estructura de Archivos
+
+### 1. Organización de Componentes
+- **Un componente por archivo** (excepto componentes muy pequeños)
+- **Carpeta por componente** cuando tenga múltiples archivos
+- **Index.ts** para exports limpios
+
+```
+components/
+  Button/
+    Button.tsx
+    Button.test.tsx
+    Button.stories.tsx
+    index.ts
+```
+
+### 2. Imports y Exports
+- **Imports absolutos** usando path mapping
+- **Exports nombrados** para utilidades
+- **Exports default** para componentes principales
+
+```typescript
+// ✅ Correcto
+import { Button } from '@/components/Button';
+import { formatDate } from '@/utils/date';
+import { UserService } from '@/services/user';
+
+// ❌ Incorrecto
+import { Button } from '../../../components/Button';
+import { formatDate } from '../../utils/date';
+```
+
+## Checklist de Revisión AUTOMÁTICA
+
+**OBLIGATORIO**: Verificar automáticamente en cada componente React:
+
+- [ ] ¿Está tipado correctamente?
+- [ ] ¿Usa hooks apropiadamente?
+- [ ] ¿Maneja eventos correctamente?
+- [ ] ¿Está optimizado para renders?
+- [ ] ¿Sigue las convenciones de naming?
+- [ ] ¿Tiene props interface definida?
+- [ ] ¿Usa useCallback/useMemo cuando es necesario?
+- [ ] ¿Está bien estructurado?
+
+## INSTRUCCIONES AUTOMÁTICAS PARA EL ASISTENTE
+
+**EN CADA COMPONENTE REACT**:
+
+1. **SIEMPRE** definir interface para props
+2. **SIEMPRE** tipar eventos correctamente
+3. **SIEMPRE** usar hooks apropiadamente
+4. **SIEMPRE** optimizar renders cuando sea necesario
+5. **SIEMPRE** seguir convenciones de naming
+6. **NUNCA** usar class components innecesariamente
+7. **SIEMPRE** manejar estado de forma consistente
+8. **SIEMPRE** limpiar efectos cuando sea necesario
