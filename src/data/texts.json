@@ -107,5 +107,22 @@
         "description": "Evaluaciones estructuradas, referencias y verificación antes de la entrevista. Decisiones con sustento."
       }
     ]
+  },
+  "clients": {
+    "tag": "Cliente",
+    "title": "Quienes confían en nosotros",
+    "button": "Hablemos",
+    "testimonial": {
+      "quote": "Evaluaciones estructuradas, referencias y verificación antes de la entrevista. Decisiones con sustento.",
+      "author": "- Nombre cliente, cargo"
+    }
+  },
+  "final_cta": {
+    "tag": "¿Listo para contratar?",
+    "title": {
+      "line1": "Da el paso a una experiencia",
+      "line2": "de contratación ideal"
+    },
+    "button": "Agendar reunión"
   }
 }

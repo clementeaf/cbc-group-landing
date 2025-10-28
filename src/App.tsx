@@ -172,6 +172,35 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div className="flex flex-col">
+              <Button className="mb-6 bg-[#8B1A3F] text-white px-6 py-3 w-fit">
+                {texts.clients.tag}
+              </Button>
+              <h2 className="text-5xl font-bold text-[#2F1E40] leading-tight mb-8">
+                {texts.clients.title}
+              </h2>
+              <Button className="bg-[#2F1E40] text-white px-8 py-4 rounded-full text-lg w-fit">
+                {texts.clients.button}
+              </Button>
+            </div>
+            <div className="bg-[#8B1A3F] rounded-lg p-8 flex items-center">
+              <div className="w-32 h-32 bg-white rounded-lg mr-6 flex-shrink-0"></div>
+              <div className="flex-1">
+                <p className="text-white text-lg leading-relaxed mb-4">
+                  "{texts.clients.testimonial.quote}"
+                </p>
+                <p className="text-white text-sm">
+                  {texts.clients.testimonial.author}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
