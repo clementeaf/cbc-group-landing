@@ -70,5 +70,12 @@
         "description": "Acompañamiento post-contratación para acelerar productividad y asegurar permanencia."
       }
     ]
+  },
+  "cta": {
+    "button": "Hablemos"
+  },
+  "specialization": {
+    "text": "Somos especialistas en",
+    "industry": "Minería"
   }
 }

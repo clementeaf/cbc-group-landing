@@ -26,7 +26,7 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ariaLabel,
 }) => {
-  const baseClasses = 'font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
+  const baseClasses = 'font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variantClasses = {
     primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
@@ -43,13 +43,18 @@ export const Button: React.FC<ButtonProps> = ({
   
   const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : '';
 
+  // Si se pasan clases personalizadas, usar solo esas y las clases base
+  const finalClassName = className 
+    ? `${baseClasses} ${disabledClasses} ${className}`
+    : `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses}`;
+
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel}
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${className}`}
+      className={finalClassName}
     >
       {children}
     </button>

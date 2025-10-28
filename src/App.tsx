@@ -17,8 +17,8 @@ const App: React.FC = () => {
               <a href="#" className="text-gray-800 hover:text-red-800">{texts.header.navigation.servicios}</a>
               <a href="#" className="text-gray-800 hover:text-red-800">{texts.header.navigation.sobre_nosotros}</a>
               <a href="#" className="text-gray-800 hover:text-red-800">{texts.header.navigation.clientes}</a>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white rounded-full px-6 py-2"
               >
                 {texts.header.button.hablemos}
@@ -35,12 +35,12 @@ const App: React.FC = () => {
             {texts.main.title.line2}
           </h1>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               className="bg-red-700 text-white px-8 py-3 rounded-full text-lg"
             >
               {texts.main.buttons.soy_empresa}
             </Button>
-            <Button 
+            <Button
               className="bg-[#2F1E40] text-white px-8 py-3 rounded-full text-lg"
             >
               {texts.main.buttons.soy_profesional}
@@ -54,7 +54,7 @@ const App: React.FC = () => {
           <div className="w-[400px] h-[350px] bg-gray-200 rounded-l-full"></div>
           <div className="w-[400px] h-[350px] bg-gray-200 rounded-r-full"></div>
           <div className="w-[400px] h-[350px] bg-gray-200 rounded-full"></div>
-          <div className="w-[400px] h-[350px] bg-red-700 rounded-r-full"></div>
+          <div className="w-[400px] h-[350px] bg-[#8B1A3F] rounded-r-full"></div>
           <div className="w-[400px] h-[350px] bg-gray-200 rounded-l-full"></div>
           <div className="w-[400px] h-[350px] bg-[#2F1E40] rounded-r-full"></div>
         </div>
@@ -65,7 +65,7 @@ const App: React.FC = () => {
           <p className="text-4xl leading-relaxed">
             Combinamos datos y criterio de un equipo<br />
             experimentado para alinear cada búsqueda a tu<br />
-            <span className="bg-red-700 px-2 py-1 rounded">estrategia y cultura empresarial</span>
+            <span className="bg-[#8B1A3F] px-2 py-1 rounded">estrategia y cultura empresarial</span>
           </p>
         </div>
       </section>
@@ -73,12 +73,12 @@ const App: React.FC = () => {
       <section className="py-16 bg-gray-50">
         <div className="flex items-center justify-between px-20">
           <div className="flex-1 max-w-2xl">
-            <Button className="mb-8 bg-red-800 text-white px-6 py-3 rounded-lg">
+            <Button className="mb-8 bg-[#8B1A3F] text-white px-6 py-3 rounded-lg">
               {texts.what_we_do.button}
             </Button>
             <div className="text-2xl leading-relaxed text-[#2F1E40] mb-8">
               <p>
-                En <span className="font-bold text-red-800">CBC</span><span className="text-red-700">Group</span> conectamos empresas
+                En <span className="font-bold text-[#8B1A3F]">CBC</span><span className="text-[#8B1A3F]">Group</span> conectamos empresas
               </p>
               <p>{texts.what_we_do.text.line2}</p>
               <p>{texts.what_we_do.text.line3}</p>
@@ -99,9 +99,8 @@ const App: React.FC = () => {
       </section>
 
       <section className="py-16 bg-gray-100 relative">
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-black"></div>
         <div className="ml-8">
-          <Button className="mb-8 bg-[#8B264A] text-white px-6 py-3">
+          <Button className="mb-8 bg-[#8B1A3F] text-white px-6 py-3">
             {texts.services.button}
           </Button>
           <div className="text-start">
@@ -128,6 +127,20 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="flex justify-center my-20">
+        <Button className="bg-[#8B1A3F] text-white px-12 py-4 rounded-full text-lg font-medium border-white ">
+          {texts.cta.button}
+        </Button>
+      </section>
+
+      <section className="py-16 bg-[#8B1A3F] h-[300px] flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-white text-6xl">
+            {texts.specialization.text} <span className="italic font-bold text-8xl">{texts.specialization.industry}</span>
+          </p>
         </div>
       </section>
     </div>
