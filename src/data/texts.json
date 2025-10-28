@@ -77,5 +77,35 @@
   "specialization": {
     "text": "Somos especialistas en",
     "industry": "Minería"
+  },
+  "distinction": {
+    "tag": "Nuestro compromiso",
+    "title": {
+      "line1": "Qué nos",
+      "line2": "hace",
+      "line3": "distintos"
+    },
+    "points": [
+      {
+        "title": "Búsqueda con inteligencia de negocios aplicada",
+        "description": "Combinamos criterio especializado con IA y análisis comparativo para priorizar mercados y perfilar mejor cada rol."
+      },
+      {
+        "title": "Contexto primero",
+        "description": "Primero entendemos el negocio, la cultura y el momento del equipo. Luego salimos al mercado con un encargo claro."
+      },
+      {
+        "title": "Trazabilidad sin fricción",
+        "description": "Hitos, embudos y tiempos visibles. Sabes dónde estamos y qué sigue, siempre."
+      },
+      {
+        "title": "Candidaturas cuidadas",
+        "description": "Comunicación clara, tiempos prolijos y feedback: experiencia que mejora tu marca empleadora."
+      },
+      {
+        "title": "Riesgo acotado",
+        "description": "Evaluaciones estructuradas, referencias y verificación antes de la entrevista. Decisiones con sustento."
+      }
+    ]
   }
 }

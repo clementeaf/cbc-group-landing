@@ -143,6 +143,35 @@ const App: React.FC = () => {
           </p>
         </div>
       </section>
+
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div className="flex flex-col">
+              <Button className="mb-6 bg-[#8B1A3F] text-white px-6 py-3 w-fit">
+                {texts.distinction.tag}
+              </Button>
+              <h2 className="text-6xl font-bold text-[#2F1E40] leading-tight mb-8">
+                {texts.distinction.title.line1}<br />
+                {texts.distinction.title.line2}<br />
+                {texts.distinction.title.line3}
+              </h2>
+              <div className="flex flex-col space-y-4">
+                <div className="w-[250px] h-[120px] bg-[#8B1A3F] rounded-t-full"></div>
+                <div className="w-[250px] h-[250px] bg-[#2F1E40] rounded-full"></div>
+              </div>
+            </div>
+            <div className="flex flex-col space-y-4">
+              {texts.distinction.points.map((point, index) => (
+                <div key={index} className="bg-[#2F1E40] p-6">
+                  <h3 className="text-white text-xl font-semibold mb-3">{point.title}</h3>
+                  <p className="text-white leading-relaxed">{point.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
