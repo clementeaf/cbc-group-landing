@@ -124,5 +124,52 @@
       "line2": "de contratación ideal"
     },
     "button": "Agendar reunión"
+  },
+  "footer": {
+    "company": {
+      "logo": {
+        "main": "CBC",
+        "sub": "Group"
+      },
+      "description": "Búsqueda ejecutiva y consultoría de talento. Procesos transparentes y sin sesgos.",
+      "email": "contacto@cbcgroup.cl",
+      "location": "Santiago de Chile"
+    },
+    "navigation": {
+      "servicios": {
+        "title": "Servicios",
+        "items": [
+          "Headhunting Ejecutivo",
+          "RPO",
+          "Evaluaciones",
+          "Benchmark",
+          "Onboarding"
+        ]
+      },
+      "sobre_nosotros": {
+        "title": "Sobre nosotros",
+        "items": [
+          "Metodología",
+          "Casos",
+          "Recursos",
+          "Contacto"
+        ]
+      },
+      "legal": {
+        "title": "Legal",
+        "items": [
+          "Términos",
+          "Cookies"
+        ]
+      },
+      "redes_sociales": {
+        "title": "Redes sociales",
+        "items": [
+          "LinkedIn"
+        ]
+      }
+    },
+    "copyright": "Copyright 2025 - CBCGroup SpA. Todos los derechos reservados",
+    "pdf_button": "PDF Expert"
   }
 }

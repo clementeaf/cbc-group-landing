@@ -215,9 +215,94 @@ const App: React.FC = () => {
             {texts.final_cta.button}
           </Button>
         </div>
-      </section>
-    </div>
-  );
-};
+        </section>
+
+        <section className="bg-[#2F1E40] h-[200px] flex justify-center items-end space-x-4 pb-0">
+          <div className="w-[200px] h-[100px] bg-white rounded-t-full"></div>
+          <div className="w-[200px] h-[100px] bg-white rounded-t-full"></div>
+          <div className="w-[200px] h-[100px] bg-white rounded-t-full"></div>
+          <div className="w-[200px] h-[200px] bg-[#8B1A3F] rounded-t-full"></div>
+          <div className="w-[200px] h-[100px] bg-white rounded-t-full"></div>
+          <div className="w-[200px] h-[100px] bg-white rounded-t-full"></div>
+        </section>
+
+        <footer className="bg-[#8B1A3F] text-white py-16">
+          <div className="max-w-7xl mx-auto px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+              {/* Company Info */}
+              <div className="lg:col-span-2">
+                <div className="text-2xl font-bold mb-4">
+                  <span className="font-bold">{texts.footer.company.logo.main}</span>
+                  <span className="font-normal text-lg">{texts.footer.company.logo.sub}</span>
+                </div>
+                <p className="text-sm leading-relaxed mb-4">
+                  {texts.footer.company.description}
+                </p>
+                <a href={`mailto:${texts.footer.company.email}`} className="text-sm underline mb-2 block">
+                  {texts.footer.company.email}
+                </a>
+                <p className="text-sm">{texts.footer.company.location}</p>
+              </div>
+
+              {/* Servicios */}
+              <div>
+                <h3 className="font-bold text-sm mb-4">{texts.footer.navigation.servicios.title}</h3>
+                <ul className="space-y-2">
+                  {texts.footer.navigation.servicios.items.map((item, index) => (
+                    <li key={index}>
+                      <a href="#" className="text-sm hover:underline">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Sobre nosotros */}
+              <div>
+                <h3 className="font-bold text-sm mb-4">{texts.footer.navigation.sobre_nosotros.title}</h3>
+                <ul className="space-y-2">
+                  {texts.footer.navigation.sobre_nosotros.items.map((item, index) => (
+                    <li key={index}>
+                      <a href="#" className="text-sm hover:underline">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Legal */}
+              <div>
+                <h3 className="font-bold text-sm mb-4">{texts.footer.navigation.legal.title}</h3>
+                <ul className="space-y-2">
+                  {texts.footer.navigation.legal.items.map((item, index) => (
+                    <li key={index}>
+                      <a href="#" className="text-sm hover:underline">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Redes sociales */}
+              <div>
+                <h3 className="font-bold text-sm mb-4">{texts.footer.navigation.redes_sociales.title}</h3>
+                <ul className="space-y-2">
+                  {texts.footer.navigation.redes_sociales.items.map((item, index) => (
+                    <li key={index}>
+                      <a href="#" className="text-sm hover:underline">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Bottom section with copyright and PDF button */}
+            <div className="mt-12 pt-8 border-t border-gray-600 flex flex-col md:flex-row justify-between items-center">
+              <p className="text-sm text-center md:text-left mb-4 md:mb-0">
+                {texts.footer.copyright}
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    );
+  };
 
 export default App;
