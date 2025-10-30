@@ -13,7 +13,14 @@ const App: React.FC = () => {
    * @param title - título de la tarjeta clickeada
    */
   const handleServiceCardClick = (index: number, title: string): void => {
-    if (title !== 'Headhunting Ejecutivo') {
+    const isToggleable =
+      title === 'Headhunting Ejecutivo' ||
+      title === 'Reclutamiento Continuo' ||
+      title === 'Mapeo de Talento y Benchmark Salarial' ||
+      title === 'Evaluaciones por Competencias y Psicométricas' ||
+      title === 'Consultoría en Personas y Cultura' ||
+      title === 'Onboarding';
+    if (!isToggleable) {
       return;
     }
     setOverrideIndex((prev) => (prev === index ? null : index));
@@ -200,16 +207,28 @@ const App: React.FC = () => {
                   <h3 className="text-lg sm:text-xl font-semibold text-[#3A2D4F] flex-1">{card.title}</h3>
                   <button
                     onClick={() => handleServiceCardClick(index, card.title)}
-                    aria-label={`${index === overrideIndex && card.title === 'Headhunting Ejecutivo' ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
-                    aria-pressed={index === overrideIndex && card.title === 'Headhunting Ejecutivo'}
+                    aria-label={`${index === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
+                    aria-pressed={index === overrideIndex}
                     className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-gray-100/70 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-300 font-bold text-sm sm:text-base transition-transform duration-300 hover:rotate-45"
                   >
-                    {index === overrideIndex && card.title === 'Headhunting Ejecutivo' ? '×' : '+'}
+                    {index === overrideIndex ? '×' : '+'}
                   </button>
                 </div>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  {index === overrideIndex && card.title === 'Headhunting Ejecutivo'
-                    ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
+                  {index === overrideIndex
+                    ? (card.title === 'Headhunting Ejecutivo'
+                        ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
+                        : card.title === 'Reclutamiento Continuo'
+                          ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
+                          : card.title === 'Mapeo de Talento y Benchmark Salarial'
+                            ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
+                            : card.title === 'Evaluaciones por Competencias y Psicométricas'
+                              ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
+                              : card.title === 'Consultoría en Personas y Cultura'
+                                ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
+                            : card.title === 'Onboarding'
+                              ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
+                              : card.description)
                     : card.description}
                 </p>
               </div>
