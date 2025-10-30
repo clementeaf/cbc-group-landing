@@ -128,48 +128,48 @@ const App: React.FC = () => {
       </section>
 
       <section className="py-8 sm:py-12 lg:py-16 text-white h-[397px] flex items-center justify-center" style={{ backgroundColor: '#2E193B' }}>
-          <p className="text-[50px] sm:text-2xl md:text-3xl lg:text-4xl font-[500] text-center" style={{ lineHeight: '55px' }}>
-            Combinamos datos y criterio de un equipo<br />
-            experimentado para alinear cada búsqueda a tu<br />
-            <span className="bg-[#960C41] w-[788px] h-[66px] px-2 py-1">estrategia y cultura empresarial</span>
-          </p>
+        <p className="text-[50px] sm:text-2xl md:text-3xl lg:text-4xl font-[500] text-center" style={{ lineHeight: '55px' }}>
+          Combinamos datos y criterio de un equipo<br />
+          experimentado para alinear cada búsqueda a tu<br />
+          <span className="bg-[#960C41] w-[788px] h-[66px] px-2 py-1">estrategia y cultura empresarial</span>
+        </p>
       </section>
 
       <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
         <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12">
           <div className="flex-1 max-w-2xl text-center lg:text-left">
-            <Button className="mb-6 sm:mb-8 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base">
+            <Button className="mb-6 sm:mb-8 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center">
               {texts.what_we_do.button}
             </Button>
-            <div className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-[#2F1E40] mb-6 sm:mb-8">
+            <div className="text-[35px] font-[500] sm:text-xl lg:text-2xl leading-relaxed text-[#2F1E40] mb-6 sm:mb-8 py-20" style={{ lineHeight: '40px' }}>
               <p>
-                En <span className="font-bold text-[#8B1A3F]">CBC</span><span className="text-[#8B1A3F]">Group</span> conectamos empresas
+                En <span className="font-[700] text-[#960C41]">CBC</span><span className="text-[#960C41] font-[50]">Group</span> conectamos empresas
               </p>
               <p>{texts.what_we_do.text.line2}</p>
               <p>{texts.what_we_do.text.line3}</p>
               <p>{texts.what_we_do.text.line4}</p>
               <p>{texts.what_we_do.text.line5}</p>
             </div>
-            <Button className="bg-[#2F1E40] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-3xl text-sm sm:text-base">
+            <Button className="bg-[#2E193B] font-[600] text-[20px] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base w-[231px] h-[66px] flex items-center justify-center">
               {texts.what_we_do.cta_button}
             </Button>
           </div>
           <div className="flex-1 flex justify-center lg:justify-end">
             <div className="flex items-center space-x-4 sm:space-x-6 lg:space-x-8">
-              <div className="w-16 h-32 sm:w-24 sm:h-48 lg:w-32 lg:h-64 bg-[#8B1A3F] rounded-r-full"></div>
-              <div className="w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-[#2F204A] rounded-full"></div>
+              <div className="w-16 h-32 sm:w-24 sm:h-48 lg:w-32 lg:h-64 bg-[#960C41] rounded-r-full"></div>
+              <div className="w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-[#2E193B] rounded-full"></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative pl-12">
         <div className="px-4 sm:px-6 lg:px-8">
-          <Button className="mb-6 sm:mb-8 bg-[#8B1A3F] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base">
+          <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[231px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
             {texts.services.button}
           </Button>
           <div className="text-center sm:text-left">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#3A2D4F] leading-tight">
+            <h2 className="text-[50px] font-[500] sm:text-3xl lg:text-4xl font-light text-[#2E193B] leading-tight">
               {texts.services.title.line1}<br />
               {texts.services.title.line2}
             </h2>
