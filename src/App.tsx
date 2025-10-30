@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from './components';
 import texts from './data/texts.json';
 
 const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [overrideIndex, setOverrideIndex] = useState<number | null>(null);
+  const specializationSlides: ReadonlyArray<string> = [
+    'Procesos en 10 días',
+    'Match cultural sobre 75%',
+    'Adecuación de perfil sobre 80%',
+    'Funel de prospección'
+  ];
+  const [currentSpecializationIndex, setCurrentSpecializationIndex] = useState<number>(0);
+
+  /**
+   * Avanza automáticamente el carrusel de especialización.
+   */
+  useEffect((): (() => void) => {
+    const intervalId: number = window.setInterval(() => {
+      setCurrentSpecializationIndex((prev: number) => (prev + 1) % specializationSlides.length);
+    }, 3000);
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [specializationSlides.length]);
 
   /**
    * Reemplaza la descripción de la tarjeta "Headhunting Ejecutivo" por un texto personalizado
@@ -198,6 +217,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Services Section Cards*/}
       <section className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -238,15 +258,19 @@ const App: React.FC = () => {
       </section>
 
       <section className="flex justify-center my-8 sm:my-12 lg:my-20 px-4">
-        <Button className="bg-[#8B1A3F] text-white px-8 sm:px-10 lg:px-12 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium border-white">
+        <Button className="bg-[#960C41] text-white px-8 sm:px-10 lg:px-12 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium w-[231px] h-[66px] flex items-center justify-center">
           {texts.cta.button}
         </Button>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 bg-[#8B1A3F] min-h-[200px] sm:min-h-[250px] lg:h-[300px] flex items-center justify-center px-4">
-        <div className="text-center">
-          <p className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight">
-            {texts.specialization.text} <span className="italic font-bold text-3xl sm:text-4xl md:text-5xl lg:text-8xl">{texts.specialization.industry}</span>
+      {/* Carrousel */}
+      <section className="py-8 sm:py-12 lg:py-16 bg-[#8B1A3F] min-h-[200px] sm:min-h-[250px] lg:h-[300px] flex items-center justify-start pl-10 px-4">
+        <div className="flex items-end justify-start gap-6 p-0">
+          <p className="text-white text-[65px] font-[400] sm:text-2xl md:text-3xl lg:text-4xl leading-tight mb-2 p-0 ">
+            Somos especialistas
+          </p>
+          <p className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight whitespace-nowrap m-0 p-0">
+            {specializationSlides[currentSpecializationIndex]}
           </p>
         </div>
       </section>
@@ -255,22 +279,22 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
             <div className="flex flex-col text-center lg:text-left">
-              <Button className="mb-4 sm:mb-6 bg-[#8B1A3F] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto lg:mx-0 text-sm sm:text-base">
+              <Button className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto lg:mx-0 text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
                 {texts.distinction.tag}
               </Button>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#2F1E40] leading-tight mb-6 sm:mb-8">
-                {texts.distinction.title.line1}<br />
-                {texts.distinction.title.line2}<br />
-                {texts.distinction.title.line3}
-              </h2>
+              <p className="text-[75px] font-[500] sm:text-4xl md:text-5xl lg:text-6xl text-[#2E193B] leading-tight mb-6 sm:mb-8 pt-20" style={{ lineHeight: '80px' }}>
+                <span className="w-[788px] h-[66px] px-2 py-1">{texts.distinction.title.line1}</span><br />
+                <span className="w-[788px] h-[66px] px-2 py-1">{texts.distinction.title.line2}</span><br />
+                <span className="w-[788px] h-[66px] font-[900] px-2 py-1">{texts.distinction.title.line3}</span>
+              </p>
               <div className="flex flex-col space-y-3 sm:space-y-4 items-center lg:items-start">
-                <div className="w-32 h-16 sm:w-40 sm:h-20 lg:w-[250px] lg:h-[120px] bg-[#8B1A3F] rounded-t-full"></div>
-                <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-[250px] lg:h-[250px] bg-[#2F1E40] rounded-full"></div>
+                <div className="w-32 h-16 sm:w-40 sm:h-20 lg:w-[280px] lg:h-[150px] bg-[#960C41] rounded-t-full"></div>
+                <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-[280px] lg:h-[280px] bg-[#2E193B] rounded-full"></div>
               </div>
             </div>
-            <div className="flex flex-col space-y-3 sm:space-y-4">
+            <div className="flex flex-col space-y-3 sm:space-y-[40px]">
               {texts.distinction.points.map((point, index) => (
-                <div key={index} className="bg-[#2F1E40] p-4 sm:p-6">
+                <div key={index} className="bg-[#2E193B] p-4 sm:p-6 w-[647px] h-[133px]">
                   <h3 className="text-white text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{point.title}</h3>
                   <p className="text-white leading-relaxed text-sm sm:text-base">{point.description}</p>
                 </div>
@@ -280,7 +304,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
+      {/* <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
             <div className="flex flex-col text-center lg:text-left">
@@ -307,9 +331,9 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="py-12 sm:py-16 lg:py-20 bg-[#2F1E40] text-center relative">
+      <section className="py-12 sm:py-16 lg:py-20 bg-[#2F1E40] text-center relative mt-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Button className="mb-6 sm:mb-8 bg-[#8B1A3F] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base">
             {texts.final_cta.tag}
