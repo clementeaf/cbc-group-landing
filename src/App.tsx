@@ -10,6 +10,7 @@ const App: React.FC = () => {
   };
   return (
     <div className="flex flex-col h-full bg-[#FAFAFA]">
+      {/* Navbar */}
       <section className="bg-[#FFFFFF] rounded-[40px] mx-2 sm:mx-4 lg:mx-20 mt-2 sm:mt-4 shadow-sm">
         <div className="px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-between items-center">
@@ -92,6 +93,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Presentation and buttons Section */}
       <section className="flex items-center justify-center h-[400px] sm:h-[500px] lg:h-[700px] px-4">
         <div className="text-center max-w-4xl">
           <h1 className="text-[60px] sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2E193B] mb-8 sm:mb-12 leading-tight font-[500]">
@@ -113,31 +115,30 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* 1st Geometric bar section */}
       <section className="py-8 sm:py-12 lg:py-16 bg-white w-full min-h-[300px] sm:min-h-[400px] lg:min-h-[700px]">
-        <div className="flex justify-center items-center space-x-1 sm:space-x-2 lg:space-x-4 px-4">
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[400px] lg:h-[350px] bg-gray-200 rounded-l-full"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[400px] lg:h-[350px] bg-gray-200 rounded-r-full"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[400px] lg:h-[350px] bg-gray-200 rounded-full"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[400px] lg:h-[350px] bg-[#8B1A3F] rounded-r-full"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[400px] lg:h-[350px] bg-gray-200 rounded-l-full"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[400px] lg:h-[350px] bg-[#2F1E40] rounded-r-full"></div>
+        <div className="flex justify-center items-center space-x-1 sm:space-x-2 lg:space-x-4">
+          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[400px] lg:h-[350px] bg-gray-200 rounded-t-[50%]"></div>
+          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[230px] lg:h-[350px] bg-gray-200 rounded-l-full"></div>
+          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[350px] lg:h-[350px] bg-gray-200 rounded-full"></div>
+          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[220px] lg:h-[350px] bg-[#8B1A3F] rounded-r-full"></div>
+          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[320px] lg:h-[350px] bg-gray-200 rounded-r-full"></div>
+          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[220px] lg:h-[350px] bg-[#2F1E40] rounded-l-full"></div>
         </div>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 text-white" style={{ backgroundColor: '#2F1E40' }}>
-        <div className="text-center px-4 sm:px-6 lg:px-8">
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed">
+      <section className="py-8 sm:py-12 lg:py-16 text-white h-[397px] flex items-center justify-center" style={{ backgroundColor: '#2E193B' }}>
+          <p className="text-[50px] sm:text-2xl md:text-3xl lg:text-4xl font-[500] text-center" style={{ lineHeight: '55px' }}>
             Combinamos datos y criterio de un equipo<br />
             experimentado para alinear cada búsqueda a tu<br />
-            <span className="bg-[#8B1A3F] px-2 py-1 rounded">estrategia y cultura empresarial</span>
+            <span className="bg-[#960C41] w-[788px] h-[66px] px-2 py-1">estrategia y cultura empresarial</span>
           </p>
-        </div>
       </section>
 
       <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
         <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12">
           <div className="flex-1 max-w-2xl text-center lg:text-left">
-            <Button className="mb-6 sm:mb-8 bg-[#8B1A3F] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base">
+            <Button className="mb-6 sm:mb-8 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base">
               {texts.what_we_do.button}
             </Button>
             <div className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-[#2F1E40] mb-6 sm:mb-8">
