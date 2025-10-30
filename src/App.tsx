@@ -94,18 +94,18 @@ const App: React.FC = () => {
 
       <section className="flex items-center justify-center h-[400px] sm:h-[500px] lg:h-[700px] px-4">
         <div className="text-center max-w-4xl">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2F1E40] mb-8 sm:mb-12 leading-tight">
+          <h1 className="text-[60px] sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2E193B] mb-8 sm:mb-12 leading-tight font-[500]">
             {texts.main.title.line1}<br />
             {texts.main.title.line2}
           </h1>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+          <div className="flex sm:flex-row sm:gap-4 justify-center space-x-6">
             <Button
-              className="bg-red-700 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg"
+              className="bg-[#960C41] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-[40px] text-[20px] sm:text-lg"
             >
               {texts.main.buttons.soy_empresa}
             </Button>
             <Button
-              className="bg-[#2F1E40] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg"
+              className="bg-[#2E193B] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-[40px] text-[20px] sm:text-lg"
             >
               {texts.main.buttons.soy_profesional}
             </Button>
