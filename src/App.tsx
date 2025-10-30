@@ -4,6 +4,20 @@ import texts from './data/texts.json';
 
 const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [overrideIndex, setOverrideIndex] = useState<number | null>(null);
+
+  /**
+   * Reemplaza la descripción de la tarjeta "Headhunting Ejecutivo" por un texto personalizado
+   * cuando se hace clic en el botón de esa tarjeta.
+   * @param index - índice de la tarjeta dentro del listado
+   * @param title - título de la tarjeta clickeada
+   */
+  const handleServiceCardClick = (index: number, title: string): void => {
+    if (title !== 'Headhunting Ejecutivo') {
+      return;
+    }
+    setOverrideIndex((prev) => (prev === index ? null : index));
+  };
 
   const toggleMobileMenu = (): void => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -184,11 +198,20 @@ const App: React.FC = () => {
               <div key={index} className="bg-white border border-gray-200 w-full max-w-sm mx-auto sm:max-w-none sm:w-auto lg:w-[380px] min-h-[400px] sm:min-h-[450px] lg:h-[500px] p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between items-center">
                 <div className="flex justify-between items-start mb-4 w-full">
                   <h3 className="text-lg sm:text-xl font-semibold text-[#3A2D4F] flex-1">{card.title}</h3>
-                  <button className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-gray-100/70 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-300 font-bold text-sm sm:text-base transition-transform duration-300 hover:rotate-45">
-                    +
+                  <button
+                    onClick={() => handleServiceCardClick(index, card.title)}
+                    aria-label={`${index === overrideIndex && card.title === 'Headhunting Ejecutivo' ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
+                    aria-pressed={index === overrideIndex && card.title === 'Headhunting Ejecutivo'}
+                    className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-gray-100/70 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-300 font-bold text-sm sm:text-base transition-transform duration-300 hover:rotate-45"
+                  >
+                    {index === overrideIndex && card.title === 'Headhunting Ejecutivo' ? '×' : '+'}
                   </button>
                 </div>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{card.description}</p>
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                  {index === overrideIndex && card.title === 'Headhunting Ejecutivo'
+                    ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
+                    : card.description}
+                </p>
               </div>
             ))}
           </div>
