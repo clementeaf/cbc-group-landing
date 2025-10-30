@@ -9,15 +9,15 @@ const App: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   return (
-    <div className="flex flex-col h-full bg-gray-50">
-      <header className="bg-white rounded-lg mx-2 sm:mx-4 lg:mx-20 mt-2 sm:mt-4 shadow-sm">
+    <div className="flex flex-col h-full bg-[#FAFAFA]">
+      <section className="bg-[#FFFFFF] rounded-[40px] mx-2 sm:mx-4 lg:mx-20 mt-2 sm:mt-4 shadow-sm">
         <div className="px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             <div className="text-lg sm:text-xl lg:text-2xl font-bold text-red-800">
               <span className="font-bold">{texts.header.logo.main}</span>
               <span className="font-normal text-sm sm:text-base lg:text-lg">{texts.header.logo.sub}</span>
             </div>
-            
+
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-4 xl:space-x-8">
               <a href="#" className="text-gray-800 hover:text-red-800 text-sm xl:text-base">{texts.header.navigation.inicio}</a>
@@ -26,7 +26,7 @@ const App: React.FC = () => {
               <a href="#" className="text-gray-800 hover:text-red-800 text-sm xl:text-base">{texts.header.navigation.clientes}</a>
               <Button
                 variant="outline"
-                className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white rounded-full px-4 xl:px-6 py-2 text-sm xl:text-base"
+                className="border-2 border-[#960C41] text-[#960C41] rounded-full w-[165px] h-[66px] flex items-center justify-center text-sm xl:text-base"
               >
                 {texts.header.button.hablemos}
               </Button>
@@ -36,11 +36,11 @@ const App: React.FC = () => {
             <div className="lg:hidden flex items-center space-x-3">
               <Button
                 variant="outline"
-                className="border-red-800 text-red-800 hover:bg-red-800 hover:text-white rounded-full px-3 py-2 text-xs sm:text-sm"
+                className="border-[3px] border-[#960C41] text-[#960C41] rounded-full w-[165px] h-[66px] flex items-center justify-center text-[20px] sm:text-sm font-[600]"
               >
                 {texts.header.button.hablemos}
               </Button>
-              <button 
+              <button
                 onClick={toggleMobileMenu}
                 className="text-gray-800 hover:text-red-800 p-2"
                 aria-label="Toggle mobile menu"
@@ -55,33 +55,33 @@ const App: React.FC = () => {
               </button>
             </div>
           </div>
-          
+
           {/* Mobile Menu */}
           <div className={`lg:hidden mt-4 pt-4 border-t border-gray-200 transition-all duration-300 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
             <nav className="flex flex-col space-y-3">
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="text-gray-800 hover:text-red-800 text-sm py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {texts.header.navigation.inicio}
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="text-gray-800 hover:text-red-800 text-sm py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {texts.header.navigation.servicios}
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="text-gray-800 hover:text-red-800 text-sm py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {texts.header.navigation.sobre_nosotros}
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="text-gray-800 hover:text-red-800 text-sm py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -90,9 +90,9 @@ const App: React.FC = () => {
             </nav>
           </div>
         </div>
-      </header>
+      </section>
 
-      <main className="flex items-center justify-center h-[400px] sm:h-[500px] lg:h-[700px] px-4">
+      <section className="flex items-center justify-center h-[400px] sm:h-[500px] lg:h-[700px] px-4">
         <div className="text-center max-w-4xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2F1E40] mb-8 sm:mb-12 leading-tight">
             {texts.main.title.line1}<br />
@@ -111,7 +111,7 @@ const App: React.FC = () => {
             </Button>
           </div>
         </div>
-      </main>
+      </section>
 
       <section className="py-8 sm:py-12 lg:py-16 bg-white w-full min-h-[300px] sm:min-h-[400px] lg:min-h-[700px]">
         <div className="flex justify-center items-center space-x-1 sm:space-x-2 lg:space-x-4 px-4">
@@ -279,94 +279,94 @@ const App: React.FC = () => {
             {texts.final_cta.button}
           </Button>
         </div>
-        </section>
+      </section>
 
-        <section className="bg-[#2F1E40] h-[100px] sm:h-[150px] lg:h-[200px] flex justify-center items-end space-x-1 sm:space-x-2 lg:space-x-4 pb-0 px-4">
-          <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
-          <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
-          <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
-          <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[200px] bg-[#8B1A3F] rounded-t-full"></div>
-          <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
-          <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
-        </section>
+      <section className="bg-[#2F1E40] h-[100px] sm:h-[150px] lg:h-[200px] flex justify-center items-end space-x-1 sm:space-x-2 lg:space-x-4 pb-0 px-4">
+        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
+        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
+        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
+        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[200px] bg-[#8B1A3F] rounded-t-full"></div>
+        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
+        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
+      </section>
 
-        <footer className="bg-[#8B1A3F] text-white py-8 sm:py-12 lg:py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8">
-              {/* Company Info */}
-              <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
-                <div className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
-                  <span className="font-bold">{texts.footer.company.logo.main}</span>
-                  <span className="font-normal text-base sm:text-lg">{texts.footer.company.logo.sub}</span>
-                </div>
-                <p className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
-                  {texts.footer.company.description}
-                </p>
-                <a href={`mailto:${texts.footer.company.email}`} className="text-xs sm:text-sm underline mb-2 block">
-                  {texts.footer.company.email}
-                </a>
-                <p className="text-xs sm:text-sm">{texts.footer.company.location}</p>
+      <footer className="bg-[#8B1A3F] text-white py-8 sm:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8">
+            {/* Company Info */}
+            <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
+              <div className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
+                <span className="font-bold">{texts.footer.company.logo.main}</span>
+                <span className="font-normal text-base sm:text-lg">{texts.footer.company.logo.sub}</span>
               </div>
-
-              {/* Servicios */}
-              <div className="text-center sm:text-left">
-                <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.servicios.title}</h3>
-                <ul className="space-y-1 sm:space-y-2">
-                  {texts.footer.navigation.servicios.items.map((item, index) => (
-                    <li key={index}>
-                      <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Sobre nosotros */}
-              <div className="text-center sm:text-left">
-                <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.sobre_nosotros.title}</h3>
-                <ul className="space-y-1 sm:space-y-2">
-                  {texts.footer.navigation.sobre_nosotros.items.map((item, index) => (
-                    <li key={index}>
-                      <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Legal */}
-              <div className="text-center sm:text-left">
-                <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.legal.title}</h3>
-                <ul className="space-y-1 sm:space-y-2">
-                  {texts.footer.navigation.legal.items.map((item, index) => (
-                    <li key={index}>
-                      <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Redes sociales */}
-              <div className="text-center sm:text-left">
-                <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.redes_sociales.title}</h3>
-                <ul className="space-y-1 sm:space-y-2">
-                  {texts.footer.navigation.redes_sociales.items.map((item, index) => (
-                    <li key={index}>
-                      <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+                {texts.footer.company.description}
+              </p>
+              <a href={`mailto:${texts.footer.company.email}`} className="text-xs sm:text-sm underline mb-2 block">
+                {texts.footer.company.email}
+              </a>
+              <p className="text-xs sm:text-sm">{texts.footer.company.location}</p>
             </div>
 
-            {/* Bottom section with copyright and PDF button */}
-            <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-600 flex flex-col sm:flex-row justify-between items-center">
-              <p className="text-xs sm:text-sm text-center sm:text-left mb-4 sm:mb-0">
-                {texts.footer.copyright}
-              </p>
+            {/* Servicios */}
+            <div className="text-center sm:text-left">
+              <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.servicios.title}</h3>
+              <ul className="space-y-1 sm:space-y-2">
+                {texts.footer.navigation.servicios.items.map((item, index) => (
+                  <li key={index}>
+                    <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Sobre nosotros */}
+            <div className="text-center sm:text-left">
+              <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.sobre_nosotros.title}</h3>
+              <ul className="space-y-1 sm:space-y-2">
+                {texts.footer.navigation.sobre_nosotros.items.map((item, index) => (
+                  <li key={index}>
+                    <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div className="text-center sm:text-left">
+              <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.legal.title}</h3>
+              <ul className="space-y-1 sm:space-y-2">
+                {texts.footer.navigation.legal.items.map((item, index) => (
+                  <li key={index}>
+                    <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Redes sociales */}
+            <div className="text-center sm:text-left">
+              <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.redes_sociales.title}</h3>
+              <ul className="space-y-1 sm:space-y-2">
+                {texts.footer.navigation.redes_sociales.items.map((item, index) => (
+                  <li key={index}>
+                    <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </footer>
-      </div>
-    );
-  };
+
+          {/* Bottom section with copyright and PDF button */}
+          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-600 flex flex-col sm:flex-row justify-between items-center">
+            <p className="text-xs sm:text-sm text-center sm:text-left mb-4 sm:mb-0">
+              {texts.footer.copyright}
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
 export default App;
