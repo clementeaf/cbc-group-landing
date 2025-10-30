@@ -184,7 +184,7 @@ const App: React.FC = () => {
               <div key={index} className="bg-white border border-gray-200 w-full max-w-sm mx-auto sm:max-w-none sm:w-auto lg:w-[380px] min-h-[400px] sm:min-h-[450px] lg:h-[500px] p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between items-center">
                 <div className="flex justify-between items-start mb-4 w-full">
                   <h3 className="text-lg sm:text-xl font-semibold text-[#3A2D4F] flex-1">{card.title}</h3>
-                  <button className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-gray-100/70 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-300 font-bold text-sm sm:text-base">
+                  <button className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-gray-100/70 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-300 font-bold text-sm sm:text-base transition-transform duration-300 hover:rotate-45">
                     +
                   </button>
                 </div>
