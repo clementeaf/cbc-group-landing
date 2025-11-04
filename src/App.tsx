@@ -51,42 +51,42 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-full bg-[#FAFAFA]">
       {/* Navbar */}
-      <section className="bg-[#FFFFFF] rounded-[40px] mx-2 sm:mx-4 lg:mx-20 mt-2 sm:mt-4 shadow-sm">
-        <div className="px-4 sm:px-6 py-3 sm:py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-lg sm:text-xl lg:text-2xl font-bold text-red-800">
-              <span className="font-bold">{texts.header.logo.main}</span>
-              <span className="font-normal text-sm sm:text-base lg:text-lg">{texts.header.logo.sub}</span>
+      <section className="bg-[#FFFFFF] rounded-[10px] sm:rounded-[20px] md:rounded-[30px] lg:rounded-[40px] mx-1 sm:mx-2 md:mx-4 lg:mx-8 xl:mx-12 2xl:mx-20 mt-1 sm:mt-2 md:mt-3 lg:mt-4 shadow-sm relative">
+        <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4">
+          <div className="flex justify-between items-center gap-1 sm:gap-2 md:gap-3 lg:gap-4">
+            <div className="text-[16.8px] sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-red-800 flex-shrink-0 min-w-0">
+              <span className="font-bold whitespace-nowrap">{texts.header.logo.main}</span>
+              <span className="font-normal text-[12px] sm:text-xs md:text-sm lg:text-base xl:text-lg whitespace-nowrap">{texts.header.logo.sub}</span>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-4 xl:space-x-8">
-              <a href="#" className="text-gray-800 hover:text-red-800 text-sm xl:text-base">{texts.header.navigation.inicio}</a>
-              <a href="#" className="text-gray-800 hover:text-red-800 text-sm xl:text-base">{texts.header.navigation.servicios}</a>
-              <a href="#" className="text-gray-800 hover:text-red-800 text-sm xl:text-base">{texts.header.navigation.sobre_nosotros}</a>
-              <a href="#" className="text-gray-800 hover:text-red-800 text-sm xl:text-base">{texts.header.navigation.clientes}</a>
+            <nav className="hidden lg:flex items-center space-x-2 xl:space-x-3 2xl:space-x-6 flex-shrink-0">
+              <a href="#" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.inicio}</a>
+              <a href="#" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.servicios}</a>
+              <a href="#" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.sobre_nosotros}</a>
+              <a href="#" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.clientes}</a>
               <Button
                 variant="outline"
-                className="border-2 border-[#960C41] text-[#960C41] rounded-full w-[165px] h-[66px] flex items-center justify-center text-sm xl:text-base"
+                className="border-2 border-[#960C41] text-[#960C41] rounded-full w-[100px] lg:w-[120px] xl:w-[140px] 2xl:w-[165px] h-[40px] lg:h-[50px] xl:h-[58px] 2xl:h-[66px] flex items-center justify-center text-[10px] lg:text-xs xl:text-sm 2xl:text-base flex-shrink-0"
               >
                 {texts.header.button.hablemos}
               </Button>
             </nav>
 
             {/* Mobile Navigation */}
-            <div className="lg:hidden flex items-center space-x-3">
+            <div className="lg:hidden flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
               <Button
                 variant="outline"
-                className="border-[3px] border-[#960C41] text-[#960C41] rounded-full w-[165px] h-[66px] flex items-center justify-center text-[20px] sm:text-sm font-[600]"
+                className="border-[1.5px] sm:border-2 border-[#960C41] text-[#960C41] rounded-full w-[70px] sm:w-[90px] md:w-[110px] h-[32px] sm:h-[40px] md:h-[48px] flex items-center justify-center text-[9.6px] sm:text-[10px] md:text-xs font-[600] flex-shrink-0"
               >
                 {texts.header.button.hablemos}
               </Button>
               <button
                 onClick={toggleMobileMenu}
-                className="text-gray-800 hover:text-red-800 p-2"
+                className="text-gray-800 hover:text-red-800 p-1 sm:p-1.5 flex-shrink-0"
                 aria-label="Toggle mobile menu"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {isMobileMenuOpen ? (
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   ) : (
@@ -98,32 +98,32 @@ const App: React.FC = () => {
           </div>
 
           {/* Mobile Menu */}
-          <div className={`lg:hidden mt-4 pt-4 border-t border-gray-200 transition-all duration-300 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-            <nav className="flex flex-col space-y-3">
+          <div className={`lg:hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-b-[10px] sm:rounded-b-[20px] md:rounded-b-[30px] shadow-lg border-t border-gray-200 transition-all duration-300 z-50 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+            <nav className="flex flex-col space-y-1.5 sm:space-y-2 md:space-y-3 px-2 sm:px-3 md:px-4 py-2 sm:py-3 md:py-4">
               <a
                 href="#"
-                className="text-gray-800 hover:text-red-800 text-sm py-2 transition-colors"
+                className="text-gray-800 hover:text-red-800 text-[14.4px] sm:text-sm md:text-base py-1.5 sm:py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {texts.header.navigation.inicio}
               </a>
               <a
                 href="#"
-                className="text-gray-800 hover:text-red-800 text-sm py-2 transition-colors"
+                className="text-gray-800 hover:text-red-800 text-[14.4px] sm:text-sm md:text-base py-1.5 sm:py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {texts.header.navigation.servicios}
               </a>
               <a
                 href="#"
-                className="text-gray-800 hover:text-red-800 text-sm py-2 transition-colors"
+                className="text-gray-800 hover:text-red-800 text-[14.4px] sm:text-sm md:text-base py-1.5 sm:py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {texts.header.navigation.sobre_nosotros}
               </a>
               <a
                 href="#"
-                className="text-gray-800 hover:text-red-800 text-sm py-2 transition-colors"
+                className="text-gray-800 hover:text-red-800 text-[14.4px] sm:text-sm md:text-base py-1.5 sm:py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {texts.header.navigation.clientes}
@@ -134,20 +134,20 @@ const App: React.FC = () => {
       </section>
 
       {/* Presentation and buttons Section */}
-      <section className="flex items-center justify-center h-[400px] sm:h-[500px] lg:h-[700px] px-4">
-        <div className="text-center max-w-4xl">
-          <h1 className="text-[60px] sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2E193B] mb-8 sm:mb-12 leading-tight font-[500]">
+      <section className="flex items-center justify-center min-h-[600px] sm:min-h-[720px] md:min-h-[840px] lg:min-h-[960px] xl:min-h-[1080px] px-4 py-8 sm:py-12 md:py-16 lg:py-20">
+        <div className="text-center max-w-4xl w-full">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#2E193B] mb-6 sm:mb-8 md:mb-12 leading-tight font-[500]">
             {texts.main.title.line1}<br />
             {texts.main.title.line2}
           </h1>
-          <div className="flex sm:flex-row sm:gap-4 justify-center space-x-6">
+          <div className="flex flex-col sm:flex-row gap-[25px] sm:gap-[19.2px] justify-center items-center">
             <Button
-              className="bg-[#960C41] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-[40px] text-[20px] sm:text-lg"
+              className="bg-[#960C41] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base md:text-lg w-4/5 sm:w-auto"
             >
               {texts.main.buttons.soy_empresa}
             </Button>
             <Button
-              className="bg-[#2E193B] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-[40px] text-[20px] sm:text-lg"
+              className="bg-[#2E193B] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base md:text-lg w-4/5 sm:w-auto"
             >
               {texts.main.buttons.soy_profesional}
             </Button>
@@ -156,22 +156,22 @@ const App: React.FC = () => {
       </section>
 
       {/* 1st Geometric bar section */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-white w-full min-h-[300px] sm:min-h-[400px] lg:min-h-[700px]">
-        <div className="flex justify-center items-center space-x-1 sm:space-x-2 lg:space-x-4">
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[400px] lg:h-[350px] bg-gray-200 rounded-t-[50%]"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[230px] lg:h-[350px] bg-gray-200 rounded-l-full"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[350px] lg:h-[350px] bg-gray-200 rounded-full"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[220px] lg:h-[350px] bg-[#8B1A3F] rounded-r-full"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[320px] lg:h-[350px] bg-gray-200 rounded-r-full"></div>
-          <div className="w-16 h-12 sm:w-24 sm:h-16 md:w-32 md:h-20 lg:w-[220px] lg:h-[350px] bg-[#2F1E40] rounded-l-full"></div>
+      <section className="hidden md:block py-8 sm:py-12 lg:py-16 bg-white w-full min-h-[200px] sm:min-h-[300px] md:min-h-[400px] lg:min-h-[500px] xl:min-h-[700px]">
+        <div className="flex justify-center items-center flex-wrap gap-1 sm:gap-2 md:gap-3 lg:gap-4 px-2 sm:px-4">
+          <div className="w-12 h-10 sm:w-20 sm:h-14 md:w-28 md:h-20 lg:w-32 lg:h-48 xl:w-[400px] xl:h-[350px] bg-gray-200 rounded-t-[50%] flex-shrink-0"></div>
+          <div className="w-12 h-10 sm:w-[72px] sm:h-14 md:w-24 md:h-20 lg:w-28 lg:h-48 xl:w-[230px] xl:h-[350px] bg-gray-200 rounded-l-full flex-shrink-0"></div>
+          <div className="w-14 h-10 sm:w-[88px] sm:h-14 md:w-[120px] md:h-20 lg:w-36 lg:h-48 xl:w-[350px] xl:h-[350px] bg-gray-200 rounded-full flex-shrink-0"></div>
+          <div className="w-12 h-10 sm:w-[72px] sm:h-14 md:w-24 md:h-20 lg:w-28 lg:h-48 xl:w-[220px] xl:h-[350px] bg-[#8B1A3F] rounded-r-full flex-shrink-0"></div>
+          <div className="w-14 h-10 sm:w-20 sm:h-14 md:w-28 md:h-20 lg:w-32 lg:h-48 xl:w-[320px] xl:h-[350px] bg-gray-200 rounded-r-full flex-shrink-0"></div>
+          <div className="w-12 h-10 sm:w-[72px] sm:h-14 md:w-24 md:h-20 lg:w-28 lg:h-48 xl:w-[220px] xl:h-[350px] bg-[#2F1E40] rounded-l-full flex-shrink-0"></div>
         </div>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 text-white h-[397px] flex items-center justify-center" style={{ backgroundColor: '#2E193B' }}>
-        <p className="text-[50px] sm:text-2xl md:text-3xl lg:text-4xl font-[500] text-center" style={{ lineHeight: '55px' }}>
-          Combinamos datos y criterio de un equipo<br />
-          experimentado para alinear cada búsqueda a tu<br />
-          <span className="bg-[#960C41] w-[788px] h-[66px] px-2 py-1">estrategia y cultura empresarial</span>
+      <section className="py-8 sm:py-12 lg:py-16 text-white min-h-[250px] sm:min-h-[300px] md:h-[350px] lg:h-[397px] flex items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
+        <p className="text-[17.92px] sm:text-2xl md:text-3xl lg:text-4xl font-[500] text-center leading-tight sm:leading-normal" style={{ lineHeight: '1.2' }}>
+          Combinamos datos y criterio de un equipo<br className="hidden sm:block" />
+          <span className="sm:inline"> </span>experimentado para alinear cada búsqueda a tu<br className="hidden sm:block" />
+          <span className="bg-[#960C41] inline-block px-2 py-1 mt-1 sm:mt-0 w-full sm:w-auto sm:min-w-[200px] md:min-w-[400px] lg:min-w-[600px] xl:min-w-[788px]">estrategia y cultura empresarial</span>
         </p>
       </section>
 
@@ -194,10 +194,10 @@ const App: React.FC = () => {
               {texts.what_we_do.cta_button}
             </Button>
           </div>
-          <div className="flex-1 flex justify-center lg:justify-end">
-            <div className="flex items-center space-x-4 sm:space-x-6 lg:space-x-8">
-              <div className="w-16 h-32 sm:w-24 sm:h-48 lg:w-32 lg:h-64 bg-[#960C41] rounded-r-full"></div>
-              <div className="w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-[#2E193B] rounded-full"></div>
+          <div className="flex-1 flex justify-center lg:justify-end mt-8 lg:mt-0">
+            <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6 lg:space-x-8">
+              <div className="w-12 h-24 sm:w-20 sm:h-40 md:w-24 md:h-48 lg:w-28 lg:h-56 xl:w-32 xl:h-64 bg-[#960C41] rounded-r-full flex-shrink-0"></div>
+              <div className="w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 bg-[#2E193B] rounded-full flex-shrink-0"></div>
             </div>
           </div>
         </div>
@@ -265,7 +265,7 @@ const App: React.FC = () => {
 
       {/* Carrousel */}
       <section className="py-8 sm:py-12 lg:py-16 bg-[#8B1A3F] min-h-[200px] sm:min-h-[250px] lg:h-[300px] flex items-center justify-start pl-10 px-4">
-        <div className="flex items-end justify-start gap-6 p-0">
+        <div className="flex items-end justify-center w-full gap-6 p-0">
           <p className="text-white text-[65px] font-[400] sm:text-2xl md:text-3xl lg:text-4xl leading-tight mb-2 p-0 ">
             Somos especialistas
           </p>
@@ -282,19 +282,19 @@ const App: React.FC = () => {
               <Button className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto lg:mx-0 text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
                 {texts.distinction.tag}
               </Button>
-              <p className="text-[75px] font-[500] sm:text-4xl md:text-5xl lg:text-6xl text-[#2E193B] leading-tight mb-6 sm:mb-8 pt-20" style={{ lineHeight: '80px' }}>
-                <span className="w-[788px] h-[66px] px-2 py-1">{texts.distinction.title.line1}</span><br />
-                <span className="w-[788px] h-[66px] px-2 py-1">{texts.distinction.title.line2}</span><br />
-                <span className="w-[788px] h-[66px] font-[900] px-2 py-1">{texts.distinction.title.line3}</span>
+              <p className="text-[40px] sm:text-4xl md:text-5xl lg:text-6xl font-[500] text-[#2E193B] leading-tight mb-6 sm:mb-8 pt-8 sm:pt-12 lg:pt-20" style={{ lineHeight: '1.1' }}>
+                <span className="inline-block px-2 py-1 w-full sm:w-auto">{texts.distinction.title.line1}</span><br />
+                <span className="inline-block px-2 py-1 w-full sm:w-auto">{texts.distinction.title.line2}</span><br />
+                <span className="inline-block px-2 py-1 w-full sm:w-auto font-[900]">{texts.distinction.title.line3}</span>
               </p>
               <div className="flex flex-col space-y-3 sm:space-y-4 items-center lg:items-start">
-                <div className="w-32 h-16 sm:w-40 sm:h-20 lg:w-[280px] lg:h-[150px] bg-[#960C41] rounded-t-full"></div>
-                <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-[280px] lg:h-[280px] bg-[#2E193B] rounded-full"></div>
+                <div className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 xl:w-[280px] xl:h-[150px] bg-[#960C41] rounded-t-full flex-shrink-0"></div>
+                <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-[280px] xl:h-[280px] bg-[#2E193B] rounded-full flex-shrink-0"></div>
               </div>
             </div>
-            <div className="flex flex-col space-y-3 sm:space-y-[40px]">
+            <div className="flex flex-col space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-[40px]">
               {texts.distinction.points.map((point, index) => (
-                <div key={index} className="bg-[#2E193B] p-4 sm:p-6 w-[647px] h-[133px]">
+                <div key={index} className="bg-[#2E193B] p-4 sm:p-6 w-full max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-[647px] min-h-[100px] sm:min-h-[120px] md:h-auto lg:h-[133px]">
                   <h3 className="text-white text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{point.title}</h3>
                   <p className="text-white leading-relaxed text-sm sm:text-base">{point.description}</p>
                 </div>
@@ -303,35 +303,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-            <div className="flex flex-col text-center lg:text-left">
-              <Button className="mb-4 sm:mb-6 bg-[#8B1A3F] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto lg:mx-0 text-sm sm:text-base">
-                {texts.clients.tag}
-              </Button>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2F1E40] leading-tight mb-6 sm:mb-8">
-                {texts.clients.title}
-              </h2>
-              <Button className="bg-[#2F1E40] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg w-fit mx-auto lg:mx-0">
-                {texts.clients.button}
-              </Button>
-            </div>
-            <div className="bg-[#8B1A3F] rounded-lg p-4 sm:p-6 lg:p-8 flex flex-col sm:flex-row items-center">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-white rounded-lg mb-4 sm:mb-0 sm:mr-4 lg:mr-6 flex-shrink-0"></div>
-              <div className="flex-1 text-center sm:text-left">
-                <p className="text-white text-base sm:text-lg leading-relaxed mb-3 sm:mb-4">
-                  "{texts.clients.testimonial.quote}"
-                </p>
-                <p className="text-white text-sm">
-                  {texts.clients.testimonial.author}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       <section className="py-12 sm:py-16 lg:py-20 bg-[#2E193B] text-center relative mt-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
@@ -346,15 +317,6 @@ const App: React.FC = () => {
             {texts.final_cta.button}
           </Button>
         </div>
-      </section>
-
-      <section className="bg-[#2F1E40] h-[100px] sm:h-[150px] lg:h-[200px] flex justify-center items-end space-x-1 sm:space-x-2 lg:space-x-4 pb-0 px-4">
-        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
-        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
-        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
-        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[200px] bg-[#8B1A3F] rounded-t-full"></div>
-        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
-        <div className="w-12 h-8 sm:w-16 sm:h-10 md:w-24 md:h-12 lg:w-[200px] lg:h-[100px] bg-white rounded-t-full"></div>
       </section>
 
       <footer className="bg-[#8B1A3F] text-white py-8 sm:py-12 lg:py-16">
