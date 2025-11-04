@@ -324,14 +324,14 @@ const App: React.FC = () => {
       </section>
 
       <section className="flex justify-center my-8 sm:my-12 lg:my-20 px-4">
-        <Button className="bg-[#960C41] text-white px-8 sm:px-10 lg:px-12 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium w-[231px] h-[66px] flex items-center justify-center">
+        <Button className="bg-[#960C41] text-white rounded-full text-base sm:text-lg font-medium w-[200px] h-[42px] flex items-center justify-center">
           {texts.cta.button}
         </Button>
       </section>
 
       {/* Carrousel */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-[#8B1A3F] min-h-[200px] sm:min-h-[250px] lg:h-[300px] flex items-center justify-center px-4 sm:pl-10 overflow-x-hidden">
-        <div className="flex flex-col sm:flex-row items-end justify-center w-full max-w-full gap-3 sm:gap-6 p-0">
+      <section className="bg-[#8B1A3F] min-h-[200px] sm:min-h-[250px] lg:h-[300px] flex items-center justify-center px-4 overflow-x-hidden">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 p-0">
           <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-[400] leading-tight mb-2 p-0 whitespace-nowrap text-center sm:text-left">
             Somos especialistas
           </p>
