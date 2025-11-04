@@ -49,7 +49,7 @@ const App: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   return (
-    <div className="flex flex-col h-full bg-[#FAFAFA]">
+    <div className="flex flex-col h-full bg-[#FAFAFA] overflow-x-hidden w-full max-w-full">
       {/* Navbar */}
       <section className="bg-[#FFFFFF] rounded-[10px] sm:rounded-[20px] md:rounded-[30px] lg:rounded-[40px] mx-1 sm:mx-2 md:mx-4 lg:mx-8 xl:mx-12 2xl:mx-20 mt-1 sm:mt-2 md:mt-3 lg:mt-4 shadow-sm relative">
         <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4">
@@ -171,7 +171,7 @@ const App: React.FC = () => {
         <p className="text-[17.92px] sm:text-2xl md:text-3xl lg:text-4xl font-[500] text-center leading-tight sm:leading-normal" style={{ lineHeight: '1.2' }}>
           Combinamos datos y criterio de un equipo<br className="hidden sm:block" />
           <span className="sm:inline"> </span>experimentado para alinear cada búsqueda a tu<br className="hidden sm:block" />
-          <span className="bg-[#960C41] inline-block px-2 py-1 mt-1 sm:mt-0 w-full sm:w-auto sm:min-w-[200px] md:min-w-[400px] lg:min-w-[600px] xl:min-w-[788px]">estrategia y cultura empresarial</span>
+          <span className="bg-[#960C41] inline-block px-2 py-1 mt-1 sm:mt-0 w-full sm:w-auto sm:min-w-[200px] md:min-w-[400px] lg:min-w-[600px] xl:min-w-[788px] max-w-full">estrategia y cultura empresarial</span>
         </p>
       </section>
 
@@ -199,13 +199,13 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative pl-12">
-        <div className="px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative pl-4 sm:pl-6 lg:pl-12">
+        <div className="px-4 sm:px-6 lg:px-8 w-full">
           <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[231px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
             {texts.services.button}
           </Button>
           <div className="text-center sm:text-left">
-            <h2 className="text-[50px] font-[500] sm:text-3xl lg:text-4xl font-light text-[#2E193B] leading-tight">
+            <h2 className="text-3xl sm:text-3xl lg:text-4xl font-[500] font-light text-[#2E193B] leading-tight">
               {texts.services.title.line1}<br />
               {texts.services.title.line2}
             </h2>
@@ -260,12 +260,12 @@ const App: React.FC = () => {
       </section>
 
       {/* Carrousel */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-[#8B1A3F] min-h-[200px] sm:min-h-[250px] lg:h-[300px] flex items-center justify-start pl-10 px-4">
-        <div className="flex items-end justify-center w-full gap-6 p-0">
-          <p className="text-white text-[65px] font-[400] sm:text-2xl md:text-3xl lg:text-4xl leading-tight mb-2 p-0 ">
+      <section className="py-8 sm:py-12 lg:py-16 bg-[#8B1A3F] min-h-[200px] sm:min-h-[250px] lg:h-[300px] flex items-center justify-center px-4 sm:pl-10 overflow-x-hidden">
+        <div className="flex flex-col sm:flex-row items-end justify-center w-full max-w-full gap-3 sm:gap-6 p-0">
+          <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-[400] leading-tight mb-2 p-0 whitespace-nowrap text-center sm:text-left">
             Somos especialistas
           </p>
-          <p className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight whitespace-nowrap m-0 p-0">
+          <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl leading-tight whitespace-nowrap m-0 p-0 text-center sm:text-left">
             {specializationSlides[currentSpecializationIndex]}
           </p>
         </div>
@@ -278,10 +278,10 @@ const App: React.FC = () => {
               <Button className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto lg:mx-0 text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
                 {texts.distinction.tag}
               </Button>
-              <p className="text-[40px] sm:text-4xl md:text-5xl lg:text-6xl font-[500] text-[#2E193B] leading-tight mb-6 sm:mb-8 pt-8 sm:pt-12 lg:pt-20" style={{ lineHeight: '1.1' }}>
-                <span className="inline-block px-2 py-1 w-full sm:w-auto">{texts.distinction.title.line1}</span><br />
-                <span className="inline-block px-2 py-1 w-full sm:w-auto">{texts.distinction.title.line2}</span><br />
-                <span className="inline-block px-2 py-1 w-full sm:w-auto font-[900]">{texts.distinction.title.line3}</span>
+              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[500] text-[#2E193B] leading-tight mb-6 sm:mb-8 pt-8 sm:pt-12 lg:pt-20" style={{ lineHeight: '1.1' }}>
+                <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line1}</span><br />
+                <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line2}</span><br />
+                <span className="inline-block px-2 py-1 w-full sm:w-auto font-[900] break-words">{texts.distinction.title.line3}</span>
               </p>
               <div className="flex flex-col space-y-3 sm:space-y-4 items-center lg:items-start">
                 <div className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 xl:w-[280px] xl:h-[150px] bg-[#960C41] rounded-t-full flex-shrink-0"></div>

@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# AWS
+.aws/
+*.pem
+*.key
+.env.deploy
+bucket-policy.json
+cors.json
+cloudfront-config.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
