@@ -12,6 +12,35 @@ const App: React.FC = () => {
     'Funel de prospección'
   ];
   const [currentSpecializationIndex, setCurrentSpecializationIndex] = useState<number>(0);
+  const [currentServiceIndex, setCurrentServiceIndex] = useState<number>(0);
+  const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+  /**
+   * Detecta el ancho de la ventana para calcular el desplazamiento del carrusel.
+   */
+  useEffect((): (() => void) => {
+    const handleResize = (): void => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  /**
+   * Calcula el desplazamiento del carrusel según el breakpoint.
+   * @returns Porcentaje de desplazamiento por tarjeta
+   */
+  const getCarouselOffset = (): number => {
+    if (windowWidth >= 1024) {
+      return 100 / 3;
+    } else if (windowWidth >= 640) {
+      return 100 / 2;
+    }
+    return 100;
+  };
 
   /**
    * Avanza automáticamente el carrusel de especialización.
@@ -24,6 +53,18 @@ const App: React.FC = () => {
       window.clearInterval(intervalId);
     };
   }, [specializationSlides.length]);
+
+  /**
+   * Avanza automáticamente el carrusel de servicios.
+   */
+  useEffect((): (() => void) => {
+    const intervalId: number = window.setInterval(() => {
+      setCurrentServiceIndex((prev: number) => (prev + 1) % texts.services.cards.length);
+    }, 4000);
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [texts.services.cards.length]);
 
   /**
    * Reemplaza la descripción de la tarjeta "Headhunting Ejecutivo" por un texto personalizado
@@ -175,18 +216,18 @@ const App: React.FC = () => {
         </p>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 bg-gray-50 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center">
+      <section className="pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12 lg:pb-16 bg-gray-50 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full max-w-7xl mx-auto">
-          <div className="flex-1 max-w-2xl text-center lg:text-left flex flex-col justify-center">
-            <Button className="mb-4 sm:mb-6 lg:mb-8 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
+          <div className="flex-1 max-w-2xl text-center lg:text-left flex flex-col justify-center gap-12">
+            <Button className="bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.button}
             </Button>
-            <div className="text-xl sm:text-2xl md:text-2xl lg:text-2xl font-[500] leading-relaxed text-[#2F1E40] mb-4 sm:mb-6 lg:mb-8 w-full max-w-[600px] mx-auto lg:mx-0">
+            <div className="text-xl sm:text-2xl md:text-2xl lg:text-2xl font-[500] leading-relaxed text-[#2F1E40] mb-5 sm:mb-7 lg:mb-10 w-full max-w-[600px] mx-auto lg:mx-0">
               <p className="leading-relaxed text-left hyphens-auto break-words">
                 En <span className="font-[700] text-[#960C41]">CBC</span><span className="text-[#960C41] font-[50]">Group</span> conectamos empresas {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
               </p>
             </div>
-            <Button className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base w-[231px] h-[66px] flex items-center justify-center mx-auto lg:mx-0">
+            <Button className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white rounded-[40px] text-sm sm:text-base w-[200px] h-[50px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.cta_button}
             </Button>
           </div>
@@ -199,55 +240,84 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative pl-4 sm:pl-6 lg:pl-12">
-        <div className="px-4 sm:px-6 lg:px-8 w-full">
-          <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[231px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
-            {texts.services.button}
-          </Button>
-          <div className="text-center sm:text-left">
-            <h2 className="text-3xl sm:text-3xl lg:text-4xl font-[500] font-light text-[#2E193B] leading-tight">
-              {texts.services.title.line1}<br />
-              {texts.services.title.line2}
-            </h2>
+      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative px-4 sm:pl-6 lg:pl-12">
+        <div className="px-0 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto">
+          <div className="flex flex-col items-center sm:items-start">
+            <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[231px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
+              {texts.services.button}
+            </Button>
+            <div className="text-center sm:text-left">
+              <h2 className="text-3xl sm:text-3xl lg:text-4xl font-[500] font-light text-[#2E193B] leading-tight">
+                {texts.services.title.line1}<br />
+                {texts.services.title.line2}
+              </h2>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Services Section Cards*/}
-      <section className="py-8 sm:py-12 lg:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {texts.services.cards.map((card, index) => (
-              <div key={index} className="bg-white border border-gray-200 w-full max-w-sm mx-auto sm:max-w-none sm:w-auto lg:w-[380px] min-h-[400px] sm:min-h-[450px] lg:h-[500px] p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between items-center">
-                <div className="flex justify-between items-start mb-4 w-full">
-                  <h3 className="text-lg sm:text-xl font-semibold text-[#3A2D4F] flex-1">{card.title}</h3>
-                  <button
-                    onClick={() => handleServiceCardClick(index, card.title)}
-                    aria-label={`${index === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
-                    aria-pressed={index === overrideIndex}
-                    className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-gray-100/70 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-300 font-bold text-sm sm:text-base transition-transform duration-300 hover:rotate-45"
-                  >
-                    {index === overrideIndex ? '×' : '+'}
-                  </button>
+      <section className="py-8 sm:py-12 lg:py-16 bg-white overflow-hidden">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ 
+                transform: `translateX(-${currentServiceIndex * getCarouselOffset()}%)`
+              }}
+            >
+              {texts.services.cards.map((card, index) => (
+                <div 
+                  key={index} 
+                  className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2 sm:px-3 lg:px-4"
+                >
+                  <div className="bg-white border border-gray-200 w-full min-h-[400px] sm:min-h-[450px] lg:h-[500px] p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between items-center mx-auto">
+                    <div className="flex justify-between items-start mb-4 w-full">
+                      <h3 className="text-lg sm:text-xl font-semibold text-[#3A2D4F] flex-1">{card.title}</h3>
+                      <button
+                        onClick={() => handleServiceCardClick(index, card.title)}
+                        aria-label={`${index === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
+                        aria-pressed={index === overrideIndex}
+                        className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-gray-100/70 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-300 font-bold text-sm sm:text-base transition-transform duration-300 hover:rotate-45"
+                      >
+                        {index === overrideIndex ? '×' : '+'}
+                      </button>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                      {index === overrideIndex
+                        ? (card.title === 'Headhunting Ejecutivo'
+                            ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
+                            : card.title === 'Reclutamiento Continuo'
+                              ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
+                              : card.title === 'Mapeo de Talento y Benchmark Salarial'
+                                ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
+                                : card.title === 'Evaluaciones por Competencias y Psicométricas'
+                                  ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
+                                  : card.title === 'Consultoría en Personas y Cultura'
+                                    ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
+                                : card.title === 'Onboarding'
+                                  ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
+                                  : card.description)
+                        : card.description}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  {index === overrideIndex
-                    ? (card.title === 'Headhunting Ejecutivo'
-                        ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
-                        : card.title === 'Reclutamiento Continuo'
-                          ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
-                          : card.title === 'Mapeo de Talento y Benchmark Salarial'
-                            ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
-                            : card.title === 'Evaluaciones por Competencias y Psicométricas'
-                              ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
-                              : card.title === 'Consultoría en Personas y Cultura'
-                                ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
-                            : card.title === 'Onboarding'
-                              ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
-                              : card.description)
-                    : card.description}
-                </p>
-              </div>
+              ))}
+            </div>
+          </div>
+          {/* Indicadores de navegación */}
+          <div className="flex justify-center mt-6 sm:mt-8 gap-2">
+            {texts.services.cards.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentServiceIndex(index)}
+                aria-label={`Ir a tarjeta ${index + 1}`}
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                  index === currentServiceIndex
+                    ? 'bg-[#960C41] w-8 sm:w-10'
+                    : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+              />
             ))}
           </div>
         </div>
