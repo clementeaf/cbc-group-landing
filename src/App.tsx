@@ -175,26 +175,22 @@ const App: React.FC = () => {
         </p>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
-        <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12">
-          <div className="flex-1 max-w-2xl text-center lg:text-left">
-            <Button className="mb-6 sm:mb-8 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gray-50 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center">
+        <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full max-w-7xl mx-auto">
+          <div className="flex-1 max-w-2xl text-center lg:text-left flex flex-col justify-center">
+            <Button className="mb-4 sm:mb-6 lg:mb-8 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.button}
             </Button>
-            <div className="text-[35px] font-[500] sm:text-xl lg:text-2xl leading-relaxed text-[#2F1E40] mb-6 sm:mb-8 py-20" style={{ lineHeight: '40px' }}>
-              <p>
-                En <span className="font-[700] text-[#960C41]">CBC</span><span className="text-[#960C41] font-[50]">Group</span> conectamos empresas
+            <div className="text-xl sm:text-2xl md:text-2xl lg:text-2xl font-[500] leading-relaxed text-[#2F1E40] mb-4 sm:mb-6 lg:mb-8 w-full max-w-[600px] mx-auto lg:mx-0">
+              <p className="leading-relaxed text-left hyphens-auto break-words">
+                En <span className="font-[700] text-[#960C41]">CBC</span><span className="text-[#960C41] font-[50]">Group</span> conectamos empresas {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
               </p>
-              <p>{texts.what_we_do.text.line2}</p>
-              <p>{texts.what_we_do.text.line3}</p>
-              <p>{texts.what_we_do.text.line4}</p>
-              <p>{texts.what_we_do.text.line5}</p>
             </div>
-            <Button className="bg-[#2E193B] font-[600] text-[20px] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base w-[231px] h-[66px] flex items-center justify-center">
+            <Button className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base w-[231px] h-[66px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.cta_button}
             </Button>
           </div>
-          <div className="flex-1 flex justify-center lg:justify-end mt-8 lg:mt-0">
+          <div className="flex-1 flex justify-center lg:justify-end items-center mt-8 lg:mt-0">
             <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6 lg:space-x-8">
               <div className="w-12 h-24 sm:w-20 sm:h-40 md:w-24 md:h-48 lg:w-28 lg:h-56 xl:w-32 xl:h-64 bg-[#960C41] rounded-r-full flex-shrink-0"></div>
               <div className="w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 bg-[#2E193B] rounded-full flex-shrink-0"></div>
