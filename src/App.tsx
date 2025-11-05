@@ -90,14 +90,14 @@ const App: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   return (
-    <div className="flex flex-col h-full bg-[#FAFAFA] overflow-x-hidden w-full max-w-full">
+    <div className="flex flex-col min-h-screen bg-[#FAFAFA] overflow-x-hidden w-full max-w-full items-center">
       {/* Navbar */}
-      <section className="bg-[#FFFFFF] rounded-[10px] sm:rounded-[20px] md:rounded-[30px] lg:rounded-[40px] mx-1 sm:mx-2 md:mx-4 lg:mx-8 xl:mx-12 2xl:mx-20 mt-1 sm:mt-2 md:mt-3 lg:mt-4 shadow-sm relative">
+      <section className="bg-[#FFFFFF] rounded-[20px] w-[90%] shadow-sm fixed top-5 left-1/2 transform -translate-x-1/2 z-50">
         <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4">
-          <div className="flex justify-between items-center gap-1 sm:gap-2 md:gap-3 lg:gap-4">
-            <div className="text-[16.8px] sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-red-800 flex-shrink-0 min-w-0">
+          <div className="flex justify-between items-center gap-1">
+            <div className="text-[20px] font-bold text-red-800">
               <span className="font-bold whitespace-nowrap">{texts.header.logo.main}</span>
-              <span className="font-normal text-[12px] sm:text-xs md:text-sm lg:text-base xl:text-lg whitespace-nowrap">{texts.header.logo.sub}</span>
+              <span className="font-normal text-[16px] ml-1 whitespace-nowrap">{texts.header.logo.sub}</span>
             </div>
 
             {/* Desktop Navigation */}
