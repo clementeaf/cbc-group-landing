@@ -453,7 +453,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-20 bg-[#2E193B] text-center relative mt-16">
+      <section className="py-12 sm:py-16 bg-[#2E193B] text-center my-10 w-full">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
           <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[272px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
             {texts.final_cta.tag}
