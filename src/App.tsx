@@ -198,12 +198,13 @@ const App: React.FC = () => {
       </section>
 
       {/* Presentation and buttons Section */}
-      <section className="flex items-center min-h-[700px] sm:min-h-[720px] px-4">
-        <div className="text-center max-w-4xl w-full h-full">
-          <div className="flex-1 flex justify-center lg:justify-end items-center my-10">
+      <section className="flex flex-col items-center px-4 py-[115px]">
+        <div className="text-center max-w-4xl w-full h-full flex flex-col justify-center">
+          <div className="flex-1 flex justify-center items-center my-10">
             <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6 lg:space-x-8">
-              <div className="w-12 h-24 sm:w-20 sm:h-40 md:w-24 md:h-48 lg:w-28 lg:h-56 xl:w-32 xl:h-64 bg-[#960C41] rounded-r-full flex-shrink-0"></div>
-              <div className="w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 bg-[#2E193B] rounded-full flex-shrink-0"></div>
+              <div className="w-12 h-24 bg-[#960C41] rounded-r-full flex-shrink-0"></div>
+              <div className="w-24 h-24 bg-[#2E193B] rounded-full flex-shrink-0"></div>
+              <div className="w-12 h-24 bg-[#960C41] rounded-l-full flex-shrink-0"></div>
             </div>
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#2E193B] mb-6 sm:mb-8 md:mb-12 leading-tight font-[500]">
@@ -226,7 +227,7 @@ const App: React.FC = () => {
       </section>
 
       {/* 1st Geometric bar section */}
-      <section className="hidden md:block py-8 sm:py-12 lg:py-16 bg-white w-full min-h-[200px] sm:min-h-[300px] md:min-h-[400px] lg:min-h-[500px] xl:min-h-[700px]">
+      {/* <section className="hidden md:block py-8 sm:py-12 lg:py-16 bg-white w-full min-h-[200px] sm:min-h-[300px] md:min-h-[400px] lg:min-h-[500px] xl:min-h-[700px]">
         <div className="flex justify-center items-center flex-wrap gap-1 sm:gap-2 md:gap-3 lg:gap-4 px-2 sm:px-4">
           <div className="w-12 h-10 sm:w-20 sm:h-14 md:w-28 md:h-20 lg:w-32 lg:h-48 xl:w-[400px] xl:h-[350px] bg-gray-200 rounded-t-[50%] flex-shrink-0"></div>
           <div className="w-12 h-10 sm:w-[72px] sm:h-14 md:w-24 md:h-20 lg:w-28 lg:h-48 xl:w-[230px] xl:h-[350px] bg-gray-200 rounded-l-full flex-shrink-0"></div>
@@ -235,15 +236,15 @@ const App: React.FC = () => {
           <div className="w-14 h-10 sm:w-20 sm:h-14 md:w-28 md:h-20 lg:w-32 lg:h-48 xl:w-[320px] xl:h-[350px] bg-gray-200 rounded-r-full flex-shrink-0"></div>
           <div className="w-12 h-10 sm:w-[72px] sm:h-14 md:w-24 md:h-20 lg:w-28 lg:h-48 xl:w-[220px] xl:h-[350px] bg-[#2F1E40] rounded-l-full flex-shrink-0"></div>
         </div>
-      </section>
+      </section> */}
 
       {/* Combinamos datos */}
-      <section className="py-8 sm:py-12 lg:py-16 text-white min-h-[250px] sm:min-h-[300px] md:h-[350px] lg:h-[397px] flex items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
-        <p className="text-[17.92px] sm:text-2xl md:text-3xl lg:text-4xl font-[500] text-center leading-tight sm:leading-normal" style={{ lineHeight: '1.2' }}>
-          Combinamos datos y criterio de un equipo<br className="hidden sm:block" />
-          <span className="sm:inline"> </span>experimentado para alinear cada búsqueda a tu<br className="hidden sm:block" />
-          <span className="bg-[#960C41] inline-block px-2 py-1 mt-1 sm:mt-0 w-full sm:w-auto sm:min-w-[200px] md:min-w-[400px] lg:min-w-[600px] xl:min-w-[788px] max-w-[85%]">estrategia y cultura empresarial</span>
+      <section className="text-white min-h-[250px] w-full flex flex-col items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
+        <p className="text-[17.92px] sm:text-[27px] font-[500] text-center" style={{ lineHeight: '1.2' }}>
+          Combinamos datos y criterio de un equipo
+          experimentado para alinear cada búsqueda a tu
         </p>
+        <span className="bg-[#960C41] px-4 py sm:text-[27px]">estrategia y cultura empresarial</span>
       </section>
 
       {/* Qué hacemos */}
@@ -254,7 +255,7 @@ const App: React.FC = () => {
               {texts.what_we_do.button}
             </Button>
             <div className="text-[20px] font-[500] text-[#2F1E40] text-justify flex flex-col justify-center">
-              <p className="text-center">
+              <p className="text-center sm:text-left">
                 En <span className="font-[700] text-[#960C41]">CBC</span><span className="text-[#960C41] font-[50]">Group</span> conectamos empresas {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
               </p>
             </div>
@@ -289,8 +290,9 @@ const App: React.FC = () => {
       </section>
 
       {/* Services Section Cards*/}
-      <section className="py-8 overflow-hidden w-[90%] flex justify-center flex-col my-10">
-        <div className="relative overflow-hidden">
+      <section className="py-8 w-[90%] flex justify-center flex-col my-10">
+        {/* Mobile Carousel */}
+        <div className="sm:hidden relative overflow-hidden">
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{
@@ -302,25 +304,25 @@ const App: React.FC = () => {
                 key={index}
                 className="flex-shrink-0 px-2 w-full"
               >
-                <div className="relative w-full min-h-[400px] sm:min-h-[450px] lg:h-[500px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div className="relative w-full min-h-[400px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                   <img
                     src={getServiceImage(card.title)}
                     alt={card.title}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4 sm:p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4">
                     <div className="flex justify-between items-start w-full">
-                      <h3 className="text-white text-lg sm:text-xl font-semibold flex-1">{card.title}</h3>
+                      <h3 className="text-white text-lg font-semibold flex-1">{card.title}</h3>
                       <button
                         onClick={() => handleServiceCardClick(index, card.title)}
                         aria-label={`${index === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
                         aria-pressed={index === overrideIndex}
-                        className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base transition-all duration-300 hover:rotate-45 flex-shrink-0"
+                        className="ml-4 w-6 h-6 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-300 hover:rotate-45 flex-shrink-0"
                       >
                         {index === overrideIndex ? '×' : '+'}
                       </button>
                     </div>
-                    <p className="text-white leading-relaxed text-sm sm:text-base">
+                    <p className="text-white leading-relaxed text-sm">
                       {index === overrideIndex
                         ? (card.title === 'Headhunting Ejecutivo'
                           ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
@@ -343,18 +345,63 @@ const App: React.FC = () => {
             ))}
           </div>
         </div>
-        {/* Indicadores de navegación */}
-        <div className="flex justify-center mt-6 sm:mt-8 gap-2">
+        {/* Mobile Navigation Indicators */}
+        <div className="sm:hidden flex justify-center mt-6 gap-2">
           {texts.services.cards.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentServiceIndex(index)}
               aria-label={`Ir a tarjeta ${index + 1}`}
-              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${index === currentServiceIndex
-                ? 'bg-[#960C41] w-8 sm:w-10'
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentServiceIndex
+                ? 'bg-[#960C41] w-8'
                 : 'bg-gray-300 hover:bg-gray-400'
                 }`}
             />
+          ))}
+        </div>
+        {/* Desktop/Tablet Grid */}
+        <div className="hidden sm:grid sm:grid-cols-3 gap-4 lg:gap-6">
+          {texts.services.cards.map((card, index) => (
+            <div
+              key={index}
+              className="relative w-full min-h-[450px] lg:h-[500px] overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            >
+              <img
+                src={getServiceImage(card.title)}
+                alt={card.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4 sm:p-6">
+                <div className="flex justify-between items-start w-full">
+                  <h3 className="text-white text-lg sm:text-xl font-semibold flex-1">{card.title}</h3>
+                  <button
+                    onClick={() => handleServiceCardClick(index, card.title)}
+                    aria-label={`${index === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
+                    aria-pressed={index === overrideIndex}
+                    className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base transition-all duration-300 hover:rotate-45 flex-shrink-0"
+                  >
+                    {index === overrideIndex ? '×' : '+'}
+                  </button>
+                </div>
+                <p className="text-white leading-relaxed text-sm sm:text-base">
+                  {index === overrideIndex
+                    ? (card.title === 'Headhunting Ejecutivo'
+                      ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
+                      : card.title === 'Reclutamiento Continuo'
+                        ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
+                        : card.title === 'Mapeo de Talento y Benchmark Salarial'
+                          ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
+                          : card.title === 'Evaluaciones por Competencias y Psicométricas'
+                            ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
+                            : card.title === 'Consultoría en Personas y Cultura'
+                              ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
+                              : card.title === 'Onboarding'
+                                ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
+                                : card.description)
+                      : card.description}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </section>
