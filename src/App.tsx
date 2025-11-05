@@ -273,7 +273,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Servicios */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative px-4 sm:pl-6 lg:pl-12">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative px-4 sm:pl-6 sm:w-full">
         <div className="px-0 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto">
           <div className="flex flex-col items-center sm:items-start">
             <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[231px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
