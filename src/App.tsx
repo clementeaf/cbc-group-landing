@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from './components';
 import texts from './data/texts.json';
+import headHuntingImage from './assets/headHunting.png';
+import reclutamientoImage from './assets/reclutamiento.png';
+import mapeoTalentoImage from './assets/mapeoTalento.png';
+import evaluacionesImage from './assets/evaluaciones.png';
+import consultoriaImage from './assets/consultoria.png';
+import onBoardingImage from './assets/onBoarding.png';
 
 const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -84,6 +90,23 @@ const App: React.FC = () => {
       return;
     }
     setOverrideIndex((prev) => (prev === index ? null : index));
+  };
+
+  /**
+   * Mapea el título de una tarjeta de servicio a su imagen correspondiente.
+   * @param title - Título de la tarjeta de servicio
+   * @returns Ruta de la imagen correspondiente
+   */
+  const getServiceImage = (title: string): string => {
+    const imageMap: Record<string, string> = {
+      'Headhunting Ejecutivo': headHuntingImage,
+      'Reclutamiento Continuo': reclutamientoImage,
+      'Mapeo de Talento y Benchmark Salarial': mapeoTalentoImage,
+      'Evaluaciones por Competencias y Psicométricas': evaluacionesImage,
+      'Consultoría en Personas y Cultura': consultoriaImage,
+      'Onboarding': onBoardingImage,
+    };
+    return imageMap[title] || '';
   };
 
   const toggleMobileMenu = (): void => {
@@ -219,19 +242,19 @@ const App: React.FC = () => {
         <p className="text-[17.92px] sm:text-2xl md:text-3xl lg:text-4xl font-[500] text-center leading-tight sm:leading-normal" style={{ lineHeight: '1.2' }}>
           Combinamos datos y criterio de un equipo<br className="hidden sm:block" />
           <span className="sm:inline"> </span>experimentado para alinear cada búsqueda a tu<br className="hidden sm:block" />
-          <span className="bg-[#960C41] inline-block px-2 py-1 mt-1 sm:mt-0 w-full sm:w-auto sm:min-w-[200px] md:min-w-[400px] lg:min-w-[600px] xl:min-w-[788px] max-w-full">estrategia y cultura empresarial</span>
+          <span className="bg-[#960C41] inline-block px-2 py-1 mt-1 sm:mt-0 w-full sm:w-auto sm:min-w-[200px] md:min-w-[400px] lg:min-w-[600px] xl:min-w-[788px] max-w-[85%]">estrategia y cultura empresarial</span>
         </p>
       </section>
 
       {/* Qué hacemos */}
-      <section className="pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12 lg:pb-16 bg-gray-50 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center">
+      <section className="py-16 flex items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full max-w-7xl mx-auto">
           <div className="flex-1 max-w-2xl text-center lg:text-left flex flex-col justify-center gap-12">
             <Button className="bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.button}
             </Button>
-            <div className="text-xl sm:text-2xl md:text-2xl lg:text-2xl font-[500] leading-relaxed text-[#2F1E40] mb-5 sm:mb-7 lg:mb-10 w-full max-w-[600px] mx-auto lg:mx-0">
-              <p className="leading-relaxed text-left hyphens-auto break-words">
+            <div className="text-[20px] font-[500] text-[#2F1E40] text-justify flex flex-col justify-center">
+              <p className="text-center">
                 En <span className="font-[700] text-[#960C41]">CBC</span><span className="text-[#960C41] font-[50]">Group</span> conectamos empresas {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
               </p>
             </div>
@@ -266,33 +289,38 @@ const App: React.FC = () => {
       </section>
 
       {/* Services Section Cards*/}
-      <section className="py-8 sm:py-12 lg:py-16 bg-white overflow-hidden">
-        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(-${currentServiceIndex * getCarouselOffset()}%)`
-              }}
-            >
-              {texts.services.cards.map((card, index) => (
-                <div
-                  key={index}
-                  className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2 sm:px-3 lg:px-4"
-                >
-                  <div className="bg-white border border-gray-200 w-full min-h-[400px] sm:min-h-[450px] lg:h-[500px] p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between items-center mx-auto">
-                    <div className="flex justify-between items-start mb-4 w-full">
-                      <h3 className="text-lg sm:text-xl font-semibold text-[#3A2D4F] flex-1">{card.title}</h3>
+      <section className="py-8 overflow-hidden w-[90%] flex justify-center flex-col my-10">
+        <div className="relative overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(-${currentServiceIndex * getCarouselOffset()}%)`
+            }}
+          >
+            {texts.services.cards.map((card, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 px-2 w-full"
+              >
+                <div className="relative w-full min-h-[400px] sm:min-h-[450px] lg:h-[500px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <img
+                    src={getServiceImage(card.title)}
+                    alt={card.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4 sm:p-6">
+                    <div className="flex justify-between items-start w-full">
+                      <h3 className="text-white text-lg sm:text-xl font-semibold flex-1">{card.title}</h3>
                       <button
                         onClick={() => handleServiceCardClick(index, card.title)}
                         aria-label={`${index === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
                         aria-pressed={index === overrideIndex}
-                        className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-gray-100/70 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-300 font-bold text-sm sm:text-base transition-transform duration-300 hover:rotate-45"
+                        className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base transition-all duration-300 hover:rotate-45 flex-shrink-0"
                       >
                         {index === overrideIndex ? '×' : '+'}
                       </button>
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                    <p className="text-white leading-relaxed text-sm sm:text-base">
                       {index === overrideIndex
                         ? (card.title === 'Headhunting Ejecutivo'
                           ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
@@ -311,34 +339,34 @@ const App: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-          {/* Indicadores de navegación */}
-          <div className="flex justify-center mt-6 sm:mt-8 gap-2">
-            {texts.services.cards.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentServiceIndex(index)}
-                aria-label={`Ir a tarjeta ${index + 1}`}
-                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${index === currentServiceIndex
-                    ? 'bg-[#960C41] w-8 sm:w-10'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-              />
+              </div>
             ))}
           </div>
         </div>
+        {/* Indicadores de navegación */}
+        <div className="flex justify-center mt-6 sm:mt-8 gap-2">
+          {texts.services.cards.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentServiceIndex(index)}
+              aria-label={`Ir a tarjeta ${index + 1}`}
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${index === currentServiceIndex
+                ? 'bg-[#960C41] w-8 sm:w-10'
+                : 'bg-gray-300 hover:bg-gray-400'
+                }`}
+            />
+          ))}
+        </div>
       </section>
 
-      <section className="flex justify-center my-8 sm:my-12 lg:my-20 px-4">
+      <section className="flex justify-center px-4">
         <Button className="bg-[#960C41] text-white rounded-full text-base sm:text-lg font-medium w-[200px] h-[42px] flex items-center justify-center">
           {texts.cta.button}
         </Button>
       </section>
 
       {/* Carrousel */}
-      <section className="bg-[#8B1A3F] min-h-[200px] sm:min-h-[250px] lg:h-[300px] flex items-center justify-center px-4 overflow-x-hidden">
+      <section className="bg-[#8B1A3F] flex items-center justify-center overflow-x-hidden w-full py-8 my-12">
         <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 p-0">
           <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-[400] leading-tight mb-2 p-0 whitespace-nowrap text-center sm:text-left">
             Somos especialistas
