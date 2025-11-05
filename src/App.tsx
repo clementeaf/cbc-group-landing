@@ -175,8 +175,14 @@ const App: React.FC = () => {
       </section>
 
       {/* Presentation and buttons Section */}
-      <section className="flex items-center justify-center min-h-[600px] sm:min-h-[720px] md:min-h-[840px] lg:min-h-[960px] xl:min-h-[1080px] px-4 py-8 sm:py-12 md:py-16 lg:py-20">
-        <div className="text-center max-w-4xl w-full">
+      <section className="flex items-center min-h-[700px] sm:min-h-[720px] px-4">
+        <div className="text-center max-w-4xl w-full h-full">
+          <div className="flex-1 flex justify-center lg:justify-end items-center my-10">
+            <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6 lg:space-x-8">
+              <div className="w-12 h-24 sm:w-20 sm:h-40 md:w-24 md:h-48 lg:w-28 lg:h-56 xl:w-32 xl:h-64 bg-[#960C41] rounded-r-full flex-shrink-0"></div>
+              <div className="w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 bg-[#2E193B] rounded-full flex-shrink-0"></div>
+            </div>
+          </div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#2E193B] mb-6 sm:mb-8 md:mb-12 leading-tight font-[500]">
             {texts.main.title.line1}<br />
             {texts.main.title.line2}
@@ -208,6 +214,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Combinamos datos */}
       <section className="py-8 sm:py-12 lg:py-16 text-white min-h-[250px] sm:min-h-[300px] md:h-[350px] lg:h-[397px] flex items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
         <p className="text-[17.92px] sm:text-2xl md:text-3xl lg:text-4xl font-[500] text-center leading-tight sm:leading-normal" style={{ lineHeight: '1.2' }}>
           Combinamos datos y criterio de un equipo<br className="hidden sm:block" />
@@ -216,6 +223,7 @@ const App: React.FC = () => {
         </p>
       </section>
 
+      {/* Qué hacemos */}
       <section className="pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12 lg:pb-16 bg-gray-50 min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center">
         <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full max-w-7xl mx-auto">
           <div className="flex-1 max-w-2xl text-center lg:text-left flex flex-col justify-center gap-12">
@@ -240,6 +248,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Servicios */}
       <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative px-4 sm:pl-6 lg:pl-12">
         <div className="px-0 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto">
           <div className="flex flex-col items-center sm:items-start">
@@ -260,15 +269,15 @@ const App: React.FC = () => {
       <section className="py-8 sm:py-12 lg:py-16 bg-white overflow-hidden">
         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden">
-            <div 
+            <div
               className="flex transition-transform duration-500 ease-in-out"
-              style={{ 
+              style={{
                 transform: `translateX(-${currentServiceIndex * getCarouselOffset()}%)`
               }}
             >
               {texts.services.cards.map((card, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2 sm:px-3 lg:px-4"
                 >
                   <div className="bg-white border border-gray-200 w-full min-h-[400px] sm:min-h-[450px] lg:h-[500px] p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between items-center mx-auto">
@@ -286,18 +295,18 @@ const App: React.FC = () => {
                     <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                       {index === overrideIndex
                         ? (card.title === 'Headhunting Ejecutivo'
-                            ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
-                            : card.title === 'Reclutamiento Continuo'
-                              ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
-                              : card.title === 'Mapeo de Talento y Benchmark Salarial'
-                                ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
-                                : card.title === 'Evaluaciones por Competencias y Psicométricas'
-                                  ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
-                                  : card.title === 'Consultoría en Personas y Cultura'
-                                    ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
-                                : card.title === 'Onboarding'
-                                  ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
-                                  : card.description)
+                          ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
+                          : card.title === 'Reclutamiento Continuo'
+                            ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
+                            : card.title === 'Mapeo de Talento y Benchmark Salarial'
+                              ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
+                              : card.title === 'Evaluaciones por Competencias y Psicométricas'
+                                ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
+                                : card.title === 'Consultoría en Personas y Cultura'
+                                  ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
+                                  : card.title === 'Onboarding'
+                                    ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
+                                    : card.description)
                         : card.description}
                     </p>
                   </div>
@@ -312,11 +321,10 @@ const App: React.FC = () => {
                 key={index}
                 onClick={() => setCurrentServiceIndex(index)}
                 aria-label={`Ir a tarjeta ${index + 1}`}
-                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                  index === currentServiceIndex
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${index === currentServiceIndex
                     ? 'bg-[#960C41] w-8 sm:w-10'
                     : 'bg-gray-300 hover:bg-gray-400'
-                }`}
+                  }`}
               />
             ))}
           </div>
