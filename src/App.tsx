@@ -153,9 +153,7 @@ const App: React.FC = () => {
       <section className="bg-[#FFFFFF] rounded-[20px] w-[90%] shadow-sm fixed top-5 left-1/2 transform -translate-x-1/2 z-50">
         <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4">
           <div className="flex justify-between items-center gap-1">
-            <div className="flex items-center justify-center">
-              <img src={cbcLogo} alt="CBC Logo" className="h-[25px]" />
-            </div>
+            <img src={cbcLogo} alt="CBC Logo" className="h-[14px] sm:h-[25px]" />
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-2 xl:space-x-3 2xl:space-x-6 flex-shrink-0">
@@ -262,7 +260,7 @@ const App: React.FC = () => {
 
       {/* Combinamos datos */}
       <section className="text-white min-h-[250px] w-full flex flex-col items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
-        <p className="text-[17.92px] sm:text-[27px] font-[500] text-center" style={{ lineHeight: '1.2' }}>
+        <p className="text-[16px] sm:text-[27px] font-[500] text-center" style={{ lineHeight: '1.2' }}>
           Combinamos datos y criterio de un equipo
           experimentado para alinear cada búsqueda a tu
         </p>
@@ -270,21 +268,20 @@ const App: React.FC = () => {
       </section>
 
       {/* Qué hacemos */}
-      <section className="py-16 flex items-center">
-        <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full max-w-7xl mx-auto">
-          <div className="flex-1 max-w-2xl text-center lg:text-left flex flex-col justify-center gap-12">
+      <section className="py-16 flex items-center w-[90%] sm:w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full mx-auto">
+          <div className="flex-1 max-w-2xl text-center lg:text-left flex flex-col justify-center gap-12 sm:ml-5">
             <Button className="bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.button}
             </Button>
-            <div className="text-[20px] font-[500] text-[#2F1E40] text-justify flex flex-col justify-center">
-              <div className="flex items-center justify-start">
-                <p className="text-center sm:text-left">
-                  En
-                </p>
-                <div><img src={cbcLogo} alt="CBC Logo" className="h-[20px] px-2" /></div>
-                conectamos empresas
+            <div className="text-[16px] sm:text-[20px] font-[500] text-[#2F1E40] text-center flex flex-col justify-center w-full">
+              <div className="flex items-end justify-start ml-4 p-0 w-[310px]">
+                  En<img src={cbcLogo} alt="CBC Logo" className="h-[16px] px-2 mb-[1.5px]" />conectamos empresas
               </div>
-              {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
+              <div className="flex p-0 w-[335px] text-center">
+              {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} 
+              {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
+              </div>
             </div>
             <Button className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white rounded-[40px] text-sm sm:text-base w-[200px] h-[50px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.cta_button}
