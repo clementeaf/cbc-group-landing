@@ -8,6 +8,7 @@ import evaluacionesImage from './assets/evaluaciones.png';
 import consultoriaImage from './assets/consultoria.png';
 import onBoardingImage from './assets/onBoarding.png';
 import cbcLogo from './assets/cbcLogo.png';
+import cbcLogoWhite from './assets/cbcLogo-white.png';
 
 const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -230,9 +231,9 @@ const App: React.FC = () => {
       </section>
 
       {/* Presentation and buttons Section */}{/* Optimizado */}
-      <section className="flex flex-col items-center px-4 py-[115px]">
+      <section className="flex flex-col items-center px-4 py-[130px]">
         {/* DOD */}
-        <div className="flex-1 flex justify-center items-center my-[120px]">
+        <div className="flex-1 flex justify-center items-center pt-[80px]">
           <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6 lg:space-x-8">
             <div className="w-12 h-24 bg-[#960C41] rounded-r-full flex-shrink-0"></div>
             <div className="w-24 h-24 bg-[#2E193B] rounded-full flex-shrink-0"></div>
@@ -241,12 +242,13 @@ const App: React.FC = () => {
         </div>
 
         {/* Title and buttons */}{/* Optimizado */}
-        <div className='flex flex-col items-center justify-center'>
-          <h1 className="text-2xl sm:text-[60px] sm:w-full font-bold text-[#2E193B] mb-6 sm:mb-8 md:mb-12 leading-tight font-[500] text-center">
+        <div className='flex flex-col items-center justify-center sm:py-[60px]'>
+          <h1 className="text-2xl sm:text-[60px] sm:w-full font-bold text-[#2E193B] mb-6 sm:py-[25px] leading-tight font-[500] text-center">
             {texts.main.title.line1}<br />
             {texts.main.title.line2}
           </h1>
-          <div className="flex flex-col sm:flex-row gap-[25px] sm:gap-[19.2px] justify-center items-center w-[300px]">
+
+          <div className="flex flex-col sm:flex-row sm:w-full gap-[25px] pt-[25px] sm:gap-[60px] justify-center items-center w-[300px]">
             <Button
               className="bg-[#960C41] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base md:text-lg w-4/5 sm:w-auto"
             >
@@ -270,22 +272,20 @@ const App: React.FC = () => {
       </section>
 
       {/* Qué hacemos */}
-      <section className="py-16 flex items-center w-[90%] sm:w-full">
+      <section className="py-16 flex items-center w-[90%] sm:w-full sm:py-[100px]">
         <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full mx-auto">
           <div className="flex-1 max-w-2xl text-center lg:text-left flex flex-col justify-center gap-12 sm:ml-5">
             <Button className="bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.button}
             </Button>
-            <div className="text-[16px] sm:text-[20px] font-[500] text-[#2F1E40] text-center flex flex-col justify-center w-full">
-              <div className="flex items-end justify-start ml-4 p-0 w-[310px] sm:w-[500px] sm:ml-0">
-                En<img src={cbcLogo} alt="CBC Logo" className="h-[16px] sm:h-[20px] px-2 mb-[3px] sm:mb-[2.5px]" />conectamos empresas
+            <div className="text-[16px] sm:text-[25px] font-[500] text-[#2F1E40] text-center flex flex-col justify-center w-full">
+              <div className="flex items-end justify-start ml-4 p-0 w-[310px] sm:w-[800px] sm:ml-0">
+                En<img src={cbcLogo} alt="CBC Logo" className="h-[16px] sm:h-[24px] px-2 mb-[3px] sm:mb-[6px]" />conectamos empresas con el talento correcto.
               </div>
-              <div className="flex p-0 w-[335px] text-center sm:text-left sm:w-[500px]">
-                {texts.what_we_do.text.line2} {texts.what_we_do.text.line3}
+              <div className="flex p-0 w-[335px] text-center sm:text-left sm:w-[680px]">
+                Humanizamos el reclutamiento con procesos a tú medida, utilizando la IA a nuestro favor.
               </div>
-              <div className="flex flex-col items-center w-[335px] text-center sm:text-left sm:w-[500px]">
-                {texts.what_we_do.text.line4} <br />
-                {texts.what_we_do.text.line5}
+              <div className="flex flex-col items-center w-[335px] text-center sm:text-left sm:w-[500px] sm:items-start">
               </div>
             </div>
             <Button className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white rounded-[40px] text-sm sm:text-base w-[200px] h-[50px] flex items-center justify-center mx-auto lg:mx-0">
@@ -309,7 +309,7 @@ const App: React.FC = () => {
               {texts.services.button}
             </Button>
             <div className="text-center sm:text-left">
-              <h2 className="text-3xl sm:text-3xl lg:text-4xl font-[500] font-light text-[#2E193B] leading-tight">
+              <h2 className="text-3xl sm:text-3xl font-[500] text-[#2E193B] leading-tight">
                 {texts.services.title.line1}<br />
                 {texts.services.title.line2}
               </h2>
@@ -319,187 +319,185 @@ const App: React.FC = () => {
       </section>
 
       {/* Services Section Cards*/}
-      <section className="py-8 w-[90%] flex justify-center flex-col my-10">
-        {/* Mobile Carousel */}
-        <div className="sm:hidden relative overflow-hidden">
-          <div
-            className="flex"
-            style={{
-              transform: `translateX(-${currentServiceIndex * getCarouselOffset()}%)`,
-              transition: isTransitioning ? 'transform 500ms ease-in-out' : 'none'
-            }}
-          >
-            {[texts.services.cards[texts.services.cards.length - 1], ...texts.services.cards, texts.services.cards[0]].map((card, index) => {
-              const realIndex: number = index === 0
-                ? texts.services.cards.length - 1
-                : index === texts.services.cards.length + 1
-                  ? 0
-                  : index - 1;
-              return (
-                <div
-                  key={`${realIndex}-${index}`}
-                  className="flex-shrink-0 px-2 w-full"
-                >
-                  <div className="relative w-full min-h-[400px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <img
-                      src={getServiceImage(card.title)}
-                      alt={card.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4">
-                      <div className="flex justify-between items-start w-full">
-                        <h3 className="text-white text-lg font-semibold flex-1">{card.title}</h3>
-                        <button
-                          onClick={() => handleServiceCardClick(realIndex, card.title)}
-                          aria-label={`${realIndex === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
-                          aria-pressed={realIndex === overrideIndex}
-                          className="ml-4 w-6 h-6 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-300 hover:rotate-45 flex-shrink-0"
-                        >
-                          {realIndex === overrideIndex ? '×' : '+'}
-                        </button>
+      <div className='bg-gray-100 flex flex-col items-center justify-center sm:w-full'>
+        <section className="py-8 w-[90%] flex justify-center flex-col my-10 ">
+          {/* Mobile Carousel */}
+          <div className="sm:hidden relative overflow-hidden">
+            <div
+              className="flex"
+              style={{
+                transform: `translateX(-${currentServiceIndex * getCarouselOffset()}%)`,
+                transition: isTransitioning ? 'transform 500ms ease-in-out' : 'none'
+              }}
+            >
+              {[texts.services.cards[texts.services.cards.length - 1], ...texts.services.cards, texts.services.cards[0]].map((card, index) => {
+                const realIndex: number = index === 0
+                  ? texts.services.cards.length - 1
+                  : index === texts.services.cards.length + 1
+                    ? 0
+                    : index - 1;
+                return (
+                  <div
+                    key={`${realIndex}-${index}`}
+                    className="flex-shrink-0 px-2 w-full"
+                  >
+                    <div className="relative w-full min-h-[400px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                      <img
+                        src={getServiceImage(card.title)}
+                        alt={card.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4">
+                        <div className="flex justify-between items-start w-full">
+                          <h3 className="text-white text-lg font-semibold flex-1">{card.title}</h3>
+                          <button
+                            onClick={() => handleServiceCardClick(realIndex, card.title)}
+                            aria-label={`${realIndex === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
+                            aria-pressed={realIndex === overrideIndex}
+                            className="ml-4 w-6 h-6 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-300 hover:rotate-45 flex-shrink-0"
+                          >
+                            {realIndex === overrideIndex ? '×' : '+'}
+                          </button>
+                        </div>
+                        <p className="text-white leading-relaxed text-sm">
+                          {realIndex === overrideIndex
+                            ? (card.title === 'Headhunting Ejecutivo'
+                              ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
+                              : card.title === 'Reclutamiento Continuo'
+                                ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
+                                : card.title === 'Mapeo de Talento y Benchmark Salarial'
+                                  ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
+                                  : card.title === 'Evaluaciones por Competencias y Psicométricas'
+                                    ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
+                                    : card.title === 'Consultoría en Personas y Cultura'
+                                      ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
+                                      : card.title === 'Onboarding'
+                                        ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
+                                        : card.description)
+                            : card.description}
+                        </p>
                       </div>
-                      <p className="text-white leading-relaxed text-sm">
-                        {realIndex === overrideIndex
-                          ? (card.title === 'Headhunting Ejecutivo'
-                            ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
-                            : card.title === 'Reclutamiento Continuo'
-                              ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
-                              : card.title === 'Mapeo de Talento y Benchmark Salarial'
-                                ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
-                                : card.title === 'Evaluaciones por Competencias y Psicométricas'
-                                  ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
-                                  : card.title === 'Consultoría en Personas y Cultura'
-                                    ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
-                                    : card.title === 'Onboarding'
-                                      ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
-                                      : card.description)
-                          : card.description}
-                      </p>
                     </div>
                   </div>
-                </div>
+                );
+              })}
+            </div>
+          </div>
+          {/* Mobile Navigation Indicators */}
+          <div className="sm:hidden flex justify-center mt-6 gap-2">
+            {texts.services.cards.map((_, index) => {
+              const realIndex: number = currentServiceIndex > texts.services.cards.length ? 0 : currentServiceIndex === 0 ? texts.services.cards.length - 1 : currentServiceIndex - 1;
+              const isActive: boolean = realIndex === index;
+              return (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setIsTransitioning(true);
+                    setCurrentServiceIndex(index + 1);
+                  }}
+                  aria-label={`Ir a tarjeta ${index + 1}`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${isActive
+                    ? 'bg-[#960C41] w-8'
+                    : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                />
               );
             })}
           </div>
-        </div>
-        {/* Mobile Navigation Indicators */}
-        <div className="sm:hidden flex justify-center mt-6 gap-2">
-          {texts.services.cards.map((_, index) => {
-            const realIndex: number = currentServiceIndex > texts.services.cards.length ? 0 : currentServiceIndex === 0 ? texts.services.cards.length - 1 : currentServiceIndex - 1;
-            const isActive: boolean = realIndex === index;
-            return (
-              <button
+          {/* Desktop/Tablet Grid */}
+          <div className="hidden sm:grid sm:grid-cols-3 gap-4 lg:gap-6">
+            {texts.services.cards.map((card, index) => (
+              <div
                 key={index}
-                onClick={() => {
-                  setIsTransitioning(true);
-                  setCurrentServiceIndex(index + 1);
-                }}
-                aria-label={`Ir a tarjeta ${index + 1}`}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${isActive
-                  ? 'bg-[#960C41] w-8'
-                  : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-              />
-            );
-          })}
-        </div>
-        {/* Desktop/Tablet Grid */}
-        <div className="hidden sm:grid sm:grid-cols-3 gap-4 lg:gap-6">
-          {texts.services.cards.map((card, index) => (
-            <div
-              key={index}
-              className="relative w-full min-h-[450px] lg:h-[500px] overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              <img
-                src={getServiceImage(card.title)}
-                alt={card.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4 sm:p-6">
-                <div className="flex justify-between items-start w-full">
-                  <h3 className="text-white text-lg sm:text-xl font-semibold flex-1">{card.title}</h3>
-                  <button
-                    onClick={() => handleServiceCardClick(index, card.title)}
-                    aria-label={`${index === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
-                    aria-pressed={index === overrideIndex}
-                    className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base transition-all duration-300 hover:rotate-45 flex-shrink-0"
-                  >
-                    {index === overrideIndex ? '×' : '+'}
-                  </button>
+                className="relative w-full min-h-[450px] lg:h-[500px] overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              >
+                <img
+                  src={getServiceImage(card.title)}
+                  alt={card.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4 sm:p-6">
+                  <div className="flex justify-between items-start w-full">
+                    <h3 className="text-white text-lg sm:text-xl font-semibold flex-1">{card.title}</h3>
+                    <button
+                      onClick={() => handleServiceCardClick(index, card.title)}
+                      aria-label={`${index === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
+                      aria-pressed={index === overrideIndex}
+                      className="ml-4 w-6 h-6 sm:w-8 sm:h-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base transition-all duration-300 hover:rotate-45 flex-shrink-0"
+                    >
+                      {index === overrideIndex ? '×' : '+'}
+                    </button>
+                  </div>
+                  <p className="text-white leading-relaxed text-sm sm:text-base">
+                    {index === overrideIndex
+                      ? (card.title === 'Headhunting Ejecutivo'
+                        ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
+                        : card.title === 'Reclutamiento Continuo'
+                          ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
+                          : card.title === 'Mapeo de Talento y Benchmark Salarial'
+                            ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
+                            : card.title === 'Evaluaciones por Competencias y Psicométricas'
+                              ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
+                              : card.title === 'Consultoría en Personas y Cultura'
+                                ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
+                                : card.title === 'Onboarding'
+                                  ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
+                                  : card.description)
+                      : card.description}
+                  </p>
                 </div>
-                <p className="text-white leading-relaxed text-sm sm:text-base">
-                  {index === overrideIndex
-                    ? (card.title === 'Headhunting Ejecutivo'
-                      ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
-                      : card.title === 'Reclutamiento Continuo'
-                        ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
-                        : card.title === 'Mapeo de Talento y Benchmark Salarial'
-                          ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
-                          : card.title === 'Evaluaciones por Competencias y Psicométricas'
-                            ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
-                            : card.title === 'Consultoría en Personas y Cultura'
-                              ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
-                              : card.title === 'Onboarding'
-                                ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
-                                : card.description)
-                    : card.description}
-                </p>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+        <section className="flex justify-center px-4 pb-[90px]">
+          <Button className="bg-[#960C41] text-white rounded-full text-base sm:text-lg font-medium w-[200px] h-[42px] flex items-center justify-center">
+            {texts.cta.button}
+          </Button>
+        </section>
+        {/* Carrousel */}
+        <section className="bg-[#8B1A3F] flex items-center justify-center overflow-x-hidden w-full py-8 mt-12 sm:py-[100px] ">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 p-0">
+            <p className="text-white text-[22px] font-[500] sm:text-[50px] leading-tight whitespace-nowrap m-0 p-6 text-center sm:text-left">
+              {specializationSlides[currentSpecializationIndex]}
+            </p>
+          </div>
+        </section>
+      </div>
 
-      <section className="flex justify-center px-4">
-        <Button className="bg-[#960C41] text-white rounded-full text-base sm:text-lg font-medium w-[200px] h-[42px] flex items-center justify-center">
-          {texts.cta.button}
-        </Button>
-      </section>
-
-      {/* Carrousel */}
-      <section className="bg-[#8B1A3F] flex items-center justify-center overflow-x-hidden w-full py-8 my-12">
-        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 p-0">
-          <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-[400] leading-tight mb-2 p-0 whitespace-nowrap text-center sm:text-left">
-            Somos especialistas
-          </p>
-          <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl leading-tight whitespace-nowrap m-0 p-0 text-center sm:text-left">
-            {specializationSlides[currentSpecializationIndex]}
-          </p>
-        </div>
-      </section>
 
       {/* Nuestro compromiso */}
-      <section className="py-8 px-10 bg-white w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-            <div className="flex flex-col text-center lg:text-left">
-              <Button className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto lg:mx-0 text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
-                {texts.distinction.tag}
-              </Button>
-              <p className="text-3xl sm:text-4xl font-[500] text-[#2E193B] mb-6 sm:mb-8 pt-8" style={{ lineHeight: '1.1' }}>
-                <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line1}</span><br />
-                <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line2}</span><br />
-                <span className="inline-block px-2 py-1 w-full sm:w-auto font-[900] break-words">{texts.distinction.title.line3}</span>
-              </p>
-              <div className="flex flex-col space-y-3 sm:space-y-4 items-center lg:items-start">
-                <div className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 xl:w-[280px] xl:h-[150px] bg-[#960C41] rounded-t-full flex-shrink-0"></div>
-                <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-[280px] xl:h-[280px] bg-[#2E193B] rounded-full flex-shrink-0"></div>
+      <section className="py-8 px-6 bg-white w-full sm:w-full">
+        <Button className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto sm:ml-[100px] text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
+          {texts.distinction.tag}
+        </Button>
+        <div className="gap-8 sm:flex sm:flex-row sm:items-center sm:justify-between sm:w-full">
+          <div className="flex flex-col text-center lg:text-left sm:w-[50%] sm:ml-[90px]">
+            <p className="text-3xl sm:text-[60px] font-[300] text-[#2E193B] mb-6 pt-8" style={{ lineHeight: '1.1' }}>
+              <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line1}</span><br />
+              <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line2}</span><br />
+              <span className="inline-block px-2 py-1 w-full sm:w-auto font-[900] break-words">{texts.distinction.title.line3}</span>
+            </p>
+            <div className="flex flex-col space-y-3 sm:space-y-4 items-center lg:items-start pt-[65px]">
+              <div className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 xl:w-[280px] xl:h-[150px] bg-[#960C41] rounded-t-full flex-shrink-0"></div>
+              <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-[280px] xl:h-[280px] bg-[#2E193B] rounded-full flex-shrink-0"></div>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:space-y-4 w-full mt-20 justify-end items-end sm:mr-[90px]">
+            {texts.distinction.points.map((point, index) => (
+              <div key={index} className="bg-[#2E193B] p-4 sm:p-6 w-full min-h-[100px] sm:w-[600px] sm:mr-[50px]">
+                <h3 className="text-white text-lg sm:text-[18px] font-semibold mb-2 sm:mb-3">{point.title}</h3>
+                <p className="text-white leading-relaxed text-sm sm:text-[16px]">{point.description}</p>
               </div>
-            </div>
-            <div className="flex flex-col space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-[40px]">
-              {texts.distinction.points.map((point, index) => (
-                <div key={index} className="bg-[#2E193B] p-4 sm:p-6 w-full max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-[647px] min-h-[100px] sm:min-h-[120px] md:h-auto lg:h-[133px]">
-                  <h3 className="text-white text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{point.title}</h3>
-                  <p className="text-white leading-relaxed text-sm sm:text-base">{point.description}</p>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Listo para contratar */}
       <section className="py-12 sm:py-16 bg-[#2E193B] text-center my-10 w-full">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center sm:space-y-[80px]">
           <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[272px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
             {texts.final_cta.tag}
           </Button>
@@ -515,14 +513,13 @@ const App: React.FC = () => {
 
       <footer className="bg-[#8B1A3F] text-white py-8 sm:py-12 lg:py-16 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8">
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 sm:items-start justify-start">
             {/* Company Info */}
-            <div className="sm:col-span-2 lg:col-span-2 text-center sm:text-left">
-              <div className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
-                <span className="font-bold">{texts.footer.company.logo.main}</span>
-                <span className="font-normal text-base sm:text-lg">{texts.footer.company.logo.sub}</span>
+            <div className="lg:col-span-2 text-center sm:text-left flex flex-col items-center justify-start">
+              <div className="text-xl sm:text-2xl font-bold mb-3">
+                <img src={cbcLogoWhite} alt="CBC Logo" className="h-[24px] sm:h-[23px]" />
               </div>
-              <p className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
+              <p className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 w-[300px] text-center">
                 {texts.footer.company.description}
               </p>
               <a href={`mailto:${texts.footer.company.email}`} className="text-xs sm:text-sm underline mb-2 block">
@@ -531,59 +528,61 @@ const App: React.FC = () => {
               <p className="text-xs sm:text-sm">{texts.footer.company.location}</p>
             </div>
 
-            {/* Servicios */}
-            <div className="text-center sm:text-left">
-              <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.servicios.title}</h3>
-              <ul className="space-y-1 sm:space-y-2">
-                {texts.footer.navigation.servicios.items.map((item, index) => (
-                  <li key={index}>
-                    <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <div className="flex w-full justify-between sm:items-start sm:justify-between">
+              {/* Servicios */}
+              <div className="text-left sm:text-left">
+                <h3 className="font-bold text-[13px] text-left">{texts.footer.navigation.servicios.title}</h3>
+                <ul className="text-left flex-col items-start space-y-1">
+                  {texts.footer.navigation.servicios.items.map((item, index) => (
+                    <li key={index}>
+                      <a href="#" className="text-[10px]">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            {/* Sobre nosotros */}
-            <div className="text-center sm:text-left">
-              <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.sobre_nosotros.title}</h3>
-              <ul className="space-y-1 sm:space-y-2">
-                {texts.footer.navigation.sobre_nosotros.items.map((item, index) => (
-                  <li key={index}>
-                    <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* Sobre nosotros */}
+              <div className="text-center sm:text-left">
+                <h3 className="font-bold text-left text-[13px]">{texts.footer.navigation.sobre_nosotros.title}</h3>
+                <ul className="text-left flex-col items-start space-y-1">
+                  {texts.footer.navigation.sobre_nosotros.items.map((item, index) => (
+                    <li key={index}>
+                      <a href="#" className="text-[10px]">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            {/* Legal */}
-            <div className="text-center sm:text-left">
-              <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.legal.title}</h3>
-              <ul className="space-y-1 sm:space-y-2">
-                {texts.footer.navigation.legal.items.map((item, index) => (
-                  <li key={index}>
-                    <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* Legal */}
+              <div className="text-center sm:text-left">
+                <h3 className="font-bold text-left text-[13px]">{texts.footer.navigation.legal.title}</h3>
+                <ul className="text-left flex-col items-start space-y-1">
+                  {texts.footer.navigation.legal.items.map((item, index) => (
+                    <li key={index}>
+                      <a href="#" className="text-[10px]">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            {/* Redes sociales */}
-            <div className="text-center sm:text-left">
-              <h3 className="font-bold text-xs sm:text-sm mb-3 sm:mb-4">{texts.footer.navigation.redes_sociales.title}</h3>
-              <ul className="space-y-1 sm:space-y-2">
-                {texts.footer.navigation.redes_sociales.items.map((item, index) => (
-                  <li key={index}>
-                    <a href="#" className="text-xs sm:text-sm hover:underline">{item}</a>
-                  </li>
-                ))}
-              </ul>
+              {/* Redes sociales */}
+              <div className="text-center sm:text-left">
+                <h3 className="font-bold text-left text-[13px]">{texts.footer.navigation.redes_sociales.title}</h3>
+                <ul className="text-left flex-col items-start space-y-1">
+                  {texts.footer.navigation.redes_sociales.items.map((item, index) => (
+                    <li key={index}>
+                      <a href="#" className="text-[10px]">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
           {/* Bottom section with copyright and PDF button */}
-          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-600 flex flex-col sm:flex-row justify-between items-center">
+          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white flex flex-col sm:flex-row justify-between items-center">
             <p className="text-xs sm:text-sm text-center sm:text-left mb-4 sm:mb-0">
-              {texts.footer.copyright}
+              {texts.footer.copyright}.
             </p>
           </div>
         </div>
