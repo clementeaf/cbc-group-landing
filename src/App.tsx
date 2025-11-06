@@ -20,6 +20,7 @@ const App: React.FC = () => {
   ];
   const [currentSpecializationIndex, setCurrentSpecializationIndex] = useState<number>(0);
   const [currentServiceIndex, setCurrentServiceIndex] = useState<number>(0);
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
   const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1024);
 
   /**
@@ -62,11 +63,44 @@ const App: React.FC = () => {
   }, [specializationSlides.length]);
 
   /**
-   * Avanza automáticamente el carrusel de servicios.
+   * Inicializa el carrusel en el primer elemento real (índice 1, ya que 0 es el clon del último).
+   */
+  useEffect((): void => {
+    setCurrentServiceIndex(1);
+  }, []);
+
+  /**
+   * Detecta cuando el carrusel está en el clon del primer elemento y lo salta al elemento real.
+   */
+  useEffect((): (() => void) | void => {
+    const totalCards: number = texts.services.cards.length;
+    if (currentServiceIndex > totalCards) {
+      setIsTransitioning(false);
+      const timeoutId: number = window.setTimeout(() => {
+        setCurrentServiceIndex(1);
+        window.setTimeout(() => {
+          setIsTransitioning(true);
+        }, 20);
+      }, 20);
+      return () => {
+        window.clearTimeout(timeoutId);
+      };
+    }
+  }, [currentServiceIndex, texts.services.cards.length]);
+
+  /**
+   * Avanza automáticamente el carrusel de servicios con transición infinita.
    */
   useEffect((): (() => void) => {
+    const totalCards: number = texts.services.cards.length;
     const intervalId: number = window.setInterval(() => {
-      setCurrentServiceIndex((prev: number) => (prev + 1) % texts.services.cards.length);
+      setCurrentServiceIndex((prev: number) => {
+        const nextIndex: number = prev + 1;
+        if (nextIndex > totalCards) {
+          return nextIndex;
+        }
+        return nextIndex;
+      });
     }, 4000);
     return () => {
       window.clearInterval(intervalId);
@@ -287,70 +321,85 @@ const App: React.FC = () => {
         {/* Mobile Carousel */}
         <div className="sm:hidden relative overflow-hidden">
           <div
-            className="flex transition-transform duration-500 ease-in-out"
+            className="flex"
             style={{
-              transform: `translateX(-${currentServiceIndex * getCarouselOffset()}%)`
+              transform: `translateX(-${currentServiceIndex * getCarouselOffset()}%)`,
+              transition: isTransitioning ? 'transform 500ms ease-in-out' : 'none'
             }}
           >
-            {texts.services.cards.map((card, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 px-2 w-full"
-              >
-                <div className="relative w-full min-h-[400px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                  <img
-                    src={getServiceImage(card.title)}
-                    alt={card.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4">
-                    <div className="flex justify-between items-start w-full">
-                      <h3 className="text-white text-lg font-semibold flex-1">{card.title}</h3>
-                      <button
-                        onClick={() => handleServiceCardClick(index, card.title)}
-                        aria-label={`${index === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
-                        aria-pressed={index === overrideIndex}
-                        className="ml-4 w-6 h-6 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-300 hover:rotate-45 flex-shrink-0"
-                      >
-                        {index === overrideIndex ? '×' : '+'}
-                      </button>
+            {[texts.services.cards[texts.services.cards.length - 1], ...texts.services.cards, texts.services.cards[0]].map((card, index) => {
+              const realIndex: number = index === 0 
+                ? texts.services.cards.length - 1 
+                : index === texts.services.cards.length + 1 
+                  ? 0 
+                  : index - 1;
+              return (
+                <div
+                  key={`${realIndex}-${index}`}
+                  className="flex-shrink-0 px-2 w-full"
+                >
+                  <div className="relative w-full min-h-[400px] overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <img
+                      src={getServiceImage(card.title)}
+                      alt={card.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-between p-4">
+                      <div className="flex justify-between items-start w-full">
+                        <h3 className="text-white text-lg font-semibold flex-1">{card.title}</h3>
+                        <button
+                          onClick={() => handleServiceCardClick(realIndex, card.title)}
+                          aria-label={`${realIndex === overrideIndex ? 'Ocultar' : 'Mostrar'} detalle de ${card.title}`}
+                          aria-pressed={realIndex === overrideIndex}
+                          className="ml-4 w-6 h-6 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-300 hover:rotate-45 flex-shrink-0"
+                        >
+                          {realIndex === overrideIndex ? '×' : '+'}
+                        </button>
+                      </div>
+                      <p className="text-white leading-relaxed text-sm">
+                        {realIndex === overrideIndex
+                          ? (card.title === 'Headhunting Ejecutivo'
+                            ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
+                            : card.title === 'Reclutamiento Continuo'
+                              ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
+                              : card.title === 'Mapeo de Talento y Benchmark Salarial'
+                                ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
+                                : card.title === 'Evaluaciones por Competencias y Psicométricas'
+                                  ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
+                                  : card.title === 'Consultoría en Personas y Cultura'
+                                    ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
+                                    : card.title === 'Onboarding'
+                                      ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
+                                      : card.description)
+                          : card.description}
+                      </p>
                     </div>
-                    <p className="text-white leading-relaxed text-sm">
-                      {index === overrideIndex
-                        ? (card.title === 'Headhunting Ejecutivo'
-                          ? 'Revolucionamos la búsqueda de talento con tecnología avanzada y un enfoque humano único que redefine el headhunting. Mantenemos un acompañamiento cercano y confidencial, que acelera el tiempo de contratación y reduce costos operativos.'
-                          : card.title === 'Reclutamiento Continuo'
-                            ? 'Muy pronto, una nueva forma de enfrentar la bsuqueda de talentos.'
-                            : card.title === 'Mapeo de Talento y Benchmark Salarial'
-                              ? 'Análisis de mercado y mapeo de talentos disponibles, alineados con planes estratégicos del cliente, para anticipar necesidades de contratación y desarrollo de liderazgo.\n\nEstos servicios combinan tecnología, enfoque humano y estratégico,  porque mantenemos un constante conocimiento del mercado, sus rentas, descripciones de cargos, formación de equipos, y otros escenarios innovadores y disruptivos en el mercado.'
-                              : card.title === 'Evaluaciones por Competencias y Psicométricas'
-                                ? 'Servicios especializados que no solo buscan candidatos, sino que diseñan estrategias integrales para promover diversidad y equidad en los niveles ejecutivos. Evaluamos a los candidatos con test únicos, creados a la medida de la empresa, orientados a encontrar las habilidades y competencias para el cargo, alineados a conocimientos tecnicos del rol y habilidades blandas necesarias para integrarse al equipo.'
-                                : card.title === 'Consultoría en Personas y Cultura'
-                                  ? 'Implementamos una metodología propia, rigurosa, cuyo enfoque reduce riesgos y mejora la calidad de los procesos asegurando que el talento encaje no solo en habilidades técnicas sino también en valores y cultura organizacional.'
-                                  : card.title === 'Onboarding'
-                                    ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
-                                    : card.description)
-                        : card.description}
-                    </p>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
         {/* Mobile Navigation Indicators */}
         <div className="sm:hidden flex justify-center mt-6 gap-2">
-          {texts.services.cards.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentServiceIndex(index)}
-              aria-label={`Ir a tarjeta ${index + 1}`}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentServiceIndex
-                ? 'bg-[#960C41] w-8'
-                : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-            />
-          ))}
+          {texts.services.cards.map((_, index) => {
+            const realIndex: number = currentServiceIndex > texts.services.cards.length ? 0 : currentServiceIndex === 0 ? texts.services.cards.length - 1 : currentServiceIndex - 1;
+            const isActive: boolean = realIndex === index;
+            return (
+              <button
+                key={index}
+                onClick={() => {
+                  setIsTransitioning(true);
+                  setCurrentServiceIndex(index + 1);
+                }}
+                aria-label={`Ir a tarjeta ${index + 1}`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${isActive
+                  ? 'bg-[#960C41] w-8'
+                  : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+              />
+            );
+          })}
         </div>
         {/* Desktop/Tablet Grid */}
         <div className="hidden sm:grid sm:grid-cols-3 gap-4 lg:gap-6">
