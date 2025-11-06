@@ -275,10 +275,10 @@ const App: React.FC = () => {
               {texts.what_we_do.button}
             </Button>
             <div className="text-[16px] sm:text-[20px] font-[500] text-[#2F1E40] text-center flex flex-col justify-center w-full">
-              <div className="flex items-end justify-start ml-4 p-0 w-[310px]">
-                  En<img src={cbcLogo} alt="CBC Logo" className="h-[16px] px-2 mb-[1.5px]" />conectamos empresas
+              <div className="flex items-end justify-start ml-4 p-0 w-[310px] sm:w-[500px] sm:ml-0">
+                  En<img src={cbcLogo} alt="CBC Logo" className="h-[16px] sm:h-[20px] px-2 mb-[1.5px] sm:mb-[2.5px]" />conectamos empresas
               </div>
-              <div className="flex p-0 w-[335px] text-center">
+              <div className="flex p-0 w-[335px] text-center sm:text-left sm:w-[500px]">
               {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} 
               {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
               </div>
@@ -298,7 +298,7 @@ const App: React.FC = () => {
 
       {/* Servicios */}
       <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative px-10 sm:w-full">
-        <div className="px-0 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto">
+        <div className="px-0 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto sm:ml-5">
           <div className="flex flex-col items-center sm:items-start">
             <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[231px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
               {texts.services.button}
@@ -463,6 +463,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Nuestro compromiso */}
       <section className="py-8 px-10 bg-white w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
@@ -470,7 +471,7 @@ const App: React.FC = () => {
               <Button className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto lg:mx-0 text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
                 {texts.distinction.tag}
               </Button>
-              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[500] text-[#2E193B] leading-tight mb-6 sm:mb-8 pt-8 sm:pt-12 lg:pt-20" style={{ lineHeight: '1.1' }}>
+              <p className="text-3xl sm:text-4xl font-[500] text-[#2E193B] mb-6 sm:mb-8 pt-8" style={{ lineHeight: '1.1' }}>
                 <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line1}</span><br />
                 <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line2}</span><br />
                 <span className="inline-block px-2 py-1 w-full sm:w-auto font-[900] break-words">{texts.distinction.title.line3}</span>
