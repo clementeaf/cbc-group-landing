@@ -7,6 +7,7 @@ import mapeoTalentoImage from './assets/mapeoTalento.png';
 import evaluacionesImage from './assets/evaluaciones.png';
 import consultoriaImage from './assets/consultoria.png';
 import onBoardingImage from './assets/onBoarding.png';
+import cbcLogo from './assets/cbcLogo.png';
 
 const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -118,9 +119,8 @@ const App: React.FC = () => {
       <section className="bg-[#FFFFFF] rounded-[20px] w-[90%] shadow-sm fixed top-5 left-1/2 transform -translate-x-1/2 z-50">
         <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4">
           <div className="flex justify-between items-center gap-1">
-            <div className="text-[20px] font-bold text-red-800">
-              <span className="font-bold whitespace-nowrap">{texts.header.logo.main}</span>
-              <span className="font-normal text-[16px] ml-1 whitespace-nowrap">{texts.header.logo.sub}</span>
+            <div className="flex items-center justify-center">
+              <img src={cbcLogo} alt="CBC Logo" className="h-[25px]" />
             </div>
 
             {/* Desktop Navigation */}
@@ -226,18 +226,6 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* 1st Geometric bar section */}
-      {/* <section className="hidden md:block py-8 sm:py-12 lg:py-16 bg-white w-full min-h-[200px] sm:min-h-[300px] md:min-h-[400px] lg:min-h-[500px] xl:min-h-[700px]">
-        <div className="flex justify-center items-center flex-wrap gap-1 sm:gap-2 md:gap-3 lg:gap-4 px-2 sm:px-4">
-          <div className="w-12 h-10 sm:w-20 sm:h-14 md:w-28 md:h-20 lg:w-32 lg:h-48 xl:w-[400px] xl:h-[350px] bg-gray-200 rounded-t-[50%] flex-shrink-0"></div>
-          <div className="w-12 h-10 sm:w-[72px] sm:h-14 md:w-24 md:h-20 lg:w-28 lg:h-48 xl:w-[230px] xl:h-[350px] bg-gray-200 rounded-l-full flex-shrink-0"></div>
-          <div className="w-14 h-10 sm:w-[88px] sm:h-14 md:w-[120px] md:h-20 lg:w-36 lg:h-48 xl:w-[350px] xl:h-[350px] bg-gray-200 rounded-full flex-shrink-0"></div>
-          <div className="w-12 h-10 sm:w-[72px] sm:h-14 md:w-24 md:h-20 lg:w-28 lg:h-48 xl:w-[220px] xl:h-[350px] bg-[#8B1A3F] rounded-r-full flex-shrink-0"></div>
-          <div className="w-14 h-10 sm:w-20 sm:h-14 md:w-28 md:h-20 lg:w-32 lg:h-48 xl:w-[320px] xl:h-[350px] bg-gray-200 rounded-r-full flex-shrink-0"></div>
-          <div className="w-12 h-10 sm:w-[72px] sm:h-14 md:w-24 md:h-20 lg:w-28 lg:h-48 xl:w-[220px] xl:h-[350px] bg-[#2F1E40] rounded-l-full flex-shrink-0"></div>
-        </div>
-      </section> */}
-
       {/* Combinamos datos */}
       <section className="text-white min-h-[250px] w-full flex flex-col items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
         <p className="text-[17.92px] sm:text-[27px] font-[500] text-center" style={{ lineHeight: '1.2' }}>
@@ -255,9 +243,14 @@ const App: React.FC = () => {
               {texts.what_we_do.button}
             </Button>
             <div className="text-[20px] font-[500] text-[#2F1E40] text-justify flex flex-col justify-center">
-              <p className="text-center sm:text-left">
-                En <span className="font-[700] text-[#960C41]">CBC</span><span className="text-[#960C41] font-[50]">Group</span> conectamos empresas {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
-              </p>
+              <div className="flex items-center justify-start">
+                <p className="text-center sm:text-left">
+                  En
+                </p>
+                <div><img src={cbcLogo} alt="CBC Logo" className="h-[20px] px-2" /></div>
+                conectamos empresas
+              </div>
+              {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
             </div>
             <Button className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white rounded-[40px] text-sm sm:text-base w-[200px] h-[50px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.cta_button}
@@ -273,7 +266,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Servicios */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative px-4 sm:pl-6 sm:w-full">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative px-10 sm:w-full">
         <div className="px-0 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto">
           <div className="flex flex-col items-center sm:items-start">
             <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[231px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
@@ -398,7 +391,7 @@ const App: React.FC = () => {
                               : card.title === 'Onboarding'
                                 ? 'Coordinamos y facilitamos la orientación inicial en la empresa y la presentación a los equipos de trabajo. El criterio de éxito es lograr una integración exitosa desde el primer momento, por eso el proceso tiene un seguimiento estructurado hasta los 90 días, evaluando la adaptación progresiva.'
                                 : card.description)
-                      : card.description}
+                    : card.description}
                 </p>
               </div>
             </div>
@@ -424,7 +417,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-8 sm:py-12 lg:py-16 bg-white">
+      <section className="py-8 px-10 bg-white w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
             <div className="flex flex-col text-center lg:text-left">
