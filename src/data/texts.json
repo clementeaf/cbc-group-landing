@@ -25,16 +25,16 @@
     }
   },
   "description": {
-    "text": "Combinamos datos y criterio de un equipo experimentado para alinear cada búsqueda a tu estrategia y cultura empresarial"
+    "text": "Combinamos datos con la experiencia de un equipo experimentado para alinear cada búsqueda a tu estrategia y cultura empresarial"
   },
   "what_we_do": {
     "button": "Qué hacemos",
     "text": {
       "line1": "En CBCGroup conectamos empresas",
       "line2": "con el talento correcto. Humanizamos el",
-      "line3": "reclutamiento con procesos claros,",
-      "line4": "simples, y fundamentados, utilizando la IA",
-      "line5": "a nuestro favor."
+      "line3": "reclutamiento con procesos a tú medida, ",
+      "line4": "utilizando la IA a nuestro favor.",
+      "line5": ""
     },
     "cta_button": "Agendar reunión"
   },

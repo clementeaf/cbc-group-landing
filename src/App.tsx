@@ -149,7 +149,7 @@ const App: React.FC = () => {
   };
   return (
     <div className="flex flex-col min-h-screen bg-[#FAFAFA] overflow-x-hidden w-full max-w-full items-center">
-      {/* Navbar */}
+      {/* Navbar */} {/* Optimizado */}
       <section className="bg-[#FFFFFF] rounded-[20px] w-[90%] shadow-sm fixed top-5 left-1/2 transform -translate-x-1/2 z-50">
         <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 lg:py-4">
           <div className="flex justify-between items-center gap-1">
@@ -229,21 +229,24 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Presentation and buttons Section */}
+      {/* Presentation and buttons Section */}{/* Optimizado */}
       <section className="flex flex-col items-center px-4 py-[115px]">
-        <div className="text-center max-w-4xl w-full h-full flex flex-col justify-center">
-          <div className="flex-1 flex justify-center items-center my-10">
-            <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6 lg:space-x-8">
-              <div className="w-12 h-24 bg-[#960C41] rounded-r-full flex-shrink-0"></div>
-              <div className="w-24 h-24 bg-[#2E193B] rounded-full flex-shrink-0"></div>
-              <div className="w-12 h-24 bg-[#960C41] rounded-l-full flex-shrink-0"></div>
-            </div>
+        {/* DOD */}
+        <div className="flex-1 flex justify-center items-center my-[120px]">
+          <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6 lg:space-x-8">
+            <div className="w-12 h-24 bg-[#960C41] rounded-r-full flex-shrink-0"></div>
+            <div className="w-24 h-24 bg-[#2E193B] rounded-full flex-shrink-0"></div>
+            <div className="w-12 h-24 bg-[#960C41] rounded-l-full flex-shrink-0"></div>
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#2E193B] mb-6 sm:mb-8 md:mb-12 leading-tight font-[500]">
+        </div>
+
+        {/* Title and buttons */}{/* Optimizado */}
+        <div className='flex flex-col items-center justify-center'>
+          <h1 className="text-2xl sm:text-[60px] sm:w-full font-bold text-[#2E193B] mb-6 sm:mb-8 md:mb-12 leading-tight font-[500] text-center">
             {texts.main.title.line1}<br />
             {texts.main.title.line2}
           </h1>
-          <div className="flex flex-col sm:flex-row gap-[25px] sm:gap-[19.2px] justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-[25px] sm:gap-[19.2px] justify-center items-center w-[300px]">
             <Button
               className="bg-[#960C41] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base md:text-lg w-4/5 sm:w-auto"
             >
@@ -261,10 +264,9 @@ const App: React.FC = () => {
       {/* Combinamos datos */}
       <section className="text-white min-h-[250px] w-full flex flex-col items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
         <p className="text-[16px] sm:text-[27px] font-[500] text-center" style={{ lineHeight: '1.2' }}>
-          Combinamos datos y criterio de un equipo
-          experimentado para alinear cada búsqueda a tu
+          Combinamos datos y la experiencia de nuestro equipo para alinear cada búsqueda a tú
         </p>
-        <span className="bg-[#960C41] px-4 py sm:text-[27px]">estrategia y cultura empresarial</span>
+        <span className="bg-[#960C41] px-4 py mt-1 sm:text-[27px]">estrategia y cultura empresarial</span>
       </section>
 
       {/* Qué hacemos */}
@@ -276,11 +278,14 @@ const App: React.FC = () => {
             </Button>
             <div className="text-[16px] sm:text-[20px] font-[500] text-[#2F1E40] text-center flex flex-col justify-center w-full">
               <div className="flex items-end justify-start ml-4 p-0 w-[310px] sm:w-[500px] sm:ml-0">
-                  En<img src={cbcLogo} alt="CBC Logo" className="h-[16px] sm:h-[20px] px-2 mb-[1.5px] sm:mb-[2.5px]" />conectamos empresas
+                En<img src={cbcLogo} alt="CBC Logo" className="h-[16px] sm:h-[20px] px-2 mb-[3px] sm:mb-[2.5px]" />conectamos empresas
               </div>
               <div className="flex p-0 w-[335px] text-center sm:text-left sm:w-[500px]">
-              {texts.what_we_do.text.line2} {texts.what_we_do.text.line3} 
-              {texts.what_we_do.text.line4} {texts.what_we_do.text.line5}
+                {texts.what_we_do.text.line2} {texts.what_we_do.text.line3}
+              </div>
+              <div className="flex flex-col items-center w-[335px] text-center sm:text-left sm:w-[500px]">
+                {texts.what_we_do.text.line4} <br />
+                {texts.what_we_do.text.line5}
               </div>
             </div>
             <Button className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white rounded-[40px] text-sm sm:text-base w-[200px] h-[50px] flex items-center justify-center mx-auto lg:mx-0">
@@ -325,10 +330,10 @@ const App: React.FC = () => {
             }}
           >
             {[texts.services.cards[texts.services.cards.length - 1], ...texts.services.cards, texts.services.cards[0]].map((card, index) => {
-              const realIndex: number = index === 0 
-                ? texts.services.cards.length - 1 
-                : index === texts.services.cards.length + 1 
-                  ? 0 
+              const realIndex: number = index === 0
+                ? texts.services.cards.length - 1
+                : index === texts.services.cards.length + 1
+                  ? 0
                   : index - 1;
               return (
                 <div
