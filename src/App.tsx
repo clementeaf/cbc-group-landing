@@ -461,7 +461,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <footer className="bg-[#8B1A3F] text-white py-8 sm:py-12 lg:py-16">
+      <footer className="bg-[#8B1A3F] text-white py-8 sm:py-12 lg:py-16 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8">
             {/* Company Info */}
