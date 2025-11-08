@@ -2,6 +2,13 @@
 
 Landing page para CBC Group construida con React, TypeScript, Vite y Tailwind CSS.
 
+## 🌐 Aplicación Desplegada
+
+La aplicación está desplegada y disponible en:
+
+- **CloudFront (Recomendado)**: https://d2e7ltyhy5atb5.cloudfront.net
+- **S3 Directo**: https://cbc-group-landing.s3-website-us-east-1.amazonaws.com
+
 ## 🚀 Características
 
 - ⚡️ **Vite** - Build rápido y HMR
