@@ -310,7 +310,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Services Section Cards*/}
-      <div className='bg-gray-100 flex flex-col items-center justify-center sm:w-full'>
+      <div className='bg-gray-100 flex flex-col items-center justify-center w-full sm:w-full'>
         <section className="py-8 w-[90%] flex justify-center flex-col my-10 ">
           {/* Mobile Carousel */}
           <div className="sm:hidden relative overflow-hidden">
@@ -467,7 +467,7 @@ const App: React.FC = () => {
             <p className="text-3xl sm:text-[60px] font-[300] text-[#2E193B] mb-6 pt-8" style={{ lineHeight: '1.1' }}>
               <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line1}</span><br />
               <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line2}</span><br />
-              <span className="inline-block px-2 py-1 w-full sm:w-auto font-[900] break-words">{texts.distinction.title.line3}</span>
+              <span className="inline-block px-2 py-1 w-full sm:w-auto font-[800] break-words">{texts.distinction.title.line3}</span>
             </p>
             <div className="flex flex-col space-y-3 sm:space-y-4 items-center lg:items-start pt-[65px]">
               <div className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 xl:w-[280px] xl:h-[150px] bg-[#960C41] rounded-t-full flex-shrink-0"></div>
@@ -475,7 +475,7 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:space-y-4 w-full mt-20 justify-end items-end sm:mr-[90px]">
+          <div className="flex flex-col space-y-4 sm:space-y-4 w-full mt-20 justify-end items-end sm:mr-[70px]">
             {texts.distinction.points.map((point, index) => (
               <div key={index} className="bg-[#2E193B] p-4 sm:p-6 w-full min-h-[100px] sm:w-[600px] sm:mr-[50px]">
                 <h3 className="text-white text-lg sm:text-[18px] font-semibold mb-2 sm:mb-3">{point.title}</h3>
