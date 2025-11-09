@@ -274,21 +274,11 @@ const App: React.FC = () => {
       {/* Qué hacemos */}
       <section className="py-16 flex items-center w-[90%] sm:w-full sm:py-[100px]">
         <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full mx-auto">
-          <div className="flex-1 max-w-2xl text-center lg:text-left flex flex-col justify-center gap-12 sm:ml-5">
+          <div className="flex-1 w-full text-center lg:text-left flex flex-col justify-center gap-12 sm:ml-5 items-center sm:items-start">
             <Button className="bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.button}
             </Button>
-            <div className="text-[16px] sm:text-[25px] font-[500] text-[#2F1E40] flex flex-col items-center justify-center w-full">
-              <div className="flex flex-col justify-start w-[400px] sm:w-[800px] sm:ml-0 text-center ml-28">
-                <p className='flex items-center'>En <img src={cbcLogo} alt="CBC Logo" className="h-[16px] sm:h-[24px] mb px-2 sm:mb-[6px]" /> conectamos empresas</p>
-              </div>
-              <p>con el talento correcto.</p>
-              <div className="flex p-0 w-[335px] text-center sm:text-left sm:w-[680px]">
-                Humanizamos el reclutamiento con procesos a tú medida, utilizando la IA a nuestro favor.
-              </div>
-              <div className="flex flex-col items-center w-[335px] text-center sm:text-left sm:w-[500px] sm:items-start">
-              </div>
-            </div>
+            <p className='font-[500] w-[85%]'>En <span className='mx font-[700] text-[#960C41]'>CBC<span className='font-[500]'>Group</span></span> conectamos empresas con el talento correcto. Humanizamos el reclutamiento con procesos a tú medida, utilizando la IA a nuestro favor.</p>
             <Button className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white rounded-[40px] text-sm sm:text-base w-[200px] h-[50px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.cta_button}
             </Button>
