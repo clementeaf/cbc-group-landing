@@ -278,10 +278,11 @@ const App: React.FC = () => {
             <Button className="bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.button}
             </Button>
-            <div className="text-[16px] sm:text-[25px] font-[500] text-[#2F1E40] text-center flex flex-col justify-center w-full">
-              <div className="flex items-end justify-start ml-4 p-0 w-[310px] sm:w-[800px] sm:ml-0">
-                En<img src={cbcLogo} alt="CBC Logo" className="h-[16px] sm:h-[24px] px-2 mb-[3px] sm:mb-[6px]" />conectamos empresas con el talento correcto.
+            <div className="text-[16px] sm:text-[25px] font-[500] text-[#2F1E40] flex flex-col items-center justify-center w-full">
+              <div className="flex flex-col justify-start w-[400px] sm:w-[800px] sm:ml-0 text-center ml-28">
+                <p className='flex items-center'>En <img src={cbcLogo} alt="CBC Logo" className="h-[16px] sm:h-[24px] mb px-2 sm:mb-[6px]" /> conectamos empresas</p>
               </div>
+              <p>con el talento correcto.</p>
               <div className="flex p-0 w-[335px] text-center sm:text-left sm:w-[680px]">
                 Humanizamos el reclutamiento con procesos a tú medida, utilizando la IA a nuestro favor.
               </div>
