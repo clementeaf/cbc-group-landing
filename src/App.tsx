@@ -264,11 +264,12 @@ const App: React.FC = () => {
       </section>
 
       {/* Combinamos datos */}
-      <section className="text-white min-h-[250px] w-full flex flex-col items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
+      <section className="text-white min-h-[150px] w-full flex flex-col items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
         <p className="text-[16px] sm:text-[27px] font-[500] text-center" style={{ lineHeight: '1.2' }}>
-          Combinamos datos y la experiencia de nuestro equipo para alinear cada búsqueda a tú
+          {/* Combinamos datos y la experiencia de nuestro equipo para alinear cada búsqueda a tú */}
+          En que nos diferenciamos
         </p>
-        <span className="bg-[#960C41] px-4 py mt-1 sm:text-[27px]">estrategia y cultura empresarial</span>
+        {/* <span className="bg-[#960C41] px-4 py mt-1 sm:text-[27px]">estrategia y cultura empresarial</span> */}
       </section>
 
       {/* Qué hacemos */}
