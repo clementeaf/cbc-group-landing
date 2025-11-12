@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [overrideIndex, setOverrideIndex] = useState<number | null>(null);
   const specializationSlides: ReadonlyArray<string> = [
-    'Procesos en 10 días',
+    'Procesos en 15 días',
     'Match cultural sobre 75%',
     'Adecuación de perfil sobre 80%',
     'Funel de prospección'
@@ -266,10 +266,37 @@ const App: React.FC = () => {
       {/* Combinamos datos */}
       <section className="text-white min-h-[150px] w-full flex flex-col items-center justify-center px-4" style={{ backgroundColor: '#2E193B' }}>
         <p className="text-[16px] sm:text-[27px] font-[500] text-center" style={{ lineHeight: '1.2' }}>
-          {/* Combinamos datos y la experiencia de nuestro equipo para alinear cada búsqueda a tú */}
-          En que nos diferenciamos
+          Combinamos datos y la experiencia de nuestro equipo para alinear cada búsqueda a tú
         </p>
-        {/* <span className="bg-[#960C41] px-4 py mt-1 sm:text-[27px]">estrategia y cultura empresarial</span> */}
+        <span className="bg-[#960C41] px-4 py mt-1 sm:text-[27px]">estrategia y cultura empresarial</span>
+      </section>
+
+      <section className="py-8 px-6 bg-white w-full sm:w-full">
+        <Button className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto sm:ml-[100px] text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
+          {texts.distinction.tag}
+        </Button>
+        <div className="gap-8 sm:flex sm:flex-row sm:items-center sm:justify-between sm:w-full">
+          <div className="flex flex-col text-center lg:text-left sm:w-[50%] sm:ml-[90px]">
+            <p className="text-3xl sm:text-[60px] font-[300] text-[#2E193B] mb-6 pt-8" style={{ lineHeight: '1.1' }}>
+              <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line1}</span><br />
+              <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line2}</span><br />
+              <span className="inline-block px-2 py-1 w-full sm:w-auto font-[800] break-words">{texts.distinction.title.line3}</span>
+            </p>
+            <div className="flex flex-col space-y-3 sm:space-y-4 items-center lg:items-start pt-[65px]">
+              <div className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 xl:w-[280px] xl:h-[150px] bg-[#960C41] rounded-t-full flex-shrink-0"></div>
+              <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-[280px] xl:h-[280px] bg-[#2E193B] rounded-full flex-shrink-0"></div>
+            </div>
+          </div>
+
+          <div className="flex flex-col space-y-4 sm:space-y-4 w-full mt-20 justify-end items-end sm:mr-[70px]">
+            {texts.distinction.points.map((point, index) => (
+              <div key={index} className="bg-[#2E193B] p-4 sm:p-6 w-full min-h-[100px] sm:w-[600px] sm:mr-[50px]">
+                <h3 className="text-white text-lg sm:text-[18px] font-semibold mb-2 sm:mb-3">{point.title}</h3>
+                <p className="text-white leading-relaxed text-sm sm:text-[16px]">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Qué hacemos */}
@@ -459,33 +486,7 @@ const App: React.FC = () => {
 
 
       {/* Nuestro compromiso */}
-      <section className="py-8 px-6 bg-white w-full sm:w-full">
-        <Button className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto sm:ml-[100px] text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
-          {texts.distinction.tag}
-        </Button>
-        <div className="gap-8 sm:flex sm:flex-row sm:items-center sm:justify-between sm:w-full">
-          <div className="flex flex-col text-center lg:text-left sm:w-[50%] sm:ml-[90px]">
-            <p className="text-3xl sm:text-[60px] font-[300] text-[#2E193B] mb-6 pt-8" style={{ lineHeight: '1.1' }}>
-              <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line1}</span><br />
-              <span className="inline-block px-2 py-1 w-full sm:w-auto break-words">{texts.distinction.title.line2}</span><br />
-              <span className="inline-block px-2 py-1 w-full sm:w-auto font-[800] break-words">{texts.distinction.title.line3}</span>
-            </p>
-            <div className="flex flex-col space-y-3 sm:space-y-4 items-center lg:items-start pt-[65px]">
-              <div className="w-24 h-12 sm:w-32 sm:h-16 md:w-40 md:h-20 lg:w-48 lg:h-24 xl:w-[280px] xl:h-[150px] bg-[#960C41] rounded-t-full flex-shrink-0"></div>
-              <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-[280px] xl:h-[280px] bg-[#2E193B] rounded-full flex-shrink-0"></div>
-            </div>
-          </div>
-
-          <div className="flex flex-col space-y-4 sm:space-y-4 w-full mt-20 justify-end items-end sm:mr-[70px]">
-            {texts.distinction.points.map((point, index) => (
-              <div key={index} className="bg-[#2E193B] p-4 sm:p-6 w-full min-h-[100px] sm:w-[600px] sm:mr-[50px]">
-                <h3 className="text-white text-lg sm:text-[18px] font-semibold mb-2 sm:mb-3">{point.title}</h3>
-                <p className="text-white leading-relaxed text-sm sm:text-[16px]">{point.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
       {/* Listo para contratar */}
       <section className="py-12 sm:py-16 bg-[#2E193B] text-center my-10 w-full">
