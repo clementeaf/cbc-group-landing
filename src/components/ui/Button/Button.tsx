@@ -1,13 +1,9 @@
 import React from 'react';
 
-export interface ButtonProps {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  onClick?: () => void;
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
-  disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
-  className?: string;
   ariaLabel?: string;
 }
 
@@ -25,6 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   className = '',
   ariaLabel,
+  ...rest
 }) => {
   const baseClasses = 'font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
   
@@ -55,6 +52,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       aria-label={ariaLabel}
       className={finalClassName}
+      {...rest}
     >
       {children}
     </button>

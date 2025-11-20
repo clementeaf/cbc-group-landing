@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from './components';
+import { useCalCom } from './hooks';
 import texts from './data/texts.json';
 import headHuntingImage from './assets/headHunting.png';
 import reclutamientoImage from './assets/reclutamiento.png';
@@ -23,6 +24,8 @@ const App: React.FC = () => {
   const [currentServiceIndex, setCurrentServiceIndex] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(true);
   const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+  useCalCom();
 
   /**
    * Detecta el ancho de la ventana para calcular el desplazamiento del carrusel.
@@ -307,7 +310,12 @@ const App: React.FC = () => {
               {texts.what_we_do.button}
             </Button>
             <p className='font-[500] w-[85%]'>En <span className='mx font-[700] text-[#960C41]'>CBC<span className='font-[500]'>Group</span></span> conectamos empresas con el talento correcto. Humanizamos el reclutamiento con procesos a tú medida, utilizando la IA a nuestro favor.</p>
-            <Button className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white rounded-[40px] text-sm sm:text-base w-[200px] h-[50px] flex items-center justify-center mx-auto lg:mx-0">
+            <Button 
+              className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white rounded-[40px] text-sm sm:text-base w-[200px] h-[50px] flex items-center justify-center mx-auto lg:mx-0"
+              data-cal-namespace="30min"
+              data-cal-link="cbcgroup/30min"
+              data-cal-config='{"layout":"month_view"}'
+            >
               {texts.what_we_do.cta_button}
             </Button>
           </div>
@@ -498,7 +506,12 @@ const App: React.FC = () => {
             {texts.final_cta.title.line1}<br />
             {texts.final_cta.title.line2}
           </h2>
-          <Button className="bg-white text-[#8B1A3F] px-8 sm:px-10 lg:px-12 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium">
+          <Button 
+            className="bg-white text-[#8B1A3F] px-8 sm:px-10 lg:px-12 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium"
+            data-cal-namespace="30min"
+            data-cal-link="cbcgroup/30min"
+            data-cal-config='{"layout":"month_view"}'
+          >
             {texts.final_cta.button}
           </Button>
         </div>
