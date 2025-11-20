@@ -168,6 +168,9 @@ const App: React.FC = () => {
               <Button
                 variant="outline"
                 className="border-2 border-[#960C41] text-[#960C41] rounded-full w-[100px] lg:w-[120px] xl:w-[140px] 2xl:w-[165px] h-[40px] lg:h-[50px] xl:h-[58px] 2xl:h-[66px] flex items-center justify-center text-[10px] lg:text-xs xl:text-sm 2xl:text-base flex-shrink-0"
+                data-cal-namespace="30min"
+                data-cal-link="cbcgroup/30min"
+                data-cal-config='{"layout":"month_view"}'
               >
                 {texts.header.button.hablemos}
               </Button>
@@ -178,6 +181,9 @@ const App: React.FC = () => {
               <Button
                 variant="outline"
                 className="border-[1.5px] sm:border-2 border-[#960C41] text-[#960C41] rounded-full w-[70px] sm:w-[90px] md:w-[110px] h-[32px] sm:h-[40px] md:h-[48px] flex items-center justify-center text-[9.6px] sm:text-[10px] md:text-xs font-[600] flex-shrink-0"
+                data-cal-namespace="30min"
+                data-cal-link="cbcgroup/30min"
+                data-cal-config='{"layout":"month_view"}'
               >
                 {texts.header.button.hablemos}
               </Button>
@@ -254,11 +260,17 @@ const App: React.FC = () => {
           <div className="flex flex-col sm:flex-row sm:w-full gap-[25px] pt-[25px] sm:gap-[60px] justify-center items-center w-[300px]">
             <Button
               className="bg-[#960C41] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base md:text-lg w-4/5 sm:w-auto"
+              data-cal-namespace="30min"
+              data-cal-link="cbcgroup/30min"
+              data-cal-config='{"layout":"month_view"}'
             >
               {texts.main.buttons.soy_empresa}
             </Button>
             <Button
               className="bg-[#2E193B] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base md:text-lg w-4/5 sm:w-auto"
+              data-cal-namespace="30min"
+              data-cal-link="cbcgroup/30min"
+              data-cal-config='{"layout":"month_view"}'
             >
               {texts.main.buttons.soy_profesional}
             </Button>
@@ -478,7 +490,12 @@ const App: React.FC = () => {
           </div>
         </section>
         <section className="flex justify-center px-4 pb-[90px]">
-          <Button className="bg-[#960C41] text-white rounded-full text-base sm:text-lg font-medium w-[200px] h-[42px] flex items-center justify-center">
+          <Button 
+            className="bg-[#960C41] text-white rounded-full text-base sm:text-lg font-medium w-[200px] h-[42px] flex items-center justify-center"
+            data-cal-namespace="30min"
+            data-cal-link="cbcgroup/30min"
+            data-cal-config='{"layout":"month_view"}'
+          >
             {texts.cta.button}
           </Button>
         </section>
