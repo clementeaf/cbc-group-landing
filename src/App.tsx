@@ -260,20 +260,17 @@ const App: React.FC = () => {
           <div className="flex flex-col sm:flex-row sm:w-full gap-[25px] pt-[25px] sm:gap-[60px] justify-center items-center w-[300px]">
             <Button
               className="bg-[#960C41] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base md:text-lg w-4/5 sm:w-auto"
-              data-cal-namespace="30min"
-              data-cal-link="cbcgroup/30min"
-              data-cal-config='{"layout":"month_view"}'
             >
               {texts.main.buttons.soy_empresa}
             </Button>
-            <Button
-              className="bg-[#2E193B] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base md:text-lg w-4/5 sm:w-auto"
-              data-cal-namespace="30min"
-              data-cal-link="cbcgroup/30min"
-              data-cal-config='{"layout":"month_view"}'
+            <a
+              href="https://tally.so/r/BzzVGe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#2E193B] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-[40px] text-sm sm:text-base md:text-lg w-4/5 sm:w-auto font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 flex items-center justify-center text-center hover:opacity-90"
             >
               {texts.main.buttons.soy_profesional}
-            </Button>
+            </a>
           </div>
         </div>
       </section>
