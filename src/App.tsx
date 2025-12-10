@@ -284,9 +284,9 @@ const App: React.FC = () => {
       </section>
 
       <section className="py-8 px-6 bg-white w-full sm:w-full">
-        <Button className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto sm:ml-[100px] text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
+        <div className="mb-4 sm:mb-6 bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 w-fit mx-auto sm:ml-[100px] text-[20px] font-[500] sm:text-base w-[238px] h-[38px] flex items-center justify-center">
           {texts.distinction.tag}
-        </Button>
+        </div>
         <div className="gap-8 sm:flex sm:flex-row sm:items-center sm:justify-between sm:w-full">
           <div className="flex flex-col text-center lg:text-left sm:w-[50%] sm:ml-[90px]">
             <p className="text-3xl sm:text-[60px] font-[300] text-[#2E193B] mb-6 pt-8" style={{ lineHeight: '1.1' }}>
@@ -315,9 +315,9 @@ const App: React.FC = () => {
       <section className="py-16 flex items-center w-[90%] sm:w-full sm:py-[100px]">
         <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full mx-auto">
           <div className="flex-1 w-full text-center lg:text-left flex flex-col justify-center gap-12 sm:ml-5 items-center sm:items-start">
-            <Button className="bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
+            <div className="bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
               {texts.what_we_do.button}
-            </Button>
+            </div>
             <p className='font-[500] w-[85%]'>En <span className='mx font-[700] text-[#960C41]'>CBC<span className='font-[500]'>Group</span></span> conectamos empresas con el talento correcto. Humanizamos el reclutamiento con procesos a tú medida, utilizando la IA a nuestro favor.</p>
             <Button 
               className="bg-[#2E193B] font-[600] text-base sm:text-lg lg:text-[20px] text-white rounded-[40px] text-sm sm:text-base w-[200px] h-[50px] flex items-center justify-center mx-auto lg:mx-0"
@@ -341,9 +341,9 @@ const App: React.FC = () => {
       <section className="py-8 sm:py-12 lg:py-16 bg-gray-100 relative px-10 sm:w-full">
         <div className="px-0 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto sm:ml-5">
           <div className="flex flex-col items-center sm:items-start">
-            <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[231px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
+            <div className="mb-6 sm:mb-8 bg-[#960C41] w-[231px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
               {texts.services.button}
-            </Button>
+            </div>
             <div className="text-center sm:text-left">
               <h2 className="text-3xl sm:text-3xl font-[500] text-[#2E193B] leading-tight">
                 {texts.services.title.line1}<br />
@@ -513,9 +513,9 @@ const App: React.FC = () => {
       {/* Listo para contratar */}
       <section className="py-12 sm:py-16 bg-[#2E193B] text-center my-10 w-full">
         <div className="flex flex-col items-center justify-center sm:space-y-[80px]">
-          <Button className="mb-6 sm:mb-8 bg-[#960C41] w-[272px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
+          <div className="mb-6 sm:mb-8 bg-[#960C41] w-[272px] h-[38px] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base flex items-center justify-center">
             {texts.final_cta.tag}
-          </Button>
+          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12">
             {texts.final_cta.title.line1}<br />
             {texts.final_cta.title.line2}
