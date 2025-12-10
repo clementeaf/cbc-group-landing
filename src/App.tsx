@@ -162,7 +162,7 @@ const App: React.FC = () => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-2 xl:space-x-3 2xl:space-x-6 flex-shrink-0">
               <a href="#" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.inicio}</a>
-              <a href="#" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.servicios}</a>
+              <a href="#servicios" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.servicios}</a>
               <a href="#" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.sobre_nosotros}</a>
               <a href="#" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.clientes}</a>
               <Button
@@ -214,7 +214,7 @@ const App: React.FC = () => {
                 {texts.header.navigation.inicio}
               </a>
               <a
-                href="#"
+                href="#servicios"
                 className="text-gray-800 hover:text-red-800 text-[14.4px] sm:text-sm md:text-base py-1.5 sm:py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -355,7 +355,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Services Section Cards*/}
-      <div className='bg-gray-100 flex flex-col items-center justify-center w-full sm:w-full'>
+      <div id="servicios" className='bg-gray-100 flex flex-col items-center justify-center w-full sm:w-full'>
         <section className="py-8 w-[90%] flex justify-center flex-col my-10 ">
           {/* Mobile Carousel */}
           <div className="sm:hidden relative overflow-hidden">
