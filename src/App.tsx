@@ -555,7 +555,7 @@ const App: React.FC = () => {
                 <ul className="text-left flex-col items-start space-y-1">
                   {texts.footer.navigation.servicios.items.map((item, index) => (
                     <li key={index}>
-                      <a href="#" className="text-[10px]">{item}</a>
+                      <p className="text-[10px]">{item}</p>
                     </li>
                   ))}
                 </ul>
@@ -567,7 +567,7 @@ const App: React.FC = () => {
                 <ul className="text-left flex-col items-start space-y-1">
                   {texts.footer.navigation.sobre_nosotros.items.map((item, index) => (
                     <li key={index}>
-                      <a href="#" className="text-[10px]">{item}</a>
+                      <p className="text-[10px]">{item}</p>
                     </li>
                   ))}
                 </ul>
@@ -579,7 +579,7 @@ const App: React.FC = () => {
                 <ul className="text-left flex-col items-start space-y-1">
                   {texts.footer.navigation.legal.items.map((item, index) => (
                     <li key={index}>
-                      <a href="#" className="text-[10px]">{item}</a>
+                      <p className="text-[10px]">{item}</p>
                     </li>
                   ))}
                 </ul>
@@ -591,7 +591,7 @@ const App: React.FC = () => {
                 <ul className="text-left flex-col items-start space-y-1">
                   {texts.footer.navigation.redes_sociales.items.map((item, index) => (
                     <li key={index}>
-                      <a href="#" className="text-[10px]">{item}</a>
+                      <p className="text-[10px]">{item}</p>
                     </li>
                   ))}
                 </ul>
