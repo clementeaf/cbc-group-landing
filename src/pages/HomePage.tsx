@@ -166,7 +166,7 @@ export const HomePage: React.FC = () => {
             <nav className="hidden lg:flex items-center space-x-2 xl:space-x-3 2xl:space-x-6 flex-shrink-0">
               <Link to="/" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.inicio}</Link>
               <a href="#servicios" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.servicios}</a>
-              <a href="#" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.sobre_nosotros}</a>
+              <a href="#sobre-nosotros" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.sobre_nosotros}</a>
               <Link to="/clientes" className="text-gray-800 hover:text-red-800 text-xs lg:text-sm xl:text-base whitespace-nowrap">{texts.header.navigation.clientes}</Link>
               <Button
                 variant="outline"
@@ -224,7 +224,7 @@ export const HomePage: React.FC = () => {
                 {texts.header.navigation.servicios}
               </a>
               <a
-                href="#"
+                href="#sobre-nosotros"
                 className="text-gray-800 hover:text-red-800 text-[14.4px] sm:text-sm md:text-base py-1.5 sm:py-2 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -315,7 +315,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Qué hacemos */}
-      <section className="py-16 flex items-center w-[90%] sm:w-full sm:py-[100px]">
+      <section id="sobre-nosotros" className="py-16 flex items-center w-[90%] sm:w-full sm:py-[100px]">
         <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-20 gap-8 lg:gap-12 w-full mx-auto">
           <div className="flex-1 w-full text-center lg:text-left flex flex-col justify-center gap-12 sm:ml-5 items-center sm:items-start">
             <div className="bg-[#960C41] text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base w-[206px] h-[38px] flex items-center justify-center mx-auto lg:mx-0">
